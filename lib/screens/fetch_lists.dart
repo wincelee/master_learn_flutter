@@ -20,23 +20,22 @@ class _FetchList extends State<FetchList> {
       drawer: const NavigationDrawer(),
       body: SingleChildScrollView(
         child: Column(
-          children: [
-            Container(
-              height: 50,
-              width: 250,
-              decoration: BoxDecoration(
-                  color: const Color(0xff123456),
-                  borderRadius: BorderRadius.circular(20)),
-              child: OutlinedButton(
-                style: ButtonStyle(foregroundColor: MaterialStateProperty.all<Color>(Colors.redAccent),
-                ),
-                onPressed: () {},
-                child: const Text('Login',
-                  style: TextStyle(
-                      color: Colors.white, fontSize: 25),
-                ),
+          children: <Widget>[
+            Padding(
+              padding: const EdgeInsets.only(top: 1.0),
+              child: Center(
+                child: TextButton(
+                    style: ButtonStyle(
+                      foregroundColor:
+                          MaterialStateProperty.all<Color>(Colors.blue),
+                    ),
+                    onPressed: () {},
+                    child: const Text(
+                      "[] ArrayList",
+                      style: TextStyle(color: Colors.blue, fontSize: 15),
+                    )),
               ),
-            )
+            ),
           ],
         ),
       ),
