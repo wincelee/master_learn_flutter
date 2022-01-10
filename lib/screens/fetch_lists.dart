@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:master_learn/list_screeens/future_builder_list.dart';
 
 import '../navigation_drawer.dart';
 
@@ -29,9 +30,11 @@ class _FetchList extends State<FetchList> {
                       foregroundColor:
                           MaterialStateProperty.all<Color>(Colors.blue),
                     ),
-                    onPressed: () {},
+                    onPressed: () => Navigator.of(context).pushReplacement(
+                        MaterialPageRoute(
+                            builder: (BuildContext context) => const FutureBuilderList())),
                     child: const Text(
-                      "[] ArrayList",
+                      "[] Future Builder Users Array Lists",
                       style: TextStyle(color: Colors.blue, fontSize: 15),
                     )),
               ),
