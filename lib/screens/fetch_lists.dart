@@ -23,7 +23,7 @@ class _FetchList extends State<FetchList> {
         child: Column(
           children: <Widget>[
             Padding(
-              padding: const EdgeInsets.all(1.0),
+              padding: const EdgeInsets.all(1),
               child: Center(
                 child: TextButton(
                     style: ButtonStyle(
@@ -32,11 +32,32 @@ class _FetchList extends State<FetchList> {
                     ),
                     onPressed: () => Navigator.of(context).push(
                         MaterialPageRoute(
-                            builder: (BuildContext context) => const FutureBuilderList())),
+                            builder: (BuildContext context) =>
+                                const FutureBuilderList())),
                     child: const Text(
                       "[] Future Builder Users Array Lists",
                       style: TextStyle(color: Colors.blue, fontSize: 15),
                     )),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(1),
+              child: ElevatedButton(
+                onPressed: () {},
+                child: const Text(
+                  "Elevated Button",
+                  style: TextStyle(color: Colors.white, fontSize: 15),
+                ),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(1),
+              child: ElevatedButton(
+                onPressed: () {},
+                child: const Text(
+                  "Elevated Button",
+                  style: TextStyle(color: Colors.white, fontSize: 15),
+                ),
               ),
             ),
           ],

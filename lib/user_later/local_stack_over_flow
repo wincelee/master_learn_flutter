@@ -1,0 +1,18 @@
+JsonObjectWithJsonArrayThatHasName
+
+{
+    dataKey: [
+      {
+        key1: value1,
+        key2: value2,
+        key3: value3,
+      }
+    ]
+}
+
+
+Map<String, dynamic> map = json.decode(response.body);
+List<dynamic> data = map["dataKey"];
+print(data[0]["name"]);
+
+----------------------------------------------------------------------------
