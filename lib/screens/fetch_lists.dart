@@ -23,14 +23,14 @@ class _FetchList extends State<FetchList> {
         child: Column(
           children: <Widget>[
             Padding(
-              padding: const EdgeInsets.only(top: 1.0),
+              padding: const EdgeInsets.all(1.0),
               child: Center(
                 child: TextButton(
                     style: ButtonStyle(
                       foregroundColor:
                           MaterialStateProperty.all<Color>(Colors.blue),
                     ),
-                    onPressed: () => Navigator.of(context).pushReplacement(
+                    onPressed: () => Navigator.of(context).push(
                         MaterialPageRoute(
                             builder: (BuildContext context) => const FutureBuilderList())),
                     child: const Text(
