@@ -205,8 +205,8 @@ class _FutureBuilderListState extends State<FutureBuilderList> {
     //log("FetchedUsersList $_fetchUsersList()");
     //log("FetchedUsersHashMap $_fetchUsersListHashMap()");
 
-    // logFetchUsersUsingListOfStringDynamicHashMap();
-    // logFetchUsersUsingListOfStringObjectHashMap();
+    logFetchUsersUsingListOfStringDynamicHashMap();
+    logFetchUsersUsingListOfStringObjectHashMap();
     logFetchUsersListUsingLoop();
 
     super.initState();
