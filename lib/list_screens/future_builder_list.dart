@@ -3,7 +3,6 @@ import 'dart:collection';
 import 'dart:convert';
 import 'dart:developer';
 
-import 'package:avatar_view/avatar_view.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
@@ -242,6 +241,7 @@ class _FutureBuilderListState extends State<FutureBuilderList> {
                     if (Config().equalsIgnoreCase("imageNetwork",
                         asyncSnapshot.data[index].imageFetchType)) {
                       return ListTile(
+                        contentPadding: const EdgeInsets.all(10),
                         leading: CircleAvatar(
                           child: ClipOval(
                             child: Image.network(
@@ -253,42 +253,38 @@ class _FutureBuilderListState extends State<FutureBuilderList> {
                           ),
                         ),
                         title: Text(asyncSnapshot.data[index].name),
-                        subtitle: Text(asyncSnapshot.data[index].email),
+                        subtitle: Text(
+                            "${asyncSnapshot.data[index].email} \nUsing Image.network with child"),
                       );
-                    } else if (Config().equalsIgnoreCase("avatarView",
+                    } else if (Config().equalsIgnoreCase(
+                        "circleAvatarWithRadius",
                         asyncSnapshot.data[index].imageFetchType)) {
                       return ListTile(
-                        leading: AvatarView(
-                          radius: 60,
-                          borderColor: Colors.yellow,
-                          avatarType: AvatarType.CIRCLE,
-                          backgroundColor: Colors.red,
-                          imagePath: "${asyncSnapshot.data[index].picture}",
-                          placeHolder: const SizedBox(
-                            child: Icon(
-                              Icons.person,
-                              size: 50,
-                            ),
-                          ),
-                          errorWidget: const SizedBox(
-                            child: Icon(
-                              Icons.error,
-                              size: 50,
-                            ),
+                        contentPadding: const EdgeInsets.all(10),
+                        leading: CircleAvatar(
+                          backgroundColor: Colors.orangeAccent,
+                          // radius of the circle image view
+                          radius: 30.0,
+                          child: CircleAvatar(
+                            backgroundImage:
+                                NetworkImage(asyncSnapshot.data[index].picture),
+                            // radius of the image inside the circle
+                            radius: 25.0,
                           ),
                         ),
                         title: Text(asyncSnapshot.data[index].name),
                         subtitle: Text(asyncSnapshot.data[index].email),
                       );
                     }
-
                     return ListTile(
+                      contentPadding: const EdgeInsets.all(10),
                       leading: CircleAvatar(
                         backgroundImage:
                             NetworkImage(asyncSnapshot.data[index].picture),
                       ),
                       title: Text(asyncSnapshot.data[index].name),
-                      subtitle: Text(asyncSnapshot.data[index].email),
+                      subtitle: Text(
+                          "${asyncSnapshot.data[index].email} \nUsing NetworkImage with backgroundImage"),
                     );
                   },
                 );
