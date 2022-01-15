@@ -16,3 +16,52 @@ List<dynamic> data = map["dataKey"];
 print(data[0]["name"]);
 
 ----------------------------------------------------------------------------
+
+passing text from screen 1 to screen 2
+
+openDetailPage(ItemModel data, int index) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) {
+        return MovieDetailBlocProvider(
+          child: MovieDetail(
+            title: data.results[index].title,
+            posterUrl: data.results[index].backdrop_path,
+            description: data.results[index].overview,
+            releaseDate: data.results[index].release_date,
+            voteAverage: data.results[index].vote_average.toString(),
+            movieId: data.results[index].id,
+          ),
+        );
+      }),
+    );
+  }
+
+----------------------------------------------------------------------------
+
+Possible on click on backgroundImage
+
+ Column(
+                 crossAxisAlignment: CrossAxisAlignment.center,
+                 mainAxisAlignment: MainAxisAlignment.spaceAround,
+                 children: [
+                   GestureDetector(
+                     onTap: () {
+                       Navigator.push(
+                         context,
+                         MaterialPageRoute(builder: (context) => MyApp7()),
+                       );
+                     },
+                     child: CircleAvatar(
+                       radius: 50,
+                       // backgroundColor: Colors.amber,
+                       child: CircleAvatar(
+                           backgroundColor: Colors.grey[50],
+                           radius: 50,
+                           // child: Image.asset("assets/images/nophotoMale.png")
+                           backgroundImage:
+                               AssetImage("assets/images/nophotoMale.png")),
+                     ),
+                   ),
+                 ],
+               ),

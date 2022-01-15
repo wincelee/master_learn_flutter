@@ -12,9 +12,10 @@ class User {
   String? name;
   String? picture;
   int? index;
+  String? imageFetchType;
 
   // User({this.email, this.about, this.name, this.picture, this.index});
-  User(this.email, this.about, this.name, this.picture, this.index);
+  User(this.email, this.about, this.name, this.picture, this.index, this.imageFetchType);
 
 
   /*factory User.fromJson(Map<String, dynamic> json) => User(
@@ -23,6 +24,7 @@ class User {
     name: json["name"],
     picture: json["picture"],
     index: json["index"],
+    imageFetchType: json["imageFetchType"]
   );
 
   Map<String, dynamic> toJson() => {
@@ -30,6 +32,7 @@ class User {
     "about": about,
     "name": name,
     "picture": picture,
-    "index": index
+    "index": index,
+    "imageFetchType": imageFetchType
   };*/
 }

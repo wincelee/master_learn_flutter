@@ -37,6 +37,7 @@ dependencies:
   http:
   logger:
   json_serializable:
+  avatar_view:
 
 dev_dependencies:
   flutter_test:

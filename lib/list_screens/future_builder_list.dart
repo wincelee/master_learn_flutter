@@ -3,10 +3,12 @@ import 'dart:collection';
 import 'dart:convert';
 import 'dart:developer';
 
+import 'package:avatar_view/avatar_view.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:logger/logger.dart';
+import 'package:master_learn/classes/config.dart';
 import 'package:master_learn/classes/user.dart';
 
 class FutureBuilderList extends StatefulWidget {
@@ -142,7 +144,13 @@ class _FutureBuilderListState extends State<FutureBuilderList> {
     try {
       // pub spec yaml http:
       // import 'package:http/http.dart' as http;
-      var response = await http.get(Uri.parse("https://jsonkeeper.com/b/XBCA"));
+      var response = await http.get(
+          Uri.parse(
+              "https://api.json-generator.com/templates/Eh5AlPjYVv6C/data"),
+          headers: {
+            "Content-Type": "application/json",
+            "Authorization": "Bearer tltsp6dmnbif01jy9xfo9ssn4620u89xhuwcm5t3",
+          });
 
       // for json.decode
       // pub spec yaml json_serializable:
@@ -152,8 +160,8 @@ class _FutureBuilderListState extends State<FutureBuilderList> {
       List<User> usersList = [];
 
       for (var u in jsonResponse) {
-        User user =
-            User(u["email"], u["about"], u["name"], u["picture"], u["index"]);
+        User user = User(u["email"], u["about"], u["name"], u["picture"],
+            u["index"], u["imageFetchType"]);
 
         usersList.add(user);
       }
@@ -202,11 +210,8 @@ class _FutureBuilderListState extends State<FutureBuilderList> {
 
   @override
   void initState() {
-    //log("FetchedUsersList $_fetchUsersList()");
-    //log("FetchedUsersHashMap $_fetchUsersListHashMap()");
-
-    logFetchUsersUsingListOfStringDynamicHashMap();
-    logFetchUsersUsingListOfStringObjectHashMap();
+    // logFetchUsersUsingListOfStringDynamicHashMap();
+    // logFetchUsersUsingListOfStringObjectHashMap();
     logFetchUsersListUsingLoop();
 
     super.initState();
@@ -229,15 +234,62 @@ class _FutureBuilderListState extends State<FutureBuilderList> {
             future: _fetchUsersListUsingLoop(),
             builder: (BuildContext context, AsyncSnapshot asyncSnapshot) {
               if (asyncSnapshot.data == null) {
-                return const SizedBox(
-                  child: Center(child: Text('Loading...')),
-                );
+                return const Center(child: CircularProgressIndicator());
               } else {
                 return ListView.builder(
                   itemCount: asyncSnapshot.data.length,
                   itemBuilder: (BuildContext context, int index) {
+                    if (Config().equalsIgnoreCase("imageNetwork",
+                        asyncSnapshot.data[index].imageFetchType)) {
+                      return ListTile(
+                        leading: CircleAvatar(
+                          child: ClipOval(
+                            child: Image.network(
+                              asyncSnapshot.data[index].picture,
+                              width: 100,
+                              height: 100,
+                              fit: BoxFit.cover,
+                            ),
+                          ),
+                        ),
+                        title: Text(asyncSnapshot.data[index].name),
+                        subtitle: Text(asyncSnapshot.data[index].email),
+                      );
+                    } else if (Config().equalsIgnoreCase("avatarView",
+                        asyncSnapshot.data[index].imageFetchType)) {
+                      return ListTile(
+                        leading: AvatarView(
+                          radius: 60,
+                          borderColor: Colors.yellow,
+                          avatarType: AvatarType.CIRCLE,
+                          backgroundColor: Colors.red,
+                          imagePath: "${asyncSnapshot.data[index].picture}",
+                          placeHolder: const SizedBox(
+                            child: Icon(
+                              Icons.person,
+                              size: 50,
+                            ),
+                          ),
+                          errorWidget: const SizedBox(
+                            child: Icon(
+                              Icons.error,
+                              size: 50,
+                            ),
+                          ),
+                        ),
+                        title: Text(asyncSnapshot.data[index].name),
+                        subtitle: Text(asyncSnapshot.data[index].email),
+                      );
+                    }
+
                     return ListTile(
-                        title: Text(asyncSnapshot.data[index].toString()));
+                      leading: CircleAvatar(
+                        backgroundImage:
+                            NetworkImage(asyncSnapshot.data[index].picture),
+                      ),
+                      title: Text(asyncSnapshot.data[index].name),
+                      subtitle: Text(asyncSnapshot.data[index].email),
+                    );
                   },
                 );
               }
