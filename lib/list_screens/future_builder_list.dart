@@ -263,7 +263,7 @@ class _FutureBuilderListState extends State<FutureBuilderList> {
                         contentPadding: const EdgeInsets.all(10),
                         leading: CircleAvatar(
                           backgroundColor: Colors.orangeAccent,
-                          // radius of the circle image view
+                          // radius of the circle image view limit mostly to 30
                           radius: 30.0,
                           child: CircleAvatar(
                             backgroundImage:
@@ -274,6 +274,26 @@ class _FutureBuilderListState extends State<FutureBuilderList> {
                         ),
                         title: Text(asyncSnapshot.data[index].name),
                         subtitle: Text(asyncSnapshot.data[index].email),
+                      );
+                    } else if (Config().equalsIgnoreCase(
+                        "circleAvatarInsideCircleAvatar",
+                        asyncSnapshot.data[index].imageFetchType)) {
+                      return ListTile(
+                        contentPadding: const EdgeInsets.all(10),
+                        leading: CircleAvatar(
+                          // radius of the circle image view limit mostly to 30
+                          radius: 30,
+                          backgroundColor: Colors.lightGreen,
+                          child: CircleAvatar(
+                            // radius of the image inside the circle
+                            radius: 25,
+                            backgroundImage:
+                                NetworkImage(asyncSnapshot.data[index].picture),
+                          ),
+                        ),
+                        title: Text(asyncSnapshot.data[index].name),
+                        subtitle: Text(
+                            "${asyncSnapshot.data[index].email} \nUsing CircleAvatar inside CircleAvatar"),
                       );
                     }
                     return ListTile(
@@ -294,3 +314,5 @@ class _FutureBuilderListState extends State<FutureBuilderList> {
     );
   }
 }
+
+
