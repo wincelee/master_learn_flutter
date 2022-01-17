@@ -35,7 +35,8 @@ class _FutureBuilderListWithoutLoopState
       if (response.statusCode == 200) {
         usersList = json
             .decode(response.body)
-            .cast<Map<String, dynamic>>()
+            // In event of failure return line below
+            //.cast<Map<String, dynamic>>()
             .map<User>((json) => User.fromJson(json))
             .toList();
       } else if (response.statusCode == 401) {
@@ -80,7 +81,7 @@ class _FutureBuilderListWithoutLoopState
                 return const Center(child: CircularProgressIndicator());
               } else {
                 return RefreshIndicator(
-                    // background color
+                  // background color
                     backgroundColor: Colors.white,
                     // refresh circular progress indicator color
                     color: Colors.green,
@@ -93,26 +94,26 @@ class _FutureBuilderListWithoutLoopState
                       itemCount: asyncSnapshot.data.length,
                       itemBuilder: (BuildContext context, int index) {
                         if (Config().equalsIgnoreCase("imageNetwork",
-                            asyncSnapshot.data[index].imageFetchType)) {
+                            asyncSnapshot.data[index].imageFetchType?? '')) {
                           return ListTile(
                             contentPadding: const EdgeInsets.all(10),
                             leading: CircleAvatar(
                               child: ClipOval(
                                 child: Image.network(
-                                  asyncSnapshot.data[index].picture,
+                                  asyncSnapshot.data[index].picture?? Config.nullNetworkImage,
                                   width: 100,
                                   height: 100,
                                   fit: BoxFit.cover,
                                 ),
                               ),
                             ),
-                            title: Text(asyncSnapshot.data[index].name),
+                            title: Text(asyncSnapshot.data[index].name?? ''),
                             subtitle: Text(
-                                "${asyncSnapshot.data[index].email} \nUsing Image.network with child"),
+                                "${asyncSnapshot.data[index].email?? ''} \nUsing Image.network with child"),
                           );
                         } else if (Config().equalsIgnoreCase(
                             "circleAvatarWithRadius",
-                            asyncSnapshot.data[index].imageFetchType)) {
+                            asyncSnapshot.data[index].imageFetchType?? '')) {
                           return ListTile(
                             contentPadding: const EdgeInsets.all(10),
                             leading: CircleAvatar(
@@ -121,17 +122,17 @@ class _FutureBuilderListWithoutLoopState
                               radius: 30.0,
                               child: CircleAvatar(
                                 backgroundImage: NetworkImage(
-                                    asyncSnapshot.data[index].picture),
+                                    asyncSnapshot.data[index].picture ?? Config.nullNetworkImage),
                                 // radius of the image inside the circle
                                 radius: 25.0,
                               ),
                             ),
-                            title: Text(asyncSnapshot.data[index].name),
-                            subtitle: Text(asyncSnapshot.data[index].email),
+                            title: Text(asyncSnapshot.data[index].name ?? ''),
+                            subtitle: Text(asyncSnapshot.data[index].email?? ''),
                           );
                         } else if (Config().equalsIgnoreCase(
                             "circleAvatarInsideCircleAvatar",
-                            asyncSnapshot.data[index].imageFetchType)) {
+                            asyncSnapshot.data[index].imageFetchType?? '')) {
                           return ListTile(
                             contentPadding: const EdgeInsets.all(10),
                             leading: CircleAvatar(
@@ -142,23 +143,23 @@ class _FutureBuilderListWithoutLoopState
                                 // radius of the image inside the circle
                                 radius: 25,
                                 backgroundImage: NetworkImage(
-                                    asyncSnapshot.data[index].picture),
+                                    asyncSnapshot.data[index].picture?? Config.nullNetworkImage),
                               ),
                             ),
-                            title: Text(asyncSnapshot.data[index].name),
+                            title: Text(asyncSnapshot.data[index].name ?? ''),
                             subtitle: Text(
-                                "${asyncSnapshot.data[index].email} \nUsing CircleAvatar inside CircleAvatar"),
+                                "${asyncSnapshot.data[index].email ?? ''} \nUsing CircleAvatar inside CircleAvatar"),
                           );
                         }
                         return ListTile(
                           contentPadding: const EdgeInsets.all(10),
                           leading: CircleAvatar(
                             backgroundImage:
-                                NetworkImage(asyncSnapshot.data[index].picture),
+                            NetworkImage(asyncSnapshot.data[index].picture?? Config.nullNetworkImage),
                           ),
-                          title: Text(asyncSnapshot.data[index].name),
+                          title: Text(asyncSnapshot.data[index].name ?? ''),
                           subtitle: Text(
-                              "${asyncSnapshot.data[index].email} \nUsing NetworkImage with backgroundImage"),
+                              "${asyncSnapshot.data[index].email ?? ''} \nUsing NetworkImage with backgroundImage"),
                         );
                       },
                     ));
