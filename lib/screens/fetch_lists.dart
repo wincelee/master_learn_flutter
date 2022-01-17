@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:master_learn/list_screens/future_builder_list.dart';
+import 'package:master_learn/list_screens/future_builder_list_using_loop.dart';
+import 'package:master_learn/list_screens/future_builder_list_without_loop.dart';
 
 import '../navigation_drawer.dart';
 
@@ -23,7 +24,7 @@ class _FetchList extends State<FetchList> {
         child: Column(
           children: <Widget>[
             Padding(
-              padding: const EdgeInsets.all(1),
+              padding: const EdgeInsets.all(5),
               child: Center(
                 child: TextButton(
                     style: ButtonStyle(
@@ -33,9 +34,27 @@ class _FetchList extends State<FetchList> {
                     onPressed: () => Navigator.of(context).push(
                         MaterialPageRoute(
                             builder: (BuildContext context) =>
-                                const FutureBuilderList())),
+                                const FutureBuilderListUsingLoop())),
                     child: const Text(
-                      "[] Future Builder Users Array Lists",
+                      "[] Future Builder Users Lists Using For Loop",
+                      style: TextStyle(color: Colors.blue, fontSize: 15),
+                    )),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(5),
+              child: Center(
+                child: TextButton(
+                    style: ButtonStyle(
+                      foregroundColor:
+                      MaterialStateProperty.all<Color>(Colors.blue),
+                    ),
+                    onPressed: () => Navigator.of(context).push(
+                        MaterialPageRoute(
+                            builder: (BuildContext context) =>
+                            const FutureBuilderListWithoutLoop())),
+                    child: const Text(
+                      "[] Future Builder Users Lists Without For Loop",
                       style: TextStyle(color: Colors.blue, fontSize: 15),
                     )),
               ),
