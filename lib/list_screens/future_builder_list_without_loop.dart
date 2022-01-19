@@ -110,6 +110,7 @@ class _FutureBuilderListWithoutLoopState
                             title: Text(asyncSnapshot.data[index].name?? ''),
                             subtitle: Text(
                                 "${asyncSnapshot.data[index].email?? ''} \nUsing Image.network with child"),
+                            onTap: ,
                           );
                         } else if (Config().equalsIgnoreCase(
                             "circleAvatarWithRadius",

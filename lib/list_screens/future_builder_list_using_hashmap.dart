@@ -19,7 +19,7 @@ class FutureBuilderListUsingHashMap extends StatefulWidget {
 class _FutureBuilderListUsingHashMapState
     extends State<FutureBuilderListUsingHashMap> {
   Future<List<HashMap<String, dynamic>>>
-      _fetchUsersUsingListOfStringObjectHashMap() async {
+      _fetchUsersUsingListOfStringDynamicHashMap() async {
     try {
       final response = await http.get(
           Uri.parse(
@@ -28,9 +28,6 @@ class _FutureBuilderListUsingHashMapState
             "Content-Type": "application/json",
             "Authorization": "Bearer tltsp6dmnbif01jy9xfo9ssn4620u89xhuwcm5t3",
           });
-
-      Logger().i("ResponseStatusCode ${response.statusCode}");
-      Logger().i("ResponseBody ${response.body}");
 
       final List<HashMap<String, dynamic>> responseList;
 
@@ -41,7 +38,6 @@ class _FutureBuilderListUsingHashMapState
                 (e) => HashMap<String, dynamic>.from(e))
             .toList();
       } else if (response.statusCode == 401) {
-
         responseList = [];
       } else {
         responseList = [];
@@ -59,8 +55,7 @@ class _FutureBuilderListUsingHashMapState
 
   @override
   void initState() {
-
-    _fetchUsersUsingListOfStringObjectHashMap();
+    _fetchUsersUsingListOfStringDynamicHashMap();
 
     super.initState();
   }
@@ -85,45 +80,45 @@ class _FutureBuilderListUsingHashMapState
       ),
       body: SizedBox(
         child: FutureBuilder(
-            future: _fetchUsersUsingListOfStringObjectHashMap(),
+            future: _fetchUsersUsingListOfStringDynamicHashMap(),
             builder: (BuildContext context, AsyncSnapshot asyncSnapshot) {
               if (asyncSnapshot.data == null) {
                 return const Center(child: CircularProgressIndicator());
               } else {
                 return RefreshIndicator(
-                  // background color
+                    // background color
                     backgroundColor: Colors.white,
                     // refresh circular progress indicator color
                     color: Colors.green,
                     onRefresh: () async {
                       setState(() {
-                        _fetchUsersUsingListOfStringObjectHashMap();
+                        _fetchUsersUsingListOfStringDynamicHashMap();
                       });
                     },
                     child: ListView.builder(
                       itemCount: asyncSnapshot.data.length,
                       itemBuilder: (BuildContext context, int index) {
                         if (Config().equalsIgnoreCase("imageNetwork",
-                            asyncSnapshot.data[index].imageFetchType?? '')) {
+                            asyncSnapshot.data[index]["imageFetchType"] ?? '')) {
                           return ListTile(
                             contentPadding: const EdgeInsets.all(10),
                             leading: CircleAvatar(
                               child: ClipOval(
                                 child: Image.network(
-                                  asyncSnapshot.data[index].picture?? Config.nullNetworkImage,
+                                  asyncSnapshot.data[index]["picture"]?? Config.nullNetworkImage,
                                   width: 100,
                                   height: 100,
                                   fit: BoxFit.cover,
                                 ),
                               ),
                             ),
-                            title: Text(asyncSnapshot.data[index].name?? ''),
+                            title: Text(asyncSnapshot.data[index]["name"]?? ''),
                             subtitle: Text(
-                                "${asyncSnapshot.data[index].email?? ''} \nUsing Image.network with child"),
+                                "${asyncSnapshot.data[index]["email"]?? ''} \nUsing Image.network with child"),
                           );
                         } else if (Config().equalsIgnoreCase(
                             "circleAvatarWithRadius",
-                            asyncSnapshot.data[index].imageFetchType?? '')) {
+                            asyncSnapshot.data[index]["imageFetchType"]?? '')) {
                           return ListTile(
                             contentPadding: const EdgeInsets.all(10),
                             leading: CircleAvatar(
@@ -132,17 +127,17 @@ class _FutureBuilderListUsingHashMapState
                               radius: 30.0,
                               child: CircleAvatar(
                                 backgroundImage: NetworkImage(
-                                    asyncSnapshot.data[index].picture ?? Config.nullNetworkImage),
+                                    asyncSnapshot.data[index]["picture"] ?? Config.nullNetworkImage),
                                 // radius of the image inside the circle
                                 radius: 25.0,
                               ),
                             ),
-                            title: Text(asyncSnapshot.data[index].name ?? ''),
-                            subtitle: Text(asyncSnapshot.data[index].email?? ''),
+                            title: Text(asyncSnapshot.data[index]["name"] ?? ''),
+                            subtitle: Text(asyncSnapshot.data[index]["email"]?? ''),
                           );
                         } else if (Config().equalsIgnoreCase(
                             "circleAvatarInsideCircleAvatar",
-                            asyncSnapshot.data[index].imageFetchType?? '')) {
+                            asyncSnapshot.data[index]["imageFetchType"]?? '')) {
                           return ListTile(
                             contentPadding: const EdgeInsets.all(10),
                             leading: CircleAvatar(
@@ -153,23 +148,23 @@ class _FutureBuilderListUsingHashMapState
                                 // radius of the image inside the circle
                                 radius: 25,
                                 backgroundImage: NetworkImage(
-                                    asyncSnapshot.data[index].picture?? Config.nullNetworkImage),
+                                    asyncSnapshot.data[index]["picture"]?? Config.nullNetworkImage),
                               ),
                             ),
-                            title: Text(asyncSnapshot.data[index].name ?? ''),
+                            title: Text(asyncSnapshot.data[index]["name"] ?? ''),
                             subtitle: Text(
-                                "${asyncSnapshot.data[index].email ?? ''} \nUsing CircleAvatar inside CircleAvatar"),
+                                "${asyncSnapshot.data[index]["email"] ?? ''} \nUsing CircleAvatar inside CircleAvatar"),
                           );
                         }
                         return ListTile(
                           contentPadding: const EdgeInsets.all(10),
                           leading: CircleAvatar(
                             backgroundImage:
-                            NetworkImage(asyncSnapshot.data[index].picture?? Config.nullNetworkImage),
+                            NetworkImage(asyncSnapshot.data[index]["picture"]?? Config.nullNetworkImage),
                           ),
-                          title: Text(asyncSnapshot.data[index].name ?? ''),
+                          title: Text(asyncSnapshot.data[index]["name"] ?? ''),
                           subtitle: Text(
-                              "${asyncSnapshot.data[index].email ?? ''} \nUsing NetworkImage with backgroundImage"),
+                              "${asyncSnapshot.data[index]["email"] ?? ''} \nUsing NetworkImage with backgroundImage"),
                         );
                       },
                     ));
