@@ -1,0 +1,74 @@
+[
+  {
+    "name": "kamchatka0000",
+    "about": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborumnumquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentium optio, eaque rerum! Provident similique accusantium nemo autem.",
+    "email": "kamchatka@mail.com",
+    "index": 1,
+    "picture": "https://static.themoscowtimes.com/image/1360/73/TASS40183186.jpg",
+    "imageFetchType": "networkImage"
+  },
+  {
+    "name": "Valjakutse",
+    "about": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborumnumquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentium optio, eaque rerum! Provident similique accusantium nemo autem.",
+    "email": "valjakutse@mail.com",
+    "index": 2,
+    "picture": "https://images.unsplash.com/photo-1561406636-b80293969660?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8YmxhY2slMjBsYWR5fGVufDB8fDB8fA%3D%3D&w=1000&q=80",
+    "imageFetchType": "imageNetwork"
+  },
+  {
+    "name": "Shipment005",
+    "about": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborumnumquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentium optio, eaque rerum! Provident similique accusantium nemo autem.",
+    "email": "shipment@mail.com",
+    "index": 3,
+    "picture": "https://www.e2open.com/wp-content/uploads/2019/10/img-shipments-ocean.jpg",
+    "imageFetchType": "circleAvatarWithRadius"
+  },
+  {
+    "name": "Vacant",
+    "about": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborumnumquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentium optio, eaque rerum! Provident similique accusantium nemo autem.",
+    "email": "vacant@mail.com",
+    "index": 4,
+    "picture": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTVYaMd0V178ClkBu6Gs9nj0gHhtIDS5g5-nQ&usqp=CAU",
+    "imageFetchType": "circleAvatarInsideCircleAvatar"
+  },
+  {
+    "name": "Ursa Major 400",
+    "about": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborumnumquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentium optio, eaque rerum! Provident similique accusantium nemo autem.",
+    "email": "ursaMajor200@mail.com",
+    "index": 5,
+    "picture": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cb/Feather_of_male_Pavo_cristatus_%28Indian_peafowl%29.jpg/1200px-Feather_of_male_Pavo_cristatus_%28Indian_peafowl%29.jpg",
+    "imageFetchType": "imageNetwork"
+  },
+  {
+    "name": "Laika",
+    "about": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborumnumquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentium optio, eaque rerum! Provident similique accusantium nemo autem.",
+    "email": "laika@mail.com",
+    "index": 6,
+    "picture": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRM0RuWJIqBXk5pPCEolmGstR4oi6FGfZDFGg&usqp=CAU",
+    "imageFetchType": "circleAvatarWithRadius"
+  },
+  {
+    "name": "Yuri",
+    "about": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborumnumquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentium optio, eaque rerum! Provident similique accusantium nemo autem.",
+    "email": "yuri@mail.com",
+    "index": 7,
+    "picture": "https://www.allkpop.com/upload/2021/09/content/010335/web_data/allkpop_1630483431_20210901-yuri.jpg",
+    "imageFetchType": "imageNetwork"
+  },
+  {
+    "name": "Falcon",
+    "about": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborumnumquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentium optio, eaque rerum! Provident similique accusantium nemo autem.",
+    "email": "falcon@mail.com",
+    "index": 8,
+    "picture": "https://media.cntraveler.com/photos/5890a06ab9a695377253c9a9/16:9/w_2560%2Cc_limit/GettyImages-121285868.jpg",
+    "imageFetchType": "circleAvatarInsideCircleAvatar"
+  },
+  {
+    "name": "Dragonx",
+    "about": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborumnumquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentium optio, eaque rerum! Provident similique accusantium nemo autem.",
+    "email": "dragon@mail.com",
+    "index": 8,
+    "picture": "https://img.poki.com/cdn-cgi/image/quality=78,width=600,height=600,fit=cover,g=0.5x0.5,f=auto/5d65cf33c17b54197c2a4055a3a7dbf006e015b59c63daef0f2c90577e4720ef.png",
+    "imageFetchType": "imageNetwork"
+  }
+]

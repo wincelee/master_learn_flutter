@@ -6,6 +6,7 @@ import 'package:http/http.dart' as http;
 import 'package:logger/logger.dart';
 import 'package:master_learn/classes/config.dart';
 import 'package:master_learn/classes/user.dart';
+import 'package:master_learn/list_screens/user_details.dart';
 import 'package:master_learn/widgets/marquee_widget.dart';
 
 class FutureBuilderListWithoutLoop extends StatefulWidget {
@@ -81,7 +82,7 @@ class _FutureBuilderListWithoutLoopState
                 return const Center(child: CircularProgressIndicator());
               } else {
                 return RefreshIndicator(
-                  // background color
+                    // background color
                     backgroundColor: Colors.white,
                     // refresh circular progress indicator color
                     color: Colors.green,
@@ -94,74 +95,167 @@ class _FutureBuilderListWithoutLoopState
                       itemCount: asyncSnapshot.data.length,
                       itemBuilder: (BuildContext context, int index) {
                         if (Config().equalsIgnoreCase("imageNetwork",
-                            asyncSnapshot.data[index].imageFetchType?? '')) {
+                            asyncSnapshot.data[index].imageFetchType ?? '')) {
                           return ListTile(
                             contentPadding: const EdgeInsets.all(10),
                             leading: CircleAvatar(
                               child: ClipOval(
                                 child: Image.network(
-                                  asyncSnapshot.data[index].picture?? Config.nullNetworkImage,
+                                  asyncSnapshot.data[index].picture ??
+                                      Config.nullNetworkImage,
                                   width: 100,
                                   height: 100,
                                   fit: BoxFit.cover,
                                 ),
                               ),
                             ),
-                            title: Text(asyncSnapshot.data[index].name?? ''),
+                            title: Text(asyncSnapshot.data[index].name ?? ''),
                             subtitle: Text(
-                                "${asyncSnapshot.data[index].email?? ''} \nUsing Image.network with child"),
-                            onTap: ,
+                                "${asyncSnapshot.data[index].email ?? ''} \nUsing Image.network with child"),
+                            onTap: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => UserDetails(
+                                            email: asyncSnapshot
+                                                    .data[index].email ??
+                                                '',
+                                            about: asyncSnapshot
+                                                    .data[index].about ??
+                                                '',
+                                            name: asyncSnapshot
+                                                    .data[index].name ??
+                                                '',
+                                            picture: asyncSnapshot
+                                                    .data[index].picture ??
+                                                Config.nullNetworkImage,
+                                            imageFetchType: asyncSnapshot
+                                                    .data[index]
+                                                    .imageFetchType ??
+                                                '',
+                                          )));
+                            },
                           );
                         } else if (Config().equalsIgnoreCase(
                             "circleAvatarWithRadius",
-                            asyncSnapshot.data[index].imageFetchType?? '')) {
+                            asyncSnapshot.data[index].imageFetchType ?? '')) {
                           return ListTile(
-                            contentPadding: const EdgeInsets.all(10),
-                            leading: CircleAvatar(
-                              backgroundColor: Colors.orangeAccent,
-                              // radius of the circle image view limit mostly to 30
-                              radius: 30.0,
-                              child: CircleAvatar(
-                                backgroundImage: NetworkImage(
-                                    asyncSnapshot.data[index].picture ?? Config.nullNetworkImage),
-                                // radius of the image inside the circle
-                                radius: 25.0,
+                              contentPadding: const EdgeInsets.all(10),
+                              leading: CircleAvatar(
+                                backgroundColor: Colors.orangeAccent,
+                                // radius of the circle image view limit mostly to 30
+                                radius: 30.0,
+                                child: CircleAvatar(
+                                  backgroundImage: NetworkImage(
+                                      asyncSnapshot.data[index].picture ??
+                                          Config.nullNetworkImage),
+                                  // radius of the image inside the circle
+                                  radius: 25.0,
+                                ),
                               ),
-                            ),
-                            title: Text(asyncSnapshot.data[index].name ?? ''),
-                            subtitle: Text(asyncSnapshot.data[index].email?? ''),
-                          );
+                              title: Text(asyncSnapshot.data[index].name ?? ''),
+                              subtitle:
+                                  Text(asyncSnapshot.data[index].email ?? ''),
+                              onTap: () {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => UserDetails(
+                                              email: asyncSnapshot
+                                                      .data[index].email ??
+                                                  '',
+                                              about: asyncSnapshot
+                                                      .data[index].about ??
+                                                  '',
+                                              name: asyncSnapshot
+                                                      .data[index].name ??
+                                                  '',
+                                              picture: asyncSnapshot
+                                                      .data[index].picture ??
+                                                  Config.nullNetworkImage,
+                                              imageFetchType: asyncSnapshot
+                                                      .data[index]
+                                                      .imageFetchType ??
+                                                  '',
+                                            )));
+                              });
                         } else if (Config().equalsIgnoreCase(
                             "circleAvatarInsideCircleAvatar",
-                            asyncSnapshot.data[index].imageFetchType?? '')) {
+                            asyncSnapshot.data[index].imageFetchType ?? '')) {
                           return ListTile(
+                              contentPadding: const EdgeInsets.all(10),
+                              leading: CircleAvatar(
+                                // radius of the circle image view limit mostly to 30
+                                radius: 30,
+                                backgroundColor: Colors.lightGreen,
+                                child: CircleAvatar(
+                                  // radius of the image inside the circle
+                                  radius: 25,
+                                  backgroundImage: NetworkImage(
+                                      asyncSnapshot.data[index].picture ??
+                                          Config.nullNetworkImage),
+                                ),
+                              ),
+                              title: Text(asyncSnapshot.data[index].name ?? ''),
+                              subtitle: Text(
+                                  "${asyncSnapshot.data[index].email ?? ''} \nUsing CircleAvatar inside CircleAvatar"),
+                              onTap: () {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => UserDetails(
+                                              email: asyncSnapshot
+                                                      .data[index].email ??
+                                                  '',
+                                              about: asyncSnapshot
+                                                      .data[index].about ??
+                                                  '',
+                                              name: asyncSnapshot
+                                                      .data[index].name ??
+                                                  '',
+                                              picture: asyncSnapshot
+                                                      .data[index].picture ??
+                                                  Config.nullNetworkImage,
+                                              imageFetchType: asyncSnapshot
+                                                      .data[index]
+                                                      .imageFetchType ??
+                                                  '',
+                                            )));
+                              });
+                        }
+                        return ListTile(
                             contentPadding: const EdgeInsets.all(10),
                             leading: CircleAvatar(
-                              // radius of the circle image view limit mostly to 30
-                              radius: 30,
-                              backgroundColor: Colors.lightGreen,
-                              child: CircleAvatar(
-                                // radius of the image inside the circle
-                                radius: 25,
-                                backgroundImage: NetworkImage(
-                                    asyncSnapshot.data[index].picture?? Config.nullNetworkImage),
-                              ),
+                              backgroundImage: NetworkImage(
+                                  asyncSnapshot.data[index].picture ??
+                                      Config.nullNetworkImage),
                             ),
                             title: Text(asyncSnapshot.data[index].name ?? ''),
                             subtitle: Text(
-                                "${asyncSnapshot.data[index].email ?? ''} \nUsing CircleAvatar inside CircleAvatar"),
-                          );
-                        }
-                        return ListTile(
-                          contentPadding: const EdgeInsets.all(10),
-                          leading: CircleAvatar(
-                            backgroundImage:
-                            NetworkImage(asyncSnapshot.data[index].picture?? Config.nullNetworkImage),
-                          ),
-                          title: Text(asyncSnapshot.data[index].name ?? ''),
-                          subtitle: Text(
-                              "${asyncSnapshot.data[index].email ?? ''} \nUsing NetworkImage with backgroundImage"),
-                        );
+                                "${asyncSnapshot.data[index].email ?? ''} \nUsing NetworkImage with backgroundImage"),
+                            onTap: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => UserDetails(
+                                            email: asyncSnapshot
+                                                    .data[index].email ??
+                                                '',
+                                            about: asyncSnapshot
+                                                    .data[index].about ??
+                                                '',
+                                            name: asyncSnapshot
+                                                    .data[index].name ??
+                                                '',
+                                            picture: asyncSnapshot
+                                                    .data[index].picture ??
+                                                Config.nullNetworkImage,
+                                            imageFetchType: asyncSnapshot
+                                                    .data[index]
+                                                    .imageFetchType ??
+                                                '',
+                                          )));
+                            });
                       },
                     ));
               }
