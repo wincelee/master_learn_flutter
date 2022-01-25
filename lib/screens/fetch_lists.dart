@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:master_learn/list_screens/future_builder_list_using_hashmap.dart';
 import 'package:master_learn/list_screens/future_builder_list_using_loop.dart';
 import 'package:master_learn/list_screens/future_builder_list_without_loop.dart';
+import 'package:master_learn/list_screens/simple_grid_view.dart';
 
 import '../navigation_drawer.dart';
 
@@ -74,6 +75,24 @@ class _FetchList extends State<FetchList> {
                             const FutureBuilderListUsingHashMap())),
                     child: const Text(
                       "[] Future Builder Users Lists Using HashMap",
+                      style: TextStyle(color: Colors.brown, fontSize: 15),
+                    )),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(5),
+              child: Center(
+                child: TextButton(
+                    style: ButtonStyle(
+                      foregroundColor:
+                      MaterialStateProperty.all<Color>(Colors.blue),
+                    ),
+                    onPressed: () => Navigator.of(context).push(
+                        MaterialPageRoute(
+                            builder: (BuildContext context) =>
+                            const SimpleGridView())),
+                    child: const Text(
+                      "[] Simple GridView",
                       style: TextStyle(color: Colors.brown, fontSize: 15),
                     )),
               ),

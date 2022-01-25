@@ -64,6 +64,8 @@ flutter:
   assets:
     - images/nav_header_background.jpg
     - cloud_download.png
+    - loading_dots.gif
+    - converging_dots.gif
 
   # To add assets to your application, add an assets section, like this:
   # assets:

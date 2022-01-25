@@ -4,15 +4,15 @@ import 'package:master_learn/classes/config.dart';
 Widget setUpUserImage(imageFetchType, picture) {
   if (Config().equalsIgnoreCase("imageNetwork", imageFetchType ?? '')) {
     return CircleAvatar(
-      radius: 100,
+        radius: 100,
         child: ClipOval(
-      child: Image.network(
-        picture ?? Config.nullNetworkImage,
-        width: 100,
-        height: 100,
-        fit: BoxFit.cover,
-      ),
-    ));
+          child: Image.network(
+            picture ?? Config.nullNetworkImage,
+            width: 100,
+            height: 100,
+            fit: BoxFit.cover,
+          ),
+        ));
   } else if (Config()
       .equalsIgnoreCase("circleAvatarWithRadius", imageFetchType ?? '')) {
     return CircleAvatar(
@@ -35,6 +35,30 @@ Widget setUpUserImage(imageFetchType, picture) {
         // radius of the image inside the circle
         radius: 98,
         backgroundImage: NetworkImage(picture ?? Config.nullNetworkImage),
+      ),
+    );
+  } else if (Config().equalsIgnoreCase("fadeInImage", imageFetchType ?? '')) {
+    return SizedBox(
+      height: 200,
+      width: 200,
+      child: FadeInImage.assetNetwork(
+        placeholder: 'images/loading_dots.gif',
+        image: picture ?? Config.nullNetworkImage,
+      ),
+    );
+  } else if (Config()
+      .equalsIgnoreCase("circularFadeInImage", imageFetchType ?? '')) {
+    return SizedBox(
+      width: 200,
+      height: 200,
+      child: AspectRatio(
+        aspectRatio: 1 / 1,
+        child: ClipOval(
+          child: FadeInImage.assetNetwork(
+              fit: BoxFit.cover,
+              placeholder: "images/converging_dots.gif",
+              image: picture ?? Config.nullNetworkImage),
+        ),
       ),
     );
   }

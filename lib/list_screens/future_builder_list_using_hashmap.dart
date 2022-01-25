@@ -108,12 +108,28 @@ class _FutureBuilderListUsingHashMapState
                               leading: CircleAvatar(
                                 child: ClipOval(
                                   child: Image.network(
-                                    asyncSnapshot.data[index]["picture"] ??
-                                        Config.nullNetworkImage,
-                                    width: 100,
-                                    height: 100,
-                                    fit: BoxFit.cover,
-                                  ),
+                                      asyncSnapshot.data[index]["picture"] ??
+                                          Config.nullNetworkImage,
+                                      width: 100,
+                                      height: 100,
+                                      fit: BoxFit.cover,
+                                      loadingBuilder: (BuildContext context,
+                                          Widget child,
+                                          ImageChunkEvent? loadingProgress) {
+                                    if (loadingProgress == null) return child;
+                                    return Center(
+                                      child: CircularProgressIndicator(
+                                        value: loadingProgress
+                                                    .expectedTotalBytes !=
+                                                null
+                                            ? loadingProgress
+                                                    .cumulativeBytesLoaded /
+                                                loadingProgress
+                                                    .expectedTotalBytes!
+                                            : null,
+                                      ),
+                                    );
+                                  }),
                                 ),
                               ),
                               title:
@@ -211,6 +227,137 @@ class _FutureBuilderListUsingHashMapState
                                 Text(asyncSnapshot.data[index]["name"] ?? ''),
                             subtitle: Text(
                                 "${asyncSnapshot.data[index]["email"] ?? ''} \nUsing CircleAvatar inside CircleAvatar"),
+                            onTap: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => UserDetails(
+                                            email: asyncSnapshot.data[index]
+                                                    ["email"] ??
+                                                '',
+                                            about: asyncSnapshot.data[index]
+                                                    ["about"] ??
+                                                '',
+                                            name: asyncSnapshot.data[index]
+                                                    ["name"] ??
+                                                '',
+                                            picture: asyncSnapshot.data[index]
+                                                    ["picture"] ??
+                                                Config.nullNetworkImage,
+                                            imageFetchType:
+                                                asyncSnapshot.data[index]
+                                                        ["imageFetchType"] ??
+                                                    '',
+                                          )));
+                            },
+                          );
+                        } else if (Config().equalsIgnoreCase(
+                            "fadeInImage",
+                            asyncSnapshot.data[index]["imageFetchType"] ??
+                                '')) {
+                          return ListTile(
+                            contentPadding: const EdgeInsets.all(10),
+                            leading: FadeInImage.assetNetwork(
+                              placeholder: 'images/loading_dots.gif',
+                              image: asyncSnapshot.data[index]["picture"] ??
+                                  Config.nullNetworkImage,
+                            ),
+                            title:
+                                Text(asyncSnapshot.data[index]["name"] ?? ''),
+                            subtitle: Text(
+                                "${asyncSnapshot.data[index]["email"] ?? ''} \nUsing Fade in image"),
+                            onTap: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => UserDetails(
+                                            email: asyncSnapshot.data[index]
+                                                    ["email"] ??
+                                                '',
+                                            about: asyncSnapshot.data[index]
+                                                    ["about"] ??
+                                                '',
+                                            name: asyncSnapshot.data[index]
+                                                    ["name"] ??
+                                                '',
+                                            picture: asyncSnapshot.data[index]
+                                                    ["picture"] ??
+                                                Config.nullNetworkImage,
+                                            imageFetchType:
+                                                asyncSnapshot.data[index]
+                                                        ["imageFetchType"] ??
+                                                    '',
+                                          )));
+                            },
+                          );
+                        } else if (Config().equalsIgnoreCase(
+                            "circularFadeInImage",
+                            asyncSnapshot.data[index]["imageFetchType"] ??
+                                '')) {
+                          return ListTile(
+                            contentPadding: const EdgeInsets.all(10),
+                            leading: AspectRatio(
+                              aspectRatio: 1 / 1,
+                              child: ClipOval(
+                                child: FadeInImage.assetNetwork(
+                                    fit: BoxFit.cover,
+                                    placeholder: "images/converging_dots.gif",
+                                    image: asyncSnapshot.data[index]
+                                            ["picture"] ??
+                                        Config.nullNetworkImage),
+                              ),
+                            ),
+                            title:
+                                Text(asyncSnapshot.data[index]["name"] ?? ''),
+                            subtitle: Text(
+                                "${asyncSnapshot.data[index]["email"] ?? ''} \nUsing Circular Fade in image"),
+                            onTap: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => UserDetails(
+                                            email: asyncSnapshot.data[index]
+                                                    ["email"] ??
+                                                '',
+                                            about: asyncSnapshot.data[index]
+                                                    ["about"] ??
+                                                '',
+                                            name: asyncSnapshot.data[index]
+                                                    ["name"] ??
+                                                '',
+                                            picture: asyncSnapshot.data[index]
+                                                    ["picture"] ??
+                                                Config.nullNetworkImage,
+                                            imageFetchType:
+                                                asyncSnapshot.data[index]
+                                                        ["imageFetchType"] ??
+                                                    '',
+                                          )));
+                            },
+                          );
+                        } else if (Config().equalsIgnoreCase(
+                            "circularFadeInImageWithBorder",
+                            asyncSnapshot.data[index]["imageFetchType"] ??
+                                '')) {
+                          return ListTile(
+                            contentPadding: const EdgeInsets.all(10),
+                            leading: AspectRatio(
+                              aspectRatio: 1 / 1,
+                              child: CircleAvatar(
+                                child: ClipOval(
+                                  child: FadeInImage.assetNetwork(
+                                      fit: BoxFit.cover,
+                                      placeholder: "images/converging_dots.gif",
+                                      image: asyncSnapshot.data[index]
+                                              ["picture"] ??
+                                          Config.nullNetworkImage),
+                                ),
+                              ),
+                            ),
+                            title:
+                                Text(asyncSnapshot.data[index]["name"] ?? ''),
+                            subtitle: Text(
+                                "${asyncSnapshot.data[index]["email"] ?? ''} \nUsing Circular Fade in image with border"),
                             onTap: () {
                               Navigator.push(
                                   context,
