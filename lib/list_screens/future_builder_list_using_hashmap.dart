@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:logger/logger.dart';
 import 'package:master_learn/classes/config.dart';
+import 'package:master_learn/classes/future_fetch_lists.dart';
 import 'package:master_learn/list_screens/user_details.dart';
 import 'package:master_learn/widgets/marquee_widget.dart';
 
@@ -19,45 +20,9 @@ class FutureBuilderListUsingHashMap extends StatefulWidget {
 
 class _FutureBuilderListUsingHashMapState
     extends State<FutureBuilderListUsingHashMap> {
-  Future<List<HashMap<String, dynamic>>>
-      _fetchUsersUsingListOfStringDynamicHashMap() async {
-    try {
-      final response = await http.get(
-          Uri.parse(
-              "https://api.json-generator.com/templates/Eh5AlPjYVv6C/data"),
-          headers: {
-            "Content-Type": "application/json",
-            "Authorization": "Bearer tltsp6dmnbif01jy9xfo9ssn4620u89xhuwcm5t3",
-          });
-
-      final List<HashMap<String, dynamic>> responseList;
-
-      if (response.statusCode == 200) {
-        responseList = json
-            .decode(response.body)
-            .map<HashMap<String, dynamic>>(
-                (e) => HashMap<String, dynamic>.from(e))
-            .toList();
-      } else if (response.statusCode == 401) {
-        responseList = [];
-      } else {
-        responseList = [];
-      }
-
-      return responseList;
-    } catch (e) {
-      if (kDebugMode) {
-        Logger().wtf("FetchUsersUsingListOfStringObjectHashMapException $e");
-      }
-
-      rethrow;
-    }
-  }
 
   @override
   void initState() {
-    _fetchUsersUsingListOfStringDynamicHashMap();
-
     super.initState();
   }
 
@@ -81,7 +46,7 @@ class _FutureBuilderListUsingHashMapState
       ),
       body: SizedBox(
         child: FutureBuilder(
-            future: _fetchUsersUsingListOfStringDynamicHashMap(),
+            future: fetchUsersUsingListOfStringDynamicHashMap(),
             builder: (BuildContext context, AsyncSnapshot asyncSnapshot) {
               if (asyncSnapshot.data == null) {
                 return const Center(child: CircularProgressIndicator());
@@ -93,7 +58,7 @@ class _FutureBuilderListUsingHashMapState
                     color: Colors.green,
                     onRefresh: () async {
                       setState(() {
-                        _fetchUsersUsingListOfStringDynamicHashMap();
+                        fetchUsersUsingListOfStringDynamicHashMap();
                       });
                     },
                     child: ListView.builder(
