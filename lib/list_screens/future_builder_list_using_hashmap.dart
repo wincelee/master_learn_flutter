@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:master_learn/classes/config.dart';
-import 'package:master_learn/classes/future_fetch_lists.dart';
+import 'package:master_learn/classes/fetch_lists_of_string_dynamic_hash_map.dart';
 import 'package:master_learn/list_screens/user_details.dart';
 import 'package:master_learn/widgets/marquee_widget.dart';
 
@@ -40,7 +40,7 @@ class _FutureBuilderListUsingHashMapState
       ),
       body: SizedBox(
         child: FutureBuilder(
-            future: fetchUsersUsingListOfStringDynamicHashMap(),
+            future: fetchListsOfStringDynamicHashMap(),
             builder: (BuildContext context, AsyncSnapshot asyncSnapshot) {
               if (asyncSnapshot.data == null) {
                 return const Center(child: CircularProgressIndicator());
@@ -52,7 +52,7 @@ class _FutureBuilderListUsingHashMapState
                     color: Colors.green,
                     onRefresh: () async {
                       setState(() {
-                        fetchUsersUsingListOfStringDynamicHashMap();
+                        fetchListsOfStringDynamicHashMap();
                       });
                     },
                     child: ListView.builder(

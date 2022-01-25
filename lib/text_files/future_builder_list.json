@@ -16,12 +16,36 @@
     "imageFetchType": "imageNetwork"
   },
   {
+    "name": "einstein",
+    "about": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborumnumquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentium optio, eaque rerum! Provident similique accusantium nemo autem.",
+    "email": "einstein@mail.com",
+    "index": 12,
+    "picture": "https://static.dw.com/image/45897958_303.jpg",
+    "imageFetchType": "fadeInImage"
+  },
+  {
     "name": "Shipment005",
     "about": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborumnumquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentium optio, eaque rerum! Provident similique accusantium nemo autem.",
     "email": "shipment@mail.com",
     "index": 3,
     "picture": "https://www.e2open.com/wp-content/uploads/2019/10/img-shipments-ocean.jpg",
     "imageFetchType": "circleAvatarWithRadius"
+  },
+  {
+    "name": "koenigsegg",
+    "about": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborumnumquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentium optio, eaque rerum! Provident similique accusantium nemo autem.",
+    "email": "koenigsegg@mail.com",
+    "index": 13,
+    "picture": "https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/koenigsegg-jesko-101-1551799580.jpg",
+    "imageFetchType": "circularFadeInImage"
+  },
+  {
+    "name": "koenigsegg",
+    "about": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborumnumquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentium optio, eaque rerum! Provident similique accusantium nemo autem.",
+    "email": "koenigsegg@mail.com",
+    "index": 13,
+    "picture": "https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/koenigsegg-jesko-101-1551799580.jpg",
+    "imageFetchType": "circularFadeInImageWithBorder"
   },
   {
     "name": "Vacant",
@@ -67,8 +91,16 @@
     "name": "Dragonx",
     "about": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborumnumquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentium optio, eaque rerum! Provident similique accusantium nemo autem.",
     "email": "dragon@mail.com",
-    "index": 8,
+    "index": 10,
     "picture": "https://img.poki.com/cdn-cgi/image/quality=78,width=600,height=600,fit=cover,g=0.5x0.5,f=auto/5d65cf33c17b54197c2a4055a3a7dbf006e015b59c63daef0f2c90577e4720ef.png",
     "imageFetchType": "imageNetwork"
+  },
+  {
+    "name": "Daimler",
+    "about": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborumnumquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentium optio, eaque rerum! Provident similique accusantium nemo autem.",
+    "email": "daimler@mail.com",
+    "index": 11,
+    "picture": "https://www.supercars.net/blog/wp-content/uploads/2016/04/1931_Daimler_DoubleSix40501.jpg",
+    "imageFetchType": "fadeInImage"
   }
 ]

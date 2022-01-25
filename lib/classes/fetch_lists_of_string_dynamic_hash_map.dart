@@ -6,7 +6,7 @@ import 'package:http/http.dart' as http;
 import 'package:logger/logger.dart';
 
 Future<List<HashMap<String, dynamic>>>
-    fetchUsersUsingListOfStringDynamicHashMap() async {
+    fetchListsOfStringDynamicHashMap() async {
   try {
     final response = await http.get(
         Uri.parse("https://api.json-generator.com/templates/Eh5AlPjYVv6C/data"),

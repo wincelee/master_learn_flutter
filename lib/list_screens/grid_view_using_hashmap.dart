@@ -1,18 +1,20 @@
+import 'dart:collection';
+
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:logger/logger.dart';
-import 'package:master_learn/classes/future_fetch_lists.dart';
+import 'package:master_learn/classes/fetch_lists_of_string_dynamic_hash_map.dart';
 import 'package:master_learn/widgets/icon_progress_indicator.dart';
 import 'package:master_learn/widgets/marquee_widget.dart';
 
-class SimpleGridView extends StatefulWidget {
-  const SimpleGridView({Key? key}) : super(key: key);
+class GridViewUsingHashMap extends StatefulWidget {
+  const GridViewUsingHashMap({Key? key}) : super(key: key);
 
   @override
-  _SimpleGridViewState createState() => _SimpleGridViewState();
+  _GridViewUsingHashMapState createState() => _GridViewUsingHashMapState();
 }
 
-class _SimpleGridViewState extends State<SimpleGridView> {
+class _GridViewUsingHashMapState extends State<GridViewUsingHashMap> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,7 +28,7 @@ class _SimpleGridViewState extends State<SimpleGridView> {
         title: const SizedBox(
           child: MarqueeWidget(
             direction: Axis.horizontal,
-            child: Text("[] Simple Grid View"),
+            child: Text("[] Grid View Using HashMap"),
           ),
         ),
       ),
@@ -36,8 +38,8 @@ class _SimpleGridViewState extends State<SimpleGridView> {
         mainAxisSize: MainAxisSize.min,
         children: [
           Flexible(
-              child: FutureBuilder(
-                  future: fetchUsersUsingListOfStringDynamicHashMap(),
+              child: FutureBuilder<List<HashMap<String, dynamic>>>(
+                  future: fetchListsOfStringDynamicHashMap(),
                   builder: (BuildContext context, AsyncSnapshot asyncSnapshot) {
                     if (asyncSnapshot.data == null) {
                       return iconProgressIndicator();
@@ -53,9 +55,29 @@ class _SimpleGridViewState extends State<SimpleGridView> {
                       // refresh circular progress indicator color
                       color: Colors.green,
                       onRefresh: () async {
-                        setState(() {});
+                        setState(() {
+                          fetchListsOfStringDynamicHashMap();
+                        });
                       },
-                      child: Text("Welcome"),
+                      child: Padding(
+                        padding: EdgeInsets.all(5),
+                        child: GridView.count(
+                          crossAxisCount: 2,
+                          childAspectRatio: 1,
+                          mainAxisSpacing: 4,
+                          crossAxisSpacing: 4,
+                          children:
+                              asyncSnapshot.data.map((stringDynamicHashMap) {
+                            return GestureDetector(
+                              child: GridTile(
+                                  child: GridTile(
+                                child: Text("Test text"),
+                              )),
+                              onTap: () {},
+                            );
+                          }).toList(),
+                        ),
+                      ),
                     );
                   }))
         ],

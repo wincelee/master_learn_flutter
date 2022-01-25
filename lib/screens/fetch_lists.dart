@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:master_learn/list_screens/future_builder_list_using_hashmap.dart';
 import 'package:master_learn/list_screens/future_builder_list_using_loop.dart';
 import 'package:master_learn/list_screens/future_builder_list_without_loop.dart';
-import 'package:master_learn/list_screens/simple_grid_view.dart';
+import 'package:master_learn/list_screens/grid_view_using_hashmap.dart';
 
 import '../navigation_drawer.dart';
 
@@ -90,10 +90,10 @@ class _FetchList extends State<FetchList> {
                     onPressed: () => Navigator.of(context).push(
                         MaterialPageRoute(
                             builder: (BuildContext context) =>
-                            const SimpleGridView())),
+                            const GridViewUsingHashMap())),
                     child: const Text(
-                      "[] Simple GridView",
-                      style: TextStyle(color: Colors.brown, fontSize: 15),
+                      "[] Grid View Using HashMap",
+                      style: TextStyle(color: Colors.green, fontSize: 15),
                     )),
               ),
             ),
