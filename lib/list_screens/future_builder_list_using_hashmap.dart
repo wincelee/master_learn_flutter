@@ -1,10 +1,4 @@
-import 'dart:collection';
-import 'dart:convert';
-
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;
-import 'package:logger/logger.dart';
 import 'package:master_learn/classes/config.dart';
 import 'package:master_learn/classes/future_fetch_lists.dart';
 import 'package:master_learn/list_screens/user_details.dart';
