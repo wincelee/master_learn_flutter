@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:master_learn/classes/async_futures.dart';
 import 'package:master_learn/classes/config.dart';
-import 'package:master_learn/classes/fetch_lists_of_string_dynamic_hash_map.dart';
-import 'package:master_learn/list_screens/user_details.dart';
+import 'package:master_learn/lists_grids_screens/user_details.dart';
 import 'package:master_learn/widgets/marquee_widget.dart';
 
 class FutureBuilderListUsingHashMap extends StatefulWidget {
@@ -14,7 +14,6 @@ class FutureBuilderListUsingHashMap extends StatefulWidget {
 
 class _FutureBuilderListUsingHashMapState
     extends State<FutureBuilderListUsingHashMap> {
-
   @override
   void initState() {
     super.initState();
@@ -40,7 +39,7 @@ class _FutureBuilderListUsingHashMapState
       ),
       body: SizedBox(
         child: FutureBuilder(
-            future: fetchListsOfStringDynamicHashMap(),
+            future: AsyncFutures.fetchListsOfStringDynamicHashMap(),
             builder: (BuildContext context, AsyncSnapshot asyncSnapshot) {
               if (asyncSnapshot.data == null) {
                 return const Center(child: CircularProgressIndicator());
@@ -52,7 +51,7 @@ class _FutureBuilderListUsingHashMapState
                     color: Colors.green,
                     onRefresh: () async {
                       setState(() {
-                        fetchListsOfStringDynamicHashMap();
+                        AsyncFutures.fetchListsOfStringDynamicHashMap();
                       });
                     },
                     child: ListView.builder(
@@ -100,6 +99,9 @@ class _FutureBuilderListUsingHashMapState
                                     context,
                                     MaterialPageRoute(
                                         builder: (context) => UserDetails(
+                                              index: asyncSnapshot.data[index]
+                                                      ["index"] ??
+                                                  '',
                                               email: asyncSnapshot.data[index]
                                                       ["email"] ??
                                                   '',
@@ -145,6 +147,9 @@ class _FutureBuilderListUsingHashMapState
                                   context,
                                   MaterialPageRoute(
                                       builder: (context) => UserDetails(
+                                            index: asyncSnapshot.data[index]
+                                                    ["index"] ??
+                                                '',
                                             email: asyncSnapshot.data[index]
                                                     ["email"] ??
                                                 '',
@@ -191,6 +196,9 @@ class _FutureBuilderListUsingHashMapState
                                   context,
                                   MaterialPageRoute(
                                       builder: (context) => UserDetails(
+                                            index: asyncSnapshot.data[index]
+                                                    ["index"] ??
+                                                '',
                                             email: asyncSnapshot.data[index]
                                                     ["email"] ??
                                                 '',
@@ -230,6 +238,9 @@ class _FutureBuilderListUsingHashMapState
                                   context,
                                   MaterialPageRoute(
                                       builder: (context) => UserDetails(
+                                            index: asyncSnapshot.data[index]
+                                                    ["index"] ??
+                                                '',
                                             email: asyncSnapshot.data[index]
                                                     ["email"] ??
                                                 '',
@@ -275,6 +286,9 @@ class _FutureBuilderListUsingHashMapState
                                   context,
                                   MaterialPageRoute(
                                       builder: (context) => UserDetails(
+                                            index: asyncSnapshot.data[index]
+                                                    ["index"] ??
+                                                '',
                                             email: asyncSnapshot.data[index]
                                                     ["email"] ??
                                                 '',
@@ -322,6 +336,9 @@ class _FutureBuilderListUsingHashMapState
                                   context,
                                   MaterialPageRoute(
                                       builder: (context) => UserDetails(
+                                            index: asyncSnapshot.data[index]
+                                                    ["index"] ??
+                                                '',
                                             email: asyncSnapshot.data[index]
                                                     ["email"] ??
                                                 '',
@@ -358,6 +375,9 @@ class _FutureBuilderListUsingHashMapState
                                   context,
                                   MaterialPageRoute(
                                       builder: (context) => UserDetails(
+                                            index: asyncSnapshot.data[index]
+                                                    ["index"] ??
+                                                '',
                                             email: asyncSnapshot.data[index]
                                                     ["email"] ??
                                                 '',

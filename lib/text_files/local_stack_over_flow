@@ -10,10 +10,38 @@ JsonObjectWithJsonArrayThatHasName
     ]
 }
 
+```````````````````````````````````
 
+Easiest way (one dimensional):
+
+Map<String, dynamic> data = new Map<String, dynamic>.from(json.decode(response.body));
+
+print(data['name']);
+
+````````````````````````````````
 Map<String, dynamic> map = json.decode(response.body);
 List<dynamic> data = map["dataKey"];
 print(data[0]["name"]);
+
+
+`````````````````````````````
+
+You can use new Map<String, dynamic>.from(snapshot.value);
+
+`````````````````````````````
+
+As doesn't change the type, it's just an assertion.
+
+You need to use:
+
+map['eventType'].cast<String, dynamic>() or
+
+Map<String, dynamic>.from(map['eventType'])
+
+You can also solved by this way:
+
+Map<String, dynamic> myMap = Map<String, dynamic>.from(/*Your Source*/ );
+
 
 ----------------------------------------------------------------------------
 

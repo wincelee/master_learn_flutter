@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:master_learn/screens/contacts.dart';
-import 'package:master_learn/screens/fetch_lists.dart';
+import 'package:master_learn/screens/fetch_lists_grids.dart';
 import 'package:master_learn/screens/home.dart';
 import 'package:master_learn/widgets/create_drawer_body_item.dart';
 import 'package:master_learn/widgets/create_drawer_header.dart';
@@ -18,9 +18,9 @@ class NavigationDrawer extends StatelessWidget {
 
          createDrawerBodyItem(
            icon: Icons.list,
-           text: "Fetch Lists",
+           text: "Fetch Lists Grids",
            onTap: () => Navigator.of(context).pushReplacement(MaterialPageRoute(
-             builder: (BuildContext context) => const FetchList()
+             builder: (BuildContext context) => const FetchListsGrids()
            ))
          ),
           createDrawerBodyItem(

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:master_learn/routes/screen_routes.dart';
 import 'package:master_learn/screens/contacts.dart';
-import 'package:master_learn/screens/fetch_lists.dart';
+import 'package:master_learn/screens/fetch_lists_grids.dart';
 import 'package:master_learn/screens/home.dart';
 
 // Tutorial link [https://www.thirdrocktechkno.com/blog/how-to-implement-navigation-drawer-in-flutter/]
@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const FetchList()
+      home: const FetchListsGrids()
      /* routes:  {
         ScreenRoutes.homeScreen: (context) => const Home(),
         ScreenRoutes.contactsScreen: (context) => const Contacts(),

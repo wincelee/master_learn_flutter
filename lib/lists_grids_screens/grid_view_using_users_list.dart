@@ -1,20 +1,19 @@
-import 'dart:collection';
-
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:logger/logger.dart';
-import 'package:master_learn/classes/fetch_lists_of_string_dynamic_hash_map.dart';
+import 'package:master_learn/classes/async_futures.dart';
+import 'package:master_learn/grid_cells/user_grid_cell.dart';
 import 'package:master_learn/widgets/icon_progress_indicator.dart';
 import 'package:master_learn/widgets/marquee_widget.dart';
 
-class GridViewUsingHashMap extends StatefulWidget {
-  const GridViewUsingHashMap({Key? key}) : super(key: key);
+class GridViewUsingUsersList extends StatefulWidget {
+  const GridViewUsingUsersList({Key? key}) : super(key: key);
 
   @override
-  _GridViewUsingHashMapState createState() => _GridViewUsingHashMapState();
+  _GridViewUsingUsersListState createState() => _GridViewUsingUsersListState();
 }
 
-class _GridViewUsingHashMapState extends State<GridViewUsingHashMap> {
+class _GridViewUsingUsersListState extends State<GridViewUsingUsersList> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -28,7 +27,7 @@ class _GridViewUsingHashMapState extends State<GridViewUsingHashMap> {
         title: const SizedBox(
           child: MarqueeWidget(
             direction: Axis.horizontal,
-            child: Text("[] Grid View Using HashMap"),
+            child: Text("[] Grid View Using List of HashMap"),
           ),
         ),
       ),
@@ -38,8 +37,8 @@ class _GridViewUsingHashMapState extends State<GridViewUsingHashMap> {
         mainAxisSize: MainAxisSize.min,
         children: [
           Flexible(
-              child: FutureBuilder<List<HashMap<String, dynamic>>>(
-                  future: fetchListsOfStringDynamicHashMap(),
+              child: FutureBuilder(
+                  future: AsyncFutures.fetchUsersListWithoutLoop(),
                   builder: (BuildContext context, AsyncSnapshot asyncSnapshot) {
                     if (asyncSnapshot.data == null) {
                       return iconProgressIndicator();
@@ -56,23 +55,21 @@ class _GridViewUsingHashMapState extends State<GridViewUsingHashMap> {
                       color: Colors.green,
                       onRefresh: () async {
                         setState(() {
-                          fetchListsOfStringDynamicHashMap();
+                          AsyncFutures.fetchUsersListWithoutLoop();
                         });
                       },
                       child: Padding(
-                        padding: EdgeInsets.all(5),
+                        padding: const EdgeInsets.all(5),
                         child: GridView.count(
                           crossAxisCount: 2,
                           childAspectRatio: 1,
                           mainAxisSpacing: 4,
                           crossAxisSpacing: 4,
                           children:
-                              asyncSnapshot.data.map((stringDynamicHashMap) {
+                          asyncSnapshot.data.map((user) {
                             return GestureDetector(
                               child: GridTile(
-                                  child: GridTile(
-                                child: Text("Test text"),
-                              )),
+                                  child: UserGridCell(user: user)),
                               onTap: () {},
                             );
                           }).toList(),

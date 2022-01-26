@@ -1,25 +1,26 @@
 import 'package:flutter/material.dart';
-import 'package:master_learn/list_screens/future_builder_list_using_hashmap.dart';
-import 'package:master_learn/list_screens/future_builder_list_using_loop.dart';
-import 'package:master_learn/list_screens/future_builder_list_without_loop.dart';
-import 'package:master_learn/list_screens/grid_view_using_hashmap.dart';
+import 'package:master_learn/lists_grids_screens/future_builder_list_using_hashmap.dart';
+import 'package:master_learn/lists_grids_screens/future_builder_list_using_loop.dart';
+import 'package:master_learn/lists_grids_screens/future_builder_list_without_loop.dart';
+import 'package:master_learn/lists_grids_screens/grid_view_using_list_of_hashmap.dart';
+import 'package:master_learn/lists_grids_screens/grid_view_using_users_list.dart';
 
 import '../navigation_drawer.dart';
 
-class FetchList extends StatefulWidget {
-  const FetchList({Key? key}) : super(key: key);
+class FetchListsGrids extends StatefulWidget {
+  const FetchListsGrids({Key? key}) : super(key: key);
 
   @override
   _FetchList createState() => _FetchList();
 }
 
-class _FetchList extends State<FetchList> {
+class _FetchList extends State<FetchListsGrids> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: const Color(0xff4c4c00),
-        title: const Text("Fetch Lists"),
+        title: const Text("Fetch Lists Grids"),
       ),
       drawer: const NavigationDrawer(),
       body: SingleChildScrollView(
@@ -92,7 +93,25 @@ class _FetchList extends State<FetchList> {
                             builder: (BuildContext context) =>
                             const GridViewUsingHashMap())),
                     child: const Text(
-                      "[] Grid View Using HashMap",
+                      "[] Grid View Using List of HashMap",
+                      style: TextStyle(color: Colors.green, fontSize: 15),
+                    )),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(5),
+              child: Center(
+                child: TextButton(
+                    style: ButtonStyle(
+                      foregroundColor:
+                      MaterialStateProperty.all<Color>(Colors.blue),
+                    ),
+                    onPressed: () => Navigator.of(context).push(
+                        MaterialPageRoute(
+                            builder: (BuildContext context) =>
+                            const GridViewUsingUsersList())),
+                    child: const Text(
+                      "[] Grid View Using Users List",
                       style: TextStyle(color: Colors.green, fontSize: 15),
                     )),
               ),

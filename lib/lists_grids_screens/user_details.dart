@@ -3,10 +3,11 @@ import 'package:master_learn/classes/config.dart';
 import 'package:master_learn/widgets/set_up_user_image.dart';
 
 class UserDetails extends StatefulWidget {
-  final String email, about, name, picture, imageFetchType;
+  final String index, email, about, name, picture, imageFetchType;
 
   const UserDetails(
       {Key? key,
+      required this.index,
       required this.email,
       required this.about,
       required this.name,
@@ -63,7 +64,6 @@ class _UserDetailsState extends State<UserDetails> {
                   return CircleAvatar(
                     radius: 100,
                     child: ClipOval(
-
                       child: Image.network(
                         widget.picture,
                         width: 190,
@@ -118,13 +118,16 @@ class _UserDetailsState extends State<UserDetails> {
                   );
                 } else if (Config().equalsIgnoreCase(
                     "circularFadeInImage", widget.imageFetchType)) {
-                  return AspectRatio(
-                    aspectRatio: 1 / 1,
-                    child: ClipOval(
-                      child: FadeInImage.assetNetwork(
-                          fit: BoxFit.cover,
-                          placeholder: "images/converging_dots.gif",
-                          image: widget.picture),
+                  return Hero(
+                    tag: widget.index,
+                    child: AspectRatio(
+                      aspectRatio: 1 / 1,
+                      child: ClipOval(
+                        child: FadeInImage.assetNetwork(
+                            fit: BoxFit.cover,
+                            placeholder: "images/converging_dots.gif",
+                            image: widget.picture),
+                      ),
                     ),
                   );
                 }
