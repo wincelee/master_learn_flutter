@@ -36,7 +36,7 @@ class _UserGridCellState extends State<UserGridCell> {
             children: [
               Flexible(
                   child: ClipRRect(
-                borderRadius: BorderRadius.circular(10),
+                borderRadius: BorderRadius.circular(5),
                 child: Hero(
                     tag: "index${widget.index}",
                     child: FadeInImage.assetNetwork(

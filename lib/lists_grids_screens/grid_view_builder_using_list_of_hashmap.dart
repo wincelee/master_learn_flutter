@@ -7,14 +7,14 @@ import 'package:master_learn/grid_view_cells/user_grid_cell.dart';
 import 'package:master_learn/widgets/icon_progress_indicator.dart';
 import 'package:master_learn/widgets/marquee_widget.dart';
 
-class GridViewUsingHashMap extends StatefulWidget {
-  const GridViewUsingHashMap({Key? key}) : super(key: key);
+class GridViewBuilderUsingHashMap extends StatefulWidget {
+  const GridViewBuilderUsingHashMap({Key? key}) : super(key: key);
 
   @override
-  _GridViewUsingHashMapState createState() => _GridViewUsingHashMapState();
+  _GridViewBuilderUsingHashMapState createState() => _GridViewBuilderUsingHashMapState();
 }
 
-class _GridViewUsingHashMapState extends State<GridViewUsingHashMap> {
+class _GridViewBuilderUsingHashMapState extends State<GridViewBuilderUsingHashMap> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -28,7 +28,7 @@ class _GridViewUsingHashMapState extends State<GridViewUsingHashMap> {
         title: const SizedBox(
           child: MarqueeWidget(
             direction: Axis.horizontal,
-            child: Text("[] Grid View Using List of HashMap"),
+            child: Text("[] Grid View Builder Using List of HashMap"),
           ),
         ),
       ),
@@ -68,13 +68,15 @@ class _GridViewUsingHashMapState extends State<GridViewUsingHashMap> {
                             return GestureDetector(
                               child: GridTile(
                                   child: UserGridCell(
-                                index: asyncSnapshot.data[index]["index"]??Config.nullIndexHero,
-                                name: asyncSnapshot.data[index]["name"]??'',
-                                picture: asyncSnapshot.data[index]["picture"]??Config.nullNetworkImage,
+                                index: asyncSnapshot.data[index]["index"] ??
+                                    Config.nullIndexHero,
+                                name: asyncSnapshot.data[index]["name"] ?? '',
+                                picture: asyncSnapshot.data[index]["picture"] ??
+                                    Config.nullNetworkImage,
                               )),
                               onTap: () {
-
-                                Logger().i("GridIndex ${asyncSnapshot.data[index]["index"]}");
+                                Logger().i(
+                                    "GridIndex ${asyncSnapshot.data[index]["index"]}");
                               },
                             );
                           }),

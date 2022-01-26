@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:master_learn/lists_grids_screens/future_builder_list_using_hashmap.dart';
 import 'package:master_learn/lists_grids_screens/future_builder_list_using_loop.dart';
 import 'package:master_learn/lists_grids_screens/future_builder_list_without_loop.dart';
-import 'package:master_learn/lists_grids_screens/grid_view_using_list_of_hashmap.dart';
-import 'package:master_learn/lists_grids_screens/grid_view_using_users_list.dart';
+import 'package:master_learn/lists_grids_screens/grid_view_builder_using_list_of_hashmap.dart';
+import 'package:master_learn/lists_grids_screens/grid_view_builder_using_users_list.dart';
 
 import '../navigation_drawer.dart';
 
@@ -91,9 +91,9 @@ class _FetchList extends State<FetchListsGrids> {
                     onPressed: () => Navigator.of(context).push(
                         MaterialPageRoute(
                             builder: (BuildContext context) =>
-                            const GridViewUsingHashMap())),
+                            const GridViewBuilderUsingHashMap())),
                     child: const Text(
-                      "[] Grid View Using List of HashMap",
+                      "[] Grid View Builder Using List of HashMap",
                       style: TextStyle(color: Colors.green, fontSize: 15),
                     )),
               ),
@@ -109,9 +109,9 @@ class _FetchList extends State<FetchListsGrids> {
                     onPressed: () => Navigator.of(context).push(
                         MaterialPageRoute(
                             builder: (BuildContext context) =>
-                            const GridViewUsingUsersList())),
+                            const GridViewBuilderUsingUsersList())),
                     child: const Text(
-                      "[] Grid View Using Users List",
+                      "[] Grid View Builder Using Users List",
                       style: TextStyle(color: Colors.green, fontSize: 15),
                     )),
               ),

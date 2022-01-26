@@ -5,14 +5,14 @@ import 'package:master_learn/classes/async_futures.dart';
 import 'package:master_learn/widgets/icon_progress_indicator.dart';
 import 'package:master_learn/widgets/marquee_widget.dart';
 
-class GridViewUsingUsersList extends StatefulWidget {
-  const GridViewUsingUsersList({Key? key}) : super(key: key);
+class GridViewBuilderUsingUsersList extends StatefulWidget {
+  const GridViewBuilderUsingUsersList({Key? key}) : super(key: key);
 
   @override
-  _GridViewUsingUsersListState createState() => _GridViewUsingUsersListState();
+  _GridViewBuilderUsingUsersListState createState() => _GridViewBuilderUsingUsersListState();
 }
 
-class _GridViewUsingUsersListState extends State<GridViewUsingUsersList> {
+class _GridViewBuilderUsingUsersListState extends State<GridViewBuilderUsingUsersList> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,7 +26,7 @@ class _GridViewUsingUsersListState extends State<GridViewUsingUsersList> {
         title: const SizedBox(
           child: MarqueeWidget(
             direction: Axis.horizontal,
-            child: Text("[] Grid View Using List of HashMap"),
+            child: Text("[] Grid View Builder Using List of HashMap"),
           ),
         ),
       ),
