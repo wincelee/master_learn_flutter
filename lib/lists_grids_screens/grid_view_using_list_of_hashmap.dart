@@ -1,9 +1,9 @@
-import 'dart:collection';
-
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:logger/logger.dart';
 import 'package:master_learn/classes/async_futures.dart';
+import 'package:master_learn/classes/config.dart';
+import 'package:master_learn/grid_view_cells/user_grid_cell.dart';
 import 'package:master_learn/widgets/icon_progress_indicator.dart';
 import 'package:master_learn/widgets/marquee_widget.dart';
 
@@ -38,7 +38,7 @@ class _GridViewUsingHashMapState extends State<GridViewUsingHashMap> {
         mainAxisSize: MainAxisSize.min,
         children: [
           Flexible(
-              child: FutureBuilder<List<HashMap<String, dynamic>>>(
+              child: FutureBuilder(
                   future: AsyncFutures.fetchListsOfStringDynamicHashMap(),
                   builder: (BuildContext context, AsyncSnapshot asyncSnapshot) {
                     if (asyncSnapshot.data == null) {
@@ -59,22 +59,25 @@ class _GridViewUsingHashMapState extends State<GridViewUsingHashMap> {
                           AsyncFutures.fetchListsOfStringDynamicHashMap();
                         });
                       },
-                      child: Padding(
-                        padding: const EdgeInsets.all(5),
-                        child: GridView.count(
-                          crossAxisCount: 2,
-                          childAspectRatio: 1,
-                          mainAxisSpacing: 4,
-                          crossAxisSpacing: 4,
-                          children:
-                              asyncSnapshot.data.map<HashMap<String, dynamic>>(
-                                      (e){
-                                        return GridTile(
-                                            child: Text("Voila"));
-                                      })
-                                  .toList(),
-                        ),
-                      ),
+                      child: GridView.builder(
+                          itemCount: asyncSnapshot.data.length,
+                          gridDelegate:
+                              const SliverGridDelegateWithFixedCrossAxisCount(
+                                  crossAxisCount: 2),
+                          itemBuilder: (context, index) {
+                            return GestureDetector(
+                              child: GridTile(
+                                  child: UserGridCell(
+                                index: asyncSnapshot.data[index]["index"]??Config.nullIndexHero,
+                                name: asyncSnapshot.data[index]["name"]??'',
+                                picture: asyncSnapshot.data[index]["picture"]??Config.nullNetworkImage,
+                              )),
+                              onTap: () {
+
+                                Logger().i("GridIndex ${asyncSnapshot.data[index]["index"]}");
+                              },
+                            );
+                          }),
                     );
                   }))
         ],

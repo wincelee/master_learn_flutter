@@ -4,6 +4,7 @@ import 'dart:convert';
 import 'package:flutter/foundation.dart';
 import 'package:http/http.dart' as http;
 import 'package:logger/logger.dart';
+import 'package:master_learn/classes/config.dart';
 import 'package:master_learn/classes/user.dart';
 
 class AsyncFutures{
@@ -16,7 +17,7 @@ class AsyncFutures{
           headers: {
             "Content-Type": "application/json",
             "Authorization": "Bearer tltsp6dmnbif01jy9xfo9ssn4620u89xhuwcm5t3",
-          });
+          }).timeout(const Duration(seconds: Config.responseTimeOutInSeconds));
 
       final List<HashMap<String, dynamic>> responseList;
 
@@ -51,7 +52,8 @@ class AsyncFutures{
           headers: {
             "Content-Type": "application/json",
             "Authorization": "Bearer tltsp6dmnbif01jy9xfo9ssn4620u89xhuwcm5t3",
-          });
+          }).timeout(const Duration(seconds: Config.responseTimeOutInSeconds));
+
 
       final List<User> usersList;
 

@@ -266,15 +266,20 @@ class _FutureBuilderListUsingHashMapState
                                 '')) {
                           return ListTile(
                             contentPadding: const EdgeInsets.all(10),
-                            leading: AspectRatio(
-                              aspectRatio: 1 / 1,
-                              child: ClipOval(
-                                child: FadeInImage.assetNetwork(
-                                    fit: BoxFit.cover,
-                                    placeholder: "images/converging_dots.gif",
-                                    image: asyncSnapshot.data[index]
-                                            ["picture"] ??
-                                        Config.nullNetworkImage),
+                            leading: Hero(
+                              tag: asyncSnapshot.data[index]
+                              ["picture"] ??
+                                  Config.nullIndexHero,
+                              child: AspectRatio(
+                                aspectRatio: 1 / 1,
+                                child: ClipOval(
+                                  child: FadeInImage.assetNetwork(
+                                      fit: BoxFit.cover,
+                                      placeholder: "images/converging_dots.gif",
+                                      image: asyncSnapshot.data[index]
+                                      ["picture"] ??
+                                          Config.nullNetworkImage),
+                                ),
                               ),
                             ),
                             title:

@@ -2,7 +2,6 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:logger/logger.dart';
 import 'package:master_learn/classes/async_futures.dart';
-import 'package:master_learn/grid_cells/user_grid_cell.dart';
 import 'package:master_learn/widgets/icon_progress_indicator.dart';
 import 'package:master_learn/widgets/marquee_widget.dart';
 
@@ -67,11 +66,11 @@ class _GridViewUsingUsersListState extends State<GridViewUsingUsersList> {
                           crossAxisSpacing: 4,
                           children:
                           asyncSnapshot.data.map((user) {
-                            return GestureDetector(
+                            /*return GestureDetector(
                               child: GridTile(
                                   child: UserGridCell(user: user)),
                               onTap: () {},
-                            );
+                            )*/;
                           }).toList(),
                         ),
                       ),

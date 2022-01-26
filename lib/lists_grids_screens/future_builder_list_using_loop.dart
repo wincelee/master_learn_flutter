@@ -35,7 +35,7 @@ class _FutureBuilderListUsingLoopState
           headers: {
             "Content-Type": "application/json",
             "Authorization": "Bearer tltsp6dmnbif01jy9xfo9ssn4620u89xhuwcm5t3",
-          });
+          }).timeout(const Duration(seconds: Config.responseTimeOutInSeconds));
 
       log("ResponseStatusCode ${response.statusCode}");
 
