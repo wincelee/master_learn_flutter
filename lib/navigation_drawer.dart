@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:master_learn/screens/contacts.dart';
 import 'package:master_learn/screens/fetch_lists_grids.dart';
 import 'package:master_learn/screens/home.dart';
+import 'package:master_learn/screens/logins.dart';
 import 'package:master_learn/widgets/create_drawer_body_item.dart';
 import 'package:master_learn/widgets/create_drawer_header.dart';
 
@@ -23,6 +24,12 @@ class NavigationDrawer extends StatelessWidget {
              builder: (BuildContext context) => const FetchListsGrids()
            ))
          ),
+          createDrawerBodyItem(
+              icon: Icons.login,
+              text: 'Logins',
+              onTap: () => Navigator.of(context).pushReplacement(
+                  MaterialPageRoute(
+                      builder: (BuildContext context) => const Logins()))),
           createDrawerBodyItem(
               icon: Icons.home,
               text: 'Home',

@@ -123,7 +123,7 @@ class _FutureBuilderListWithoutLoopState
                                     MaterialPageRoute(
                                         builder: (context) => UserDetails(
                                               index: asyncSnapshot.data[index]
-                                                      ["index"] ??
+                                                      .index ??
                                                   '',
                                               email: asyncSnapshot
                                                       .data[index].email ??

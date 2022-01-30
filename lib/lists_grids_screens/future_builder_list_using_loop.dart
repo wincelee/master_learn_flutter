@@ -178,7 +178,7 @@ class _FutureBuilderListUsingLoopState
                                   MaterialPageRoute(
                                       builder: (context) => UserDetails(
                                             index: asyncSnapshot.data[index]
-                                                    ["index"] ??
+                                                    .index ??
                                                 '',
                                             email: asyncSnapshot
                                                     .data[index].email ??
@@ -225,7 +225,7 @@ class _FutureBuilderListUsingLoopState
                                     MaterialPageRoute(
                                         builder: (context) => UserDetails(
                                               index: asyncSnapshot.data[index]
-                                                      ["index"] ??
+                                                      .index ??
                                                   '',
                                               email: asyncSnapshot
                                                       .data[index].email ??
@@ -271,7 +271,7 @@ class _FutureBuilderListUsingLoopState
                                     MaterialPageRoute(
                                         builder: (context) => UserDetails(
                                               index: asyncSnapshot.data[index]
-                                                      ["index"] ??
+                                                  .index ??
                                                   '',
                                               email: asyncSnapshot
                                                       .data[index].email ??
@@ -308,7 +308,7 @@ class _FutureBuilderListUsingLoopState
                                   MaterialPageRoute(
                                       builder: (context) => UserDetails(
                                             index: asyncSnapshot.data[index]
-                                                    ["index"] ??
+                                                    .index ??
                                                 '',
                                             email: asyncSnapshot
                                                     .data[index].email ??

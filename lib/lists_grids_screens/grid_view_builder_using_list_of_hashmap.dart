@@ -4,6 +4,7 @@ import 'package:logger/logger.dart';
 import 'package:master_learn/classes/async_futures.dart';
 import 'package:master_learn/classes/config.dart';
 import 'package:master_learn/grid_view_cells/user_grid_cell.dart';
+import 'package:master_learn/lists_grids_screens/grid_cell_details.dart';
 import 'package:master_learn/widgets/icon_progress_indicator.dart';
 import 'package:master_learn/widgets/marquee_widget.dart';
 
@@ -75,8 +76,35 @@ class _GridViewBuilderUsingHashMapState extends State<GridViewBuilderUsingHashMa
                                     Config.nullNetworkImage,
                               )),
                               onTap: () {
-                                Logger().i(
-                                    "GridIndex ${asyncSnapshot.data[index]["index"]}");
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            GridCellDetails(
+                                              index: asyncSnapshot
+                                                  .data[index]
+                                                  ["index"] ??
+                                                  '',
+                                              email: asyncSnapshot
+                                                  .data[index]
+                                                  ["email"] ??
+                                                  '',
+                                              about: asyncSnapshot
+                                                  .data[index]
+                                                  ["about"] ??
+                                                  '',
+                                              name: asyncSnapshot
+                                                  .data[index]["name"] ??
+                                                  '',
+                                              picture: asyncSnapshot
+                                                  .data[index]
+                                                  ["picture"] ??
+                                                  Config.nullNetworkImage,
+                                              imageFetchType: asyncSnapshot
+                                                  .data[index]
+                                                  ["imageFetchType"] ??
+                                                  '',
+                                            )));
                               },
                             );
                           }),

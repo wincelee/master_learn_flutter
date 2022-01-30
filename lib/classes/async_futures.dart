@@ -7,17 +7,22 @@ import 'package:logger/logger.dart';
 import 'package:master_learn/classes/config.dart';
 import 'package:master_learn/classes/user.dart';
 
-class AsyncFutures{
+class AsyncFutures {
+
+  static late int statusCode;
 
   static Future<List<HashMap<String, dynamic>>>
   fetchListsOfStringDynamicHashMap() async {
     try {
       final response = await http.get(
-          Uri.parse("https://api.json-generator.com/templates/Eh5AlPjYVv6C/data"),
+          Uri.parse(
+              "https://api.json-generator.com/templates/Eh5AlPjYVv6C/data"),
           headers: {
             "Content-Type": "application/json",
             "Authorization": "Bearer tltsp6dmnbif01jy9xfo9ssn4620u89xhuwcm5t3",
           }).timeout(const Duration(seconds: Config.responseTimeOutInSeconds));
+
+      statusCode = response.statusCode;
 
       final List<HashMap<String, dynamic>> responseList;
 
@@ -36,7 +41,7 @@ class AsyncFutures{
       return responseList;
     } catch (e) {
       if (kDebugMode) {
-        Logger().wtf("FetchUsersUsingListOfStringObjectHashMapException $e");
+        Logger().wtf("FetchUsersUsingListOfStringObjectHashMapException $e \n\nResponseStatusCode $statusCode");
       }
 
       rethrow;
@@ -48,11 +53,12 @@ class AsyncFutures{
       // pub spec yaml http:
       // import 'package:http/http.dart' as http;
       final response = await http.get(
-          Uri.parse("https://api.json-generator.com/templates/Eh5AlPjYVv6C/data"),
+          Uri.parse(
+              "https://api.json-generator.com/templates/Eh5AlPjYVv6C/data"),
           headers: {
             "Content-Type": "application/json",
             "Authorization": "Bearer tltsp6dmnbif01jy9xfo9ssn4620u89xhuwcm5t3",
-          }).timeout(const Duration(seconds: Config.responseTimeOutInSeconds));
+          })/*.timeout(const Duration(seconds: Config.responseTimeOutInSeconds))*/;
 
 
       final List<User> usersList;
@@ -72,7 +78,8 @@ class AsyncFutures{
       return usersList;
     } catch (e) {
       if (kDebugMode) {
-        Logger().wtf("FetchUsersWithoutLoopException $e");
+        Logger().wtf(
+            "FetchUsersWithoutLoopException $e \n\nResponseStatusCode $statusCode");
       }
 
       rethrow;

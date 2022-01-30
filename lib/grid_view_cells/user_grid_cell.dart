@@ -38,7 +38,7 @@ class _UserGridCellState extends State<UserGridCell> {
                   child: ClipRRect(
                 borderRadius: BorderRadius.circular(5),
                 child: Hero(
-                    tag: "index${widget.index}",
+                    tag: widget.name,
                     child: FadeInImage.assetNetwork(
                         fit: BoxFit.cover,
                         placeholder: "images/converging_dots.gif",
