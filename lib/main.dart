@@ -27,13 +27,12 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
         title: 'Master Learn With Navigation',
         theme: ThemeData(
-          primarySwatch: Colors.blue,
+          primarySwatch: Config.createMaterialColor(Colors.green),
         ),
         home: Builder(builder: (BuildContext context) {
           if (Config().equalsIgnoreCase(startPage, "logins")) {
             return const Logins();
           }
-
           return const FetchListsGrids();
         })
         /* routes:  {
