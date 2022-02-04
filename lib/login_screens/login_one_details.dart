@@ -52,18 +52,31 @@ class _LoginOneDetailsState extends State<LoginOneDetails> {
             child: Column(
           children: [
             Padding(
-              padding: const EdgeInsets.all(20),
+              padding: const EdgeInsets.all(10),
               child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children:  [
-                  const Expanded(
-                  child: Text("Login Success"),
+                  children: [
+                Align(
+                  alignment: Alignment.centerLeft,
+                  child: SizedBox(
+                    height: 30,
+                    width: 30,
+                    child: Image.asset('images/no_data.png'),
                   ),
-                  Expanded(
+                ),
+                const Expanded(
+                  child: Align(
+                    child: Text("Login Success",
+                        /*overflow: TextOverflow.ellipsis,*/),
+                  ),
+                ),
+                const Spacer(),
+                Expanded(
+                  child: Align(
+                    alignment: Alignment.centerRight,
                     child: Text(widget.success),
-                  )
-                ]
-              ),
+                  ),
+                )
+              ]),
             ),
             Padding(
               padding: const EdgeInsets.all(20),
@@ -122,7 +135,8 @@ class _LoginOneDetailsState extends State<LoginOneDetails> {
             Padding(
               padding: const EdgeInsets.all(20),
               child: Center(
-                child: Text("Update Pin Status: ${widget.updatePin.toString()}"),
+                child:
+                    Text("Update Pin Status: ${widget.updatePin.toString()}"),
               ),
             ),
             Padding(
