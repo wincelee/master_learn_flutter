@@ -79,6 +79,34 @@ class _LoginOneDetailsState extends State<LoginOneDetails> {
               ]),
             ),
             Padding(
+              padding: const EdgeInsets.all(10),
+              child: Row(
+                  children: [
+                    Align(
+                      alignment: Alignment.centerLeft,
+                      child: Container(
+                        margin:  const EdgeInsets.only(left: 8.0, top: 8.0, bottom: 8.0, right: 12.0),
+                        height: 30,
+                        width: 30,
+                        child: Image.asset('images/no_data.png'),
+                      ),
+                    ),
+                    const Expanded(
+                      child: Align(
+                        child: Text("Login Success",
+                          /*overflow: TextOverflow.ellipsis,*/),
+                      ),
+                    ),
+                    const Spacer(),
+                    Expanded(
+                      child: Align(
+                        alignment: Alignment.centerRight,
+                        child: Text(widget.success),
+                      ),
+                    )
+                  ]),
+            ),
+            Padding(
               padding: const EdgeInsets.all(20),
               child: Center(
                 child: Text("LoginSuccess: ${widget.success}"),
