@@ -96,7 +96,8 @@ class _LoginOneState extends State<LoginOne> {
             )),
         title: const Text("Login One"),
       ),
-      body: Column(
+      body: SingleChildScrollView(
+          child: Column(
         children: [
           Padding(
               padding: const EdgeInsets.all(10),
@@ -173,7 +174,7 @@ class _LoginOneState extends State<LoginOne> {
                     maximumSize: const Size(300, 40)),
               )),
         ],
-      ),
+      )),
     );
   }
 }

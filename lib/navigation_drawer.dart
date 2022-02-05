@@ -37,7 +37,7 @@ class NavigationDrawer extends StatelessWidget {
                   MaterialPageRoute(
                       builder: (BuildContext context) => const CardViews()))),
           createDrawerBodyItem(
-              icon: Icons.account_circle,
+              icon: Icons.space_bar_rounded,
               text: 'SnackBars',
               onTap: () => Navigator.of(context).pushReplacement(
                   MaterialPageRoute(
