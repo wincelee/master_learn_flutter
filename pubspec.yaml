@@ -64,6 +64,19 @@ flutter:
 
   assets:
     - images/
+    - icons/
+
+  fonts:
+    - family: tesla
+      fonts:
+        - asset: fonts/tesla.ttf
+    - family: anton_regular
+      fonts:
+        - asset: fonts/anton_regular.ttf
+    - family: anton_regular
+      fonts:
+        - asset: fonts/andada_pro.ttf
+
 
   # To add assets to your application, add an assets section, like this:
   # assets:

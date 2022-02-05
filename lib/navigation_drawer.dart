@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:master_learn/screens/contacts.dart';
+import 'package:master_learn/screens/card_views.dart';
 import 'package:master_learn/screens/fetch_lists_grids.dart';
-import 'package:master_learn/screens/home.dart';
 import 'package:master_learn/screens/logins.dart';
+import 'package:master_learn/screens/snack_bars.dart';
 import 'package:master_learn/widgets/create_drawer_body_item.dart';
 import 'package:master_learn/widgets/create_drawer_header.dart';
 
@@ -31,17 +31,17 @@ class NavigationDrawer extends StatelessWidget {
                   MaterialPageRoute(
                       builder: (BuildContext context) => const Logins()))),
           createDrawerBodyItem(
-              icon: Icons.home,
-              text: 'Home',
+              icon: Icons.check_box_outline_blank,
+              text: 'Card Views',
               onTap: () => Navigator.of(context).pushReplacement(
                   MaterialPageRoute(
-                      builder: (BuildContext context) => const Home()))),
+                      builder: (BuildContext context) => const CardViews()))),
           createDrawerBodyItem(
               icon: Icons.account_circle,
-              text: 'Profile',
+              text: 'SnackBars',
               onTap: () => Navigator.of(context).pushReplacement(
                   MaterialPageRoute(
-                      builder: (BuildContext context) => const Contacts()))),
+                      builder: (BuildContext context) => const SnackBars()))),
           createDrawerBodyItem(icon: Icons.event_note, text: 'Events'),
           const Divider(),
           createDrawerBodyItem(

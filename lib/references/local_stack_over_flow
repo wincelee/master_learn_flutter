@@ -93,3 +93,66 @@ Possible on click on backgroundImage
                    ),
                  ],
                ),
+
+--------------------------------------------------------------------------------------------
+
+Material( // with Material
+                    child: Image.network('https://placeimg.com/640/480/any'),
+                    elevation: 18.0,
+                    shape: const CircleBorder(),
+                    clipBehavior: Clip.antiAlias,
+
+                  )
+
+--------------------------------------------------------------------------------------------
+
+mainAxisAlignment: MainAxisAlignment.spaceEvenly (items in row arranged with even spaces)
+
+
+--------------------------------------------------------------------------------------------
+
+// If you want the whole table to be Centered, use the mainAxisAlignment property of Column.
+///Column
+mainAxisAlignment: MainAxisAlignment.center //Center Column contents vertically,
+crossAxisAlignment: CrossAxisAlignment.center //Center Column contents horizontally,
+
+///Row
+mainAxisAlignment: MainAxisAlignment.center //Center Row contents horizontally,
+crossAxisAlignment: CrossAxisAlignment.center //Center Row contents vertically,
+
+---------------------------------------------------------------------------------------------
+
+Make Column Items Stretch and fill the column from left to right and center text
+
+crossAxisAlignment: CrossAxisAlignment.stretch
+
+-------------------------------------------------------------------------------------------
+
+Wrap_content ,Wrap_content :
+
+ //use this as child
+ Wrap(
+  children: <Widget>[*your_child*])
+
+Match_parent,Match_parent:
+
+ //use this as child
+Container(
+        height: double.infinity,
+    width: double.infinity,child:*your_child*)
+
+Match_parent,Wrap_content :
+
+ //use this as child
+Row(
+  mainAxisSize: MainAxisSize.max,
+  children: <Widget>[*your_child*],
+);
+
+Wrap_content ,Match_parent:
+
+ //use this as child
+Column(
+  mainAxisSize: MainAxisSize.max,
+  children: <Widget>[your_child],
+);
