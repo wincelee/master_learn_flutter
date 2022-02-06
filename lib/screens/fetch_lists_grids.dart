@@ -30,10 +30,6 @@ class _FetchList extends State<FetchListsGrids> {
               padding: const EdgeInsets.all(5),
               child: Center(
                 child: TextButton(
-                    style: ButtonStyle(
-                      foregroundColor:
-                          MaterialStateProperty.all<Color>(Colors.blue),
-                    ),
                     onPressed: () => Navigator.of(context).push(
                         MaterialPageRoute(
                             builder: (BuildContext context) =>
@@ -48,14 +44,10 @@ class _FetchList extends State<FetchListsGrids> {
               padding: const EdgeInsets.all(5),
               child: Center(
                 child: TextButton(
-                    style: ButtonStyle(
-                      foregroundColor:
-                      MaterialStateProperty.all<Color>(Colors.blue),
-                    ),
                     onPressed: () => Navigator.of(context).push(
                         MaterialPageRoute(
                             builder: (BuildContext context) =>
-                            const FutureBuilderListWithoutLoop())),
+                                const FutureBuilderListWithoutLoop())),
                     child: const Text(
                       "[] Future Builder Users Lists Without For Loop",
                       style: TextStyle(color: Colors.blue, fontSize: 15),
@@ -66,14 +58,10 @@ class _FetchList extends State<FetchListsGrids> {
               padding: const EdgeInsets.all(5),
               child: Center(
                 child: TextButton(
-                    style: ButtonStyle(
-                      foregroundColor:
-                      MaterialStateProperty.all<Color>(Colors.blue),
-                    ),
                     onPressed: () => Navigator.of(context).push(
                         MaterialPageRoute(
                             builder: (BuildContext context) =>
-                            const FutureBuilderListUsingHashMap())),
+                                const FutureBuilderListUsingHashMap())),
                     child: const Text(
                       "[] Future Builder Users Lists Using HashMap",
                       style: TextStyle(color: Colors.brown, fontSize: 15),
@@ -84,14 +72,10 @@ class _FetchList extends State<FetchListsGrids> {
               padding: const EdgeInsets.all(5),
               child: Center(
                 child: TextButton(
-                    style: ButtonStyle(
-                      foregroundColor:
-                      MaterialStateProperty.all<Color>(Colors.blue),
-                    ),
                     onPressed: () => Navigator.of(context).push(
                         MaterialPageRoute(
                             builder: (BuildContext context) =>
-                            const GridViewBuilderUsingHashMap())),
+                                const GridViewBuilderUsingHashMap())),
                     child: const Text(
                       "[] Grid View Builder Using List of HashMap",
                       style: TextStyle(color: Colors.green, fontSize: 15),
@@ -102,14 +86,10 @@ class _FetchList extends State<FetchListsGrids> {
               padding: const EdgeInsets.all(5),
               child: Center(
                 child: TextButton(
-                    style: ButtonStyle(
-                      foregroundColor:
-                      MaterialStateProperty.all<Color>(Colors.blue),
-                    ),
                     onPressed: () => Navigator.of(context).push(
                         MaterialPageRoute(
                             builder: (BuildContext context) =>
-                            const GridViewBuilderUsingUsersList())),
+                                const GridViewBuilderUsingUsersList())),
                     child: const Text(
                       "[] Grid View Builder Using Users List",
                       style: TextStyle(color: Colors.blueAccent, fontSize: 15),

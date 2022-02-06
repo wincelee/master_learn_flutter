@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:master_learn/screens/card_views.dart';
+import 'package:master_learn/screens/cupertino_screen.dart';
 import 'package:master_learn/screens/fetch_lists_grids.dart';
 import 'package:master_learn/screens/logins.dart';
 import 'package:master_learn/screens/snack_bars.dart';
@@ -16,14 +17,13 @@ class NavigationDrawer extends StatelessWidget {
         padding: EdgeInsets.zero,
         children: <Widget>[
           createDrawerHeader(),
-
-         createDrawerBodyItem(
-           icon: Icons.list,
-           text: "Fetch Lists Grids",
-           onTap: () => Navigator.of(context).pushReplacement(MaterialPageRoute(
-             builder: (BuildContext context) => const FetchListsGrids()
-           ))
-         ),
+          createDrawerBodyItem(
+              icon: Icons.list,
+              text: "Fetch Lists Grids",
+              onTap: () => Navigator.of(context).pushReplacement(
+                  MaterialPageRoute(
+                      builder: (BuildContext context) =>
+                          const FetchListsGrids()))),
           createDrawerBodyItem(
               icon: Icons.login,
               text: 'Logins',
@@ -42,7 +42,12 @@ class NavigationDrawer extends StatelessWidget {
               onTap: () => Navigator.of(context).pushReplacement(
                   MaterialPageRoute(
                       builder: (BuildContext context) => const SnackBars()))),
-          createDrawerBodyItem(icon: Icons.event_note, text: 'Events'),
+          createDrawerBodyItem(
+              icon: Icons.phone_iphone,
+              text: 'Cupertino',
+              onTap: () => Navigator.of(context).pushReplacement(
+                  MaterialPageRoute(
+                      builder: (BuildContext context) => const CupertinoScreen()))),
           const Divider(),
           createDrawerBodyItem(
               icon: Icons.notifications_active, text: 'Notifications'),

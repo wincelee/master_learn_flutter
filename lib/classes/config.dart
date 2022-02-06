@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 class Config {
   static const String nullNetworkImage =
@@ -33,6 +34,15 @@ class Config {
     return MaterialColor(color.value, colorSwatch);
   }
 
+  static String numberFormatter(double number){
+
+    // dependencies:
+    //   intl:
+    //  import 'package:intl/intl.dart';
+
+    return NumberFormat('#,###.##').format(number);
+  }
+
   MaterialColor createMaterialColorManually = const MaterialColor(
     0xff7e1416,
     <int, Color>{
@@ -52,4 +62,23 @@ class Config {
   bool equalsIgnoreCase(String string1, String string2) {
     return string1.toLowerCase() == string2.toLowerCase();
   }
+
+  static SnackBar buildSnackBar(
+          String content,
+          double elevation,
+          EdgeInsetsGeometry marginEdgeInsetsGeometry,
+          EdgeInsetsGeometry paddingEdgeInsetsGeometry,
+          Color backgroundColor,
+          Duration duration) =>
+      SnackBar(
+        content: Text(content),
+        elevation: elevation,
+        margin: marginEdgeInsetsGeometry,
+        padding: paddingEdgeInsetsGeometry,
+        behavior: SnackBarBehavior.floating,
+        backgroundColor: backgroundColor,
+        duration: duration,
+      );
+
+
 }
