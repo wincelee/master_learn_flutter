@@ -1,4 +1,7 @@
+import 'dart:ui' as ui;
+
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:intl/intl.dart';
 
 class Config {
@@ -34,13 +37,25 @@ class Config {
     return MaterialColor(color.value, colorSwatch);
   }
 
-  static String numberFormatter(double number){
-
+  static String numberFormatter(double number) {
     // dependencies:
     //   intl:
     //  import 'package:intl/intl.dart';
 
     return NumberFormat('#,###.##').format(number);
+  }
+
+  static Future<ui.Image> getUiImage(
+      String imageAssetPath, int height, int width) async {
+    final ByteData assetImageByteData = await rootBundle.load(imageAssetPath);
+    final codec = await ui.instantiateImageCodec(
+      assetImageByteData.buffer.asUint8List(),
+      targetHeight: height,
+      targetWidth: width,
+    );
+    final image = (await codec.getNextFrame()).image;
+
+    return image;
   }
 
   MaterialColor createMaterialColorManually = const MaterialColor(
@@ -79,6 +94,4 @@ class Config {
         backgroundColor: backgroundColor,
         duration: duration,
       );
-
-
 }

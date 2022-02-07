@@ -156,3 +156,31 @@ Column(
   mainAxisSize: MainAxisSize.max,
   children: <Widget>[your_child],
 );
+
+You should use Expanded only within a Column, Row or Flex
+
+----------------------------------------------------------------------------------------------------
+
+Printing List
+
+~~~ First Method 1 (override toString in class example below)
+
+    >>> @override toString() => 'id: $id title: $title subTitle: $subTitle imageUrl: $imageUrl';
+
+~~~ Using Method 2 (using for loop)
+
+    >>>
+
+    for (var item in itemsList) {
+              Logger().i("id: ${item.id} title: ${item.title} subTitle: ${item.subTitle} imageUrl: ${item.imageUrl} ");
+            }
+
+----------------------------------------------------------------------------------------------------
+
+Flutter Dense TextField
+
+ decoration: InputDecoration(
+                    isDense: true,
+                    contentPadding: EdgeInsets.only(
+                        bottom: 15, top: 15, left: 10, right: 10)),
+     ),

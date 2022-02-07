@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:master_learn/lists_grids_screens/class_list_with_search_custom_card.dart';
+import 'package:master_learn/lists_grids_screens/class_list_with_search_on_appbar_custom_card.dart';
+import 'package:master_learn/lists_grids_screens/map_list_with_search_custom_card.dart';
 import 'package:master_learn/lists_grids_screens/future_builder_list_using_hashmap.dart';
 import 'package:master_learn/lists_grids_screens/future_builder_list_using_loop.dart';
 import 'package:master_learn/lists_grids_screens/future_builder_list_without_loop.dart';
@@ -64,7 +67,7 @@ class _FetchList extends State<FetchListsGrids> {
                                 const FutureBuilderListUsingHashMap())),
                     child: const Text(
                       "[] Future Builder Users Lists Using HashMap",
-                      style: TextStyle(color: Colors.brown, fontSize: 15),
+                      style: TextStyle(color: Colors.blue, fontSize: 15),
                     )),
               ),
             ),
@@ -92,8 +95,49 @@ class _FetchList extends State<FetchListsGrids> {
                                 const GridViewBuilderUsingUsersList())),
                     child: const Text(
                       "[] Grid View Builder Using Users List",
-                      style: TextStyle(color: Colors.blueAccent, fontSize: 15),
+                      style: TextStyle(color: Colors.green, fontSize: 15),
                     )),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(5),
+              child: Center(
+                child: TextButton(
+                    onPressed: () => Navigator.of(context).push(
+                        MaterialPageRoute(
+                            builder: (BuildContext context) =>
+                                const MapListWithSearchCustomCard())),
+                    child: const Text(
+                      "[] Map Lists With Search Custom Cards",
+                      style: TextStyle(color: Colors.black, fontSize: 15),
+                    )),
+              ),
+            ),Padding(
+              padding: const EdgeInsets.all(5),
+              child: Center(
+                child: TextButton(
+                    onPressed: () => Navigator.of(context).push(
+                        MaterialPageRoute(
+                            builder: (BuildContext context) =>
+                                const ClassListWithSearchCustomCard())),
+                    child: const Text(
+                      "[] Class Lists With Search Custom Cards",
+                      style: TextStyle(color: Colors.black, fontSize: 15),
+                    )),
+              ),
+            ),Padding(
+              padding: const EdgeInsets.all(5),
+              child: Center(
+                child: TextButton(
+                    onPressed: () => Navigator.of(context).push(
+                        MaterialPageRoute(
+                            builder: (BuildContext context) =>
+                                const ClassListWithSearchOnAppBarCustomCard())),
+                    child: const Align(alignment:Alignment.center,child: Text(
+                      "[] Class List With Search On AppBar CustomCard [Slidable]",
+                      textAlign: TextAlign.center,
+                      style: TextStyle(color: Colors.black, fontSize: 15),
+                    ))),
               ),
             ),
             Padding(

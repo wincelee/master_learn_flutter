@@ -22,7 +22,7 @@ Future main() async {
 
 
 class MyApp extends StatelessWidget {
-  final String startPage = "cardViews";
+  final String startPage = "listsGrids";
   final bool isMaterialApp = true;
 
   const MyApp({Key? key}) : super(key: key);
@@ -45,6 +45,8 @@ class MyApp extends StatelessWidget {
               return const CardViews();
             } else if (Config().equalsIgnoreCase(startPage, "snackBars")) {
               return const SnackBars();
+            }else if (Config().equalsIgnoreCase(startPage, "listsGrids")) {
+              return const FetchListsGrids();
             }
             return const FetchListsGrids();
           }));
