@@ -184,3 +184,359 @@ Flutter Dense TextField
                     contentPadding: EdgeInsets.only(
                         bottom: 15, top: 15, left: 10, right: 10)),
      ),
+
+
+-------------------------------------------------------------------------------------------------------
+
+Check operating system platform (o-p-e-r-a-t-i-n-g p-l-a-t-f-o-r-m)
+
+import 'package:flutter/foundation.dart';
+if ((defaultTargetPlatform == TargetPlatform.iOS) || (defaultTargetPlatform == TargetPlatform.android)) {
+    // Some android/ios specific code
+}
+else if ((defaultTargetPlatform == TargetPlatform.linux) || (defaultTargetPlatform == TargetPlatform.macOS) || (defaultTargetPlatform == TargetPlatform.windows)) {
+    // Some desktop specific code there
+}
+else {
+    // Some web specific code there
+}
+
+-------------------------------------------------------------------------------------------------------
+
+                    t-e-x-t-f-i-e-l-d-s
+
+~~~ Boolean method to directly return true or false
+
+     bool isPhoneNumberEmpty() => phoneNoController.text.isEmpty;
+
+     bool isPhoneNumberEmpty() => phoneNoController.text.isNotEmpty;
+
+-------------------------------------------------------------------------------------------------------
+
+                        basicAuth
+                        b-a-s-i-c-A-u-t-h
+
+import 'dart:convert';
+import 'package:http/http.dart';
+
+main() async {
+
+  String username = 'luiz';
+  String password = '123';
+  String basicAuth = 'Basic ' + base64Encode('$username:$password');
+
+  var response = await http.post(
+      'https://api.site.io/new',
+      headers: <String, String>{'authorization': basicAuth},
+      body: {'name': 'doodle', 'color': 'blue'},
+  );
+
+  print('Response status: ${response.statusCode}');
+  print('Response body: ${response.body}');
+
+}
+
+-------------------------------------------------------------------------------------------------------
+
+                        c-u-p-e-r-t-i-n-o
+
+Custom Cupertino dialog
+
+static void exceptionsAlertDialog(BuildContext context) {
+    showDialog(
+        barrierDismissible: false,
+        context: context,
+        builder: (BuildContext context) {
+          // prevent back button press
+          return CupertinoAlertDialog(
+            title: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: <Widget>[
+                Text("Login | Register"),
+                Icon(
+                  Icons.error,
+                  color: Colors.red,
+                ),
+              ],
+            ),
+            content:
+                Text("We encountered an error while processing your request"),
+            actions: <Widget>[
+              CupertinoDialogAction(
+                child: Text("close".toUpperCase()),
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+              ),
+            ],
+          );
+        });
+  }
+
+------------------------------
+
+showDialog(
+        barrierDismissible: false,
+        context: context,
+        builder: (BuildContext context) {
+          // prevent back button press
+          return CupertinoAlertDialog(
+            title: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: <Widget>[
+                Container(
+                  width: double.infinity,
+                    child: Text("Login | Register")),
+                Container(
+                    width: double.infinity,
+                    child: Icon(
+                  Icons.error,
+                  size: 50,
+                  color: Colors.red,
+                )),
+              ],
+            ),
+            content:
+                Text("We encountered an error while processing your request"),
+            actions: <Widget>[
+              CupertinoDialogAction(
+                child: Text("close".toUpperCase()),
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+              ),
+            ],
+          );
+        });
+
+-------------------------------------------------------------------------------------------------------
+
+
+                        richText | textSpan
+                  r-i-c-h-t-e-x-t | t-e-x-t-s-p-a-n
+
+
+ RichText(
+   text: TextSpan(
+     children: [
+       TextSpan(
+         text: 'Single tap',
+         style: TextStyle(color: Colors.red[300]),
+         recognizer: TapGestureRecognizer()..onTap = () {
+           // Single tapped.
+         },
+       ),
+       TextSpan(
+         text: ' Double tap',
+         style: TextStyle(color: Colors.green[300]),
+         recognizer:  DoubleTapGestureRecognizer()..onDoubleTap = () {
+           // Double tapped.
+         }
+       ),
+       TextSpan(
+         text: ' Long press',
+         style: TextStyle(color: Colors.blue[300]),
+         recognizer: LongPressGestureRecognizer()..onLongPress = () {
+           // Long Pressed.
+         },
+       ),
+     ],
+   ),
+ )
+
+-------------------------------------------------------------------------------------------------------
+
+ CircleAvatar(
+      backgroundColor: Colors.blue,
+      child: Text("A"),
+  );
+
+   CircleAvatar(
+        backgroundColor: Colors.blue,
+        child: Text("A"),
+        maxRadius: 30,
+        foregroundImage: NetworkImage("enterImageUrl"),
+    );
+
+      String mystring = 'Hello World';
+
+      print('${mystring[0]}');
+
+-------------------------------------------------------------------------------------------------------
+
+                        s-t-e-p-p-e-r
+
+Stepper(
+        controlsBuilder: (context, {onStepContinue, onStepCancel}) {
+          return Row(
+            children: <Widget>[
+              TextButton(
+                onPressed: onStepContinue,
+                child: const Text('NEXT'),
+              ),
+              TextButton(
+                onPressed: onStepCancel,
+                child: const Text('CANCEL'),
+              ),
+            ],
+          );
+        },
+        ...
+    )
+
+----------------------
+
+            Stepper controls according to each step
+
+controlsBuilder: (BuildContext context,
+              {VoidCallback onStepContinue, VoidCallback onStepCancel}) {
+            return Row(
+              children: <Widget>[
+                _activeCurrentStep == 0
+                    ? TextButton(
+                        onPressed: onStepContinue,
+                        child: const Text('NEXT'),
+                      )
+                    : _activeCurrentStep == 1
+                        ? Container(
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                TextButton(
+                                  onPressed: onStepContinue,
+                                  child: const Text('NEXT'),
+                                ),
+                                TextButton(
+                                  onPressed: onStepCancel,
+                                  child: const Text('BACK'),
+                                ),
+                              ],
+                            ),
+                          )
+                        : _activeCurrentStep >= 2
+                            ? Container(
+                                child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    TextButton(
+                                      onPressed: onStepContinue,
+                                      child: const Text('SAVE'),
+                                    ),
+                                    TextButton(
+                                      onPressed: onStepCancel,
+                                      child: const Text('BACK'),
+                                    ),
+                                  ],
+                                ),
+                              )
+                            : TextButton(
+                                onPressed: onStepCancel,
+                                child: const Text('BACK'),
+                              ),
+              ],
+            );
+          },
+
+----------------------
+
+                Setting Steppers Steps State
+
+class _State extends State<MyApp> {
+
+  int _current;
+
+  List<StepState> _listState;
+
+  @override
+  void initState() {
+    _current = 0;
+    _listState = [
+      StepState.indexed,
+      StepState.editing,
+      StepState.complete,
+    ];
+    super.initState();
+  }
+
+  List<Step> _createSteps(BuildContext context) {
+    List<Step> _steps = <Step>[
+      new Step(
+        state: _current == 0
+            ? _listState[1]
+            : _current > 0 ? _listState[2] : _listState[0],
+        title: new Text('Step 1'),
+        content: new Text('Do Something'),
+        isActive: true,
+      ),
+      new Step(
+        state: _current == 1
+            ? _listState[1]
+            : _current > 1 ? _listState[2] : _listState[0],
+        title: new Text('Step 2'),
+        content: new Text('Do Something'),
+        isActive: true,
+      ),
+      new Step(
+        state: _current == 2
+            ? _listState[1]
+            : _current > 2 ? _listState[2] : _listState[0],
+        title: new Text('Step 3'),
+        content: new Text('Do Something'),
+        isActive: true,
+      ),
+    ];
+    return _steps;
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    List<Step> _stepList = _createSteps(context);
+    return new Scaffold(
+      appBar: new AppBar(
+        title: new Text('Stepper Example'),
+      ),
+      body: new Container(
+        padding: new EdgeInsets.all(20.0),
+        child: new Center(
+          child: new Column(
+            children: <Widget>[
+              Expanded(
+                child: Stepper(
+                  type: StepperType.vertical,
+                  steps: _stepList,
+                  currentStep: _current,
+                  onStepContinue: () {
+                    setState(() {
+                      if (_current < _stepList.length - 1) {
+                        _current++;
+                      } else {
+                        _current = _stepList.length - 1;
+                      }
+                      //_setStep(context);
+                    });
+                  },
+                  onStepCancel: () {
+                    setState(() {
+                      if (_current > 0) {
+                        _current--;
+                      } else {
+                        _current = 0;
+                      }
+                      //_setStep(context);
+                    });
+                  },
+                  onStepTapped: (int i) {
+                    setState(() {
+                      _current = i;
+                    });
+                  },
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}

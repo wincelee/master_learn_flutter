@@ -24,4 +24,24 @@ Widget iconProgressIndicator() {
       ),
     ),
   );
+
+  // return Center(
+  //   child: Image.asset(
+  //     "images/metaball.gif",
+  //   ),
+  // );
+
+  // return Center(
+  //   child: Container(
+  //     decoration: const BoxDecoration(
+  //       shape: BoxShape.circle,
+  //     ),
+  //     height: 200,
+  //     width: 200,
+  //     margin: const EdgeInsets.all(1),
+  //     padding: const EdgeInsets.all(1),
+  //     child: Image.asset("images/metaball.gif"),
+  //   ),
+  // );
+
 }

@@ -1,3 +1,4 @@
+import 'package:device_preview_screenshot/device_preview_screenshot.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -17,12 +18,19 @@ Future main() async {
     yield LicenseEntryWithLineBreaks(['fonts'], license);
   });
 
-  runApp(const MyApp());
+  runApp(DevicePreview(
+      tools: const [
+        ...DevicePreview.defaultTools,
+        DevicePreviewScreenshot(),
+      ],
+      enabled: !kReleaseMode, builder: (context) => const MyApp()));
+
+  //runApp(const MyApp());
 }
 
 
 class MyApp extends StatelessWidget {
-  final String startPage = "listsGrids";
+  final String startPage = "cardViews";
   final bool isMaterialApp = true;
 
   const MyApp({Key? key}) : super(key: key);

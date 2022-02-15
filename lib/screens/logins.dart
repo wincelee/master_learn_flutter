@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:master_learn/login_screens/login_one.dart';
+import 'package:master_learn/login_screens/login_two.dart';
 
 import '../navigation_drawer.dart';
 
@@ -36,6 +37,20 @@ class _LoginsState extends State<Logins> {
                     ),
                   ),
                 )),
+            Padding(
+                padding: const EdgeInsets.all(10),
+                child: Center(
+                  child: ElevatedButton(
+                    onPressed: () => Navigator.of(context).push(
+                        MaterialPageRoute(
+                            builder: (BuildContext context) =>
+                            const LoginTwo(title: "Login Two"))),
+                    child: const Text(
+                      "Login Two",
+                      style: TextStyle(color: Colors.white, fontSize: 15),
+                    ),
+                  ),
+                ))
           ],
         ),
       ),

@@ -7,6 +7,8 @@ import 'package:http/http.dart';
 import 'package:logger/logger.dart';
 import 'package:master_learn/classes/config.dart';
 import 'package:master_learn/login_screens/login_one_details.dart';
+import 'package:master_learn/widgets/blue_loader.dart';
+import 'package:master_learn/widgets/icon_progress_indicator.dart';
 
 class LoginOne extends StatefulWidget {
   const LoginOne({Key? key}) : super(key: key);
@@ -20,6 +22,30 @@ class _LoginOneState extends State<LoginOne> {
   TextEditingController pinController = TextEditingController();
 
   void login(String phoneNo, String pin) async {
+
+    // showLoaderDialog(BuildContext context){
+    //   AlertDialog alert = AlertDialog(
+    //     content: iconProgressIndicator(),
+    //   );
+    //
+    //   showDialog(barrierDismissible: false, context: context, builder: (BuildContext context) {
+    //     return alert;
+    //   });
+    //
+    // }
+
+    AlertDialog alert = AlertDialog(
+      backgroundColor: Colors.transparent,
+      elevation: 0,
+      //content: iconProgressIndicator(),
+      content: blueLoader(),
+    );
+
+    showDialog(barrierDismissible: false, context: context, builder: (BuildContext context) {
+      // prevent back button press
+      return alert;
+    });
+
     try {
       Response response = await post(
         Uri.parse("https://dev.dohyangu.ke/app/apis/customers_login.php"),
@@ -42,6 +68,8 @@ class _LoginOneState extends State<LoginOne> {
           Logger().i(
               "ResponseMapConversionUsingLinkedHashMap $responseLinkedHashMap");
 
+          //Navigator.pop(context);
+
           Navigator.push(
               context,
               MaterialPageRoute(
@@ -61,9 +89,15 @@ class _LoginOneState extends State<LoginOne> {
                         success: responseMap["success"] ?? '',
                         message: responseMap["message"] ?? '',
                       )));
-        } else if (Config().equalsIgnoreCase(responseMap["success"], "2")) {}
+        } else if (Config().equalsIgnoreCase(responseMap["success"], "2")) {
+
+          //Navigator.pop(context);
+        }
       }
     } catch (e) {
+
+      //Navigator.pop(context);
+
       Logger().wtf("LoginOneException: $e");
     }
   }
