@@ -1,4 +1,3 @@
-import 'package:device_preview_screenshot/device_preview_screenshot.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -6,6 +5,7 @@ import 'package:flutter/services.dart';
 import 'package:master_learn/classes/config.dart';
 import 'package:master_learn/screens/card_views.dart';
 import 'package:master_learn/screens/cupertino_screen.dart';
+import 'package:master_learn/screens/drop_down_spinners.dart';
 import 'package:master_learn/screens/fetch_lists_grids.dart';
 import 'package:master_learn/screens/logins.dart';
 import 'package:master_learn/screens/snack_bars.dart';
@@ -18,19 +18,18 @@ Future main() async {
     yield LicenseEntryWithLineBreaks(['fonts'], license);
   });
 
-  runApp(DevicePreview(
-      tools: const [
-        ...DevicePreview.defaultTools,
-        DevicePreviewScreenshot(),
-      ],
-      enabled: !kReleaseMode, builder: (context) => const MyApp()));
+  // runApp(DevicePreview(
+  //     tools: const [
+  //       ...DevicePreview.defaultTools,
+  //       DevicePreviewScreenshot(),
+  //     ],
+  //     enabled: !kReleaseMode, builder: (context) => const MyApp()));
 
-  //runApp(const MyApp());
+  runApp(const MyApp());
 }
 
-
 class MyApp extends StatelessWidget {
-  final String startPage = "cardViews";
+  final String startPage = "dropDowns";
   final bool isMaterialApp = true;
 
   const MyApp({Key? key}) : super(key: key);
@@ -53,8 +52,10 @@ class MyApp extends StatelessWidget {
               return const CardViews();
             } else if (Config().equalsIgnoreCase(startPage, "snackBars")) {
               return const SnackBars();
-            }else if (Config().equalsIgnoreCase(startPage, "listsGrids")) {
+            } else if (Config().equalsIgnoreCase(startPage, "listsGrids")) {
               return const FetchListsGrids();
+            }else if (Config().equalsIgnoreCase(startPage, "dropDowns")) {
+              return const DropDownSpinners(title: "Drop Down Spinners");
             }
             return const FetchListsGrids();
           }));
