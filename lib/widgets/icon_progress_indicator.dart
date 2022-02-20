@@ -15,7 +15,7 @@ Widget iconProgressIndicator() {
           const SizedBox(
             child: CircularProgressIndicator(
               valueColor: AlwaysStoppedAnimation<Color>(Colors.orange),
-              strokeWidth: 5.0,
+              strokeWidth: 2.0,
             ),
             height: 100,
             width: 100,

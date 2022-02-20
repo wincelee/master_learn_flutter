@@ -2,12 +2,15 @@ import 'dart:collection';
 import 'dart:convert';
 
 import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:logger/logger.dart';
 import 'package:master_learn/classes/config.dart';
 import 'package:master_learn/classes/item.dart';
 import 'package:master_learn/classes/item2.dart';
 import 'package:master_learn/classes/user.dart';
+
+import '../widgets/icon_progress_indicator.dart';
 
 class AsyncFutures {
   static int? statusCode;
@@ -168,6 +171,42 @@ class AsyncFutures {
 
   static Future<List<HashMap<String, dynamic>>> fetchLists(
       String url, String query) async {
+    try {
+      final response = await http.get(Uri.parse(url), headers: {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer tltsp6dmnbif01jy9xfo9ssn4620u89xhuwcm5t3",
+      }).timeout(const Duration(seconds: Config.responseTimeOutInSeconds));
+
+      statusCode = response.statusCode;
+
+      final List<HashMap<String, dynamic>> responseList;
+
+      if (response.statusCode == 200) {
+        responseList = json
+            .decode(response.body)
+            .map<HashMap<String, dynamic>>(
+                (e) => HashMap<String, dynamic>.from(e))
+            .toList();
+      } else if (response.statusCode == 401) {
+        responseList = [];
+      } else {
+        responseList = [];
+      }
+
+      return responseList;
+    } catch (e) {
+      if (kDebugMode) {
+        Logger().wtf(
+            "FetchUsersUsingListOfStringObjectHashMapException $e \n\nResponseStatusCode ${statusCode!}");
+      }
+
+      rethrow;
+    }
+  }
+
+
+  static Future<List<HashMap<String, dynamic>>> fetchListOfMaps(
+      String url) async {
     try {
       final response = await http.get(Uri.parse(url), headers: {
         "Content-Type": "application/json",

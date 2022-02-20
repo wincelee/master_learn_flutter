@@ -1,6 +1,8 @@
 
 import 'dart:convert';
 
+import 'item.dart';
+
 /*String userToJson(User user) => json.encode(user.toJson());
 
 User userFromJson(String str) => User.fromJson(json.decode(str));*/
@@ -20,5 +22,5 @@ class User {
   factory User.fromJson(Map<String, dynamic> map) {
     return User(map['email'], map['about'], map['name'], map['picture'], map['index'], map['imageFetchType']);
   }
-  
+
 }

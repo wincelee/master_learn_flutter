@@ -44,6 +44,7 @@ dependencies:
   flutter_slidable: ^1.2.0
   device_preview_screenshot: ^1.0.0
   device_preview: ^1.0.0
+  autocomplete_textfield: ^1.7.3
 
 dev_dependencies:
   flutter_test:

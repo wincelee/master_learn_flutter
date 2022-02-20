@@ -3,6 +3,7 @@ import 'dart:ui' as ui;
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:intl/intl.dart';
+import 'package:master_learn/widgets/icon_progress_indicator.dart';
 
 class Config {
   static const String nullNetworkImage =
@@ -94,4 +95,18 @@ class Config {
         backgroundColor: backgroundColor,
         duration: duration,
       );
+
+  static void loaderDialog(BuildContext context) {
+    showDialog(
+        barrierDismissible: false,
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            backgroundColor: Colors.transparent,
+            elevation: 0,
+            content: iconProgressIndicator(),
+          );
+        });
+  }
+
 }

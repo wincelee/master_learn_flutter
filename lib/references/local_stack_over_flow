@@ -161,6 +161,10 @@ You should use Expanded only within a Column, Row or Flex
 
 ----------------------------------------------------------------------------------------------------
 
+                        l-i-s-t-s
+                        printlist
+                      p-r-i-n-t-l-i-s-t
+
 Printing List
 
 ~~~ First Method 1 (override toString in class example below)
@@ -174,6 +178,23 @@ Printing List
     for (var item in itemsList) {
               Logger().i("id: ${item.id} title: ${item.title} subTitle: ${item.subTitle} imageUrl: ${item.imageUrl} ");
             }
+
+~~~ Using Method 3 (Json Encode)
+
+    >>> add toJsonFunction in Class
+
+     Map<String, dynamic> toJson() => {
+        'email': email,
+        'about': about,
+        'name': name,
+        'picture': picture,
+        'index': index,
+        'imageFetchType': imageFetchType,
+      };
+
+     >>> log/print using jsonEncode
+
+     log("UserList: ${jsonEncode(usersList)}");
 
 ----------------------------------------------------------------------------------------------------
 

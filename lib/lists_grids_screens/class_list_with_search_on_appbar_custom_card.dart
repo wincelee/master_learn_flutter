@@ -35,6 +35,7 @@ class _ClassListWithSearchOnAppBarCustomCardState
     super.initState();
 
     populateItemsList();
+
   }
 
   onSearch(String searchValue) {
