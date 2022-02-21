@@ -152,6 +152,9 @@ class _LoginOneState extends State<LoginOne> {
                 cursorColor: Config.accentColor,
                 focusNode: tfFocusNode,
                 decoration: InputDecoration(
+                  //grepper dense text form field flutter
+                  isDense: true,
+                    //end grepper
                     // Underline color before inside click of TextFormField
                     enabledBorder: const UnderlineInputBorder(
                       borderSide: BorderSide(color: Config.primaryColor),
