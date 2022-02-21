@@ -233,7 +233,7 @@ class AsyncFutures {
     } catch (e) {
       if (kDebugMode) {
         Logger().wtf(
-            "FetchUsersUsingListOfStringObjectHashMapException $e \n\nResponseStatusCode ${statusCode!}");
+            "FetchListOfMapsException $e \n\nResponseStatusCode ${statusCode!}");
       }
 
       rethrow;

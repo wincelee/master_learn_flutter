@@ -45,6 +45,11 @@ Map<String, dynamic> myMap = Map<String, dynamic>.from(/*Your Source*/ );
 
 ----------------------------------------------------------------------------
 
+
+
+
+----------------------------------------------------------------------------
+
 passing text from screen 1 to screen 2
 
 openDetailPage(ItemModel data, int index) {
@@ -198,6 +203,12 @@ Printing List
 
 ----------------------------------------------------------------------------------------------------
 
+//grepper dense text form field flutter
+
+                                ||| Dense |||
+                            ||| Dense TextField |||
+                               ||| D-e-n-s-e |||
+
 Flutter Dense TextField
 
  decoration: InputDecoration(
@@ -206,7 +217,7 @@ Flutter Dense TextField
                         bottom: 15, top: 15, left: 10, right: 10)),
      ),
 
-
+//end grepper
 -------------------------------------------------------------------------------------------------------
 
 Check operating system platform (o-p-e-r-a-t-i-n-g p-l-a-t-f-o-r-m)
