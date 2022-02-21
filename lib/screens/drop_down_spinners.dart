@@ -48,11 +48,15 @@ class _DropDownSpinnersState extends State<DropDownSpinners> {
   bool enableDropDownFormFieldLabelText = false;
   bool enableCustomizableDropDownFormFieldLabelText = false;
 
-  bool enableCustomizableDropDownFormFieldOutlineInputBorder = true;
-
   bool enableDropDownTextFormFieldLikeLabelText = false;
   bool enableDropDownUserLabelText = false;
   bool enableDropDownUserWithMapLabelText = false;
+
+  bool enableCustomizableDropDownFormFieldOutlineInputBorder = true;
+  bool enableCustomizableDropDownFormFieldOutlineInputBorderBorderRadius =
+      false;
+
+  bool enableCustomizableDropDownFormFieldFill = false;
 
   Future populateUsersList() async {
     final usersList = await AsyncFutures.fetchUsersListWithoutLoop();
@@ -518,15 +522,70 @@ class _DropDownSpinnersState extends State<DropDownSpinners> {
                               children: [
                                 const Text("Enable/DisabledOutlineInputBorder"),
                                 Switch(
-                                  value: enableCustomizableDropDownFormFieldOutlineInputBorder,
+                                  value:
+                                      enableCustomizableDropDownFormFieldOutlineInputBorder,
                                   onChanged: (bool value) {
                                     setState(() {
-                                      enableCustomizableDropDownFormFieldOutlineInputBorder = value;
+                                      enableCustomizableDropDownFormFieldOutlineInputBorder =
+                                          value;
                                       //enableDisableDecoration = false;
                                       //enableDisableBorderRadius = false;
                                     });
                                   },
                                 ),
+                              ],
+                            )),
+                        Visibility(
+                            visible:
+                                enableCustomizableDropDownFormFieldOutlineInputBorder,
+                            child: Container(
+                                width: double.infinity,
+                                padding:
+                                    const EdgeInsets.only(left: 10, right: 10),
+                                child: Row(
+                                  mainAxisSize: MainAxisSize.max,
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    const Flexible(
+                                        child: Text(
+                                      "Enable/DisabledOutlineInputBorderBorderRadius",
+                                      textAlign: TextAlign.center,
+                                    )),
+                                    Flexible(child: Switch(
+                                      value:
+                                          enableCustomizableDropDownFormFieldOutlineInputBorderBorderRadius,
+                                      onChanged: (bool value) {
+                                        setState(() {
+                                          enableCustomizableDropDownFormFieldOutlineInputBorderBorderRadius =
+                                              value;
+                                        });
+                                      },
+                                    )),
+                                  ],
+                                ))),
+                        Container(
+                            width: double.infinity,
+                            padding:
+                            const EdgeInsets.only(left: 10, right: 10),
+                            child: Row(
+                              mainAxisSize: MainAxisSize.max,
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                const Flexible(
+                                    child: Text(
+                                      "Enable/Disable Fill Color",
+                                      textAlign: TextAlign.center,
+                                    )),
+                                Flexible(child: Switch(
+                                  value:
+                                  enableCustomizableDropDownFormFieldFill,
+                                  onChanged: (bool value) {
+                                    setState(() {
+                                      enableCustomizableDropDownFormFieldFill =
+                                          value;
+                                    });
+                                  },
+                                )),
                               ],
                             )),
                         Container(
@@ -541,18 +600,20 @@ class _DropDownSpinnersState extends State<DropDownSpinners> {
                                   data: ThemeData(
                                       highlightColor: Config.accentColor),
                                   child: DropdownButtonFormField(
-                                    /*decoration: InputDecoration(
-                                      //filled: true,
-                                      // fillColor: Hexcolor('#ecedec'),
-                                      labelText: 'Select Car',
-                                      border: const OutlineInputBorder(),
-                                      // border: new CustomBorderTextFieldSkin().getSkin(),
-                                    ),*/
                                     decoration: InputDecoration(
-                                        labelText: enableDropDownFormFieldLabelText ? "Select Car": null,
-                                        border: enableCustomizableDropDownFormFieldOutlineInputBorder ?
-                                        const OutlineInputBorder(): null,
-                                        contentPadding: const EdgeInsets.only(left: 10, right: 5)),
+                                        filled: enableCustomizableDropDownFormFieldFill,
+                                        fillColor: enableCustomizableDropDownFormFieldFill ? Colors.grey[50]: null,
+                                        labelText:
+                                            enableDropDownFormFieldLabelText
+                                                ? "Select Car"
+                                                : null,
+                                        border:
+                                            enableCustomizableDropDownFormFieldOutlineInputBorder
+                                                ? OutlineInputBorder(
+                                                    borderRadius: BorderRadius.circular(15))
+                                                : null,
+                                        contentPadding: const EdgeInsets.only(
+                                            left: 10, right: 5)),
                                     hint: const Text("Select Car"),
                                     // you can add drop down color
                                     dropdownColor: Colors.grey[100],
@@ -565,7 +626,8 @@ class _DropDownSpinnersState extends State<DropDownSpinners> {
                                     isExpanded: true,
                                     style: const TextStyle(
                                         color: Colors.black, fontSize: 15),
-                                    value: customizableDropDownFormFieldSelectedValue,
+                                    value:
+                                        customizableDropDownFormFieldSelectedValue,
                                     onChanged: (onChangedValue) {
                                       setState(() {
                                         customizableDropDownFormFieldSelectedValue =
@@ -585,10 +647,11 @@ class _DropDownSpinnersState extends State<DropDownSpinners> {
                             width: double.infinity,
                             margin: const EdgeInsets.only(
                                 left: 10, right: 10, top: 10, bottom: 10),
-                            child: customizableDropDownFormFieldSelectedValue != null
+                            child: customizableDropDownFormFieldSelectedValue !=
+                                    null
                                 ? Center(
-                                    child:
-                                        Text("Selected Car Is: $customizableDropDownFormFieldSelectedValue"))
+                                    child: Text(
+                                        "Selected Car Is: $customizableDropDownFormFieldSelectedValue"))
                                 : null)
                       ],
                     ))),
@@ -599,75 +662,79 @@ class _DropDownSpinnersState extends State<DropDownSpinners> {
                         top: 10, bottom: 10, left: 5, right: 5),
                     child: Card(
                         child: Column(
-                          children: [
-                            Container(
-                                width: double.infinity,
-                                padding: const EdgeInsets.only(
-                                    left: 10, right: 10, top: 10),
-                                child: const Center(
-                                  child: Text(
-                                    "DropDownFormField With HardCoded Text String List",
-                                    textAlign: TextAlign.center,
-                                    style: TextStyle(
-                                      fontWeight: FontWeight.bold,
+                      children: [
+                        Container(
+                            width: double.infinity,
+                            padding: const EdgeInsets.only(
+                                left: 10, right: 10, top: 10),
+                            child: const Center(
+                              child: Text(
+                                "DropDownFormField With HardCoded Text String List",
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            )),
+                        Container(
+                          width: double.infinity,
+                          margin: const EdgeInsets.only(
+                              left: 10, right: 10, top: 10, bottom: 10),
+                          padding: const EdgeInsets.only(left: 10, right: 10),
+                          child: Center(
+                              // set drop down item selector color
+                              // hold down on the drop down to experience the effect
+                              child: Theme(
+                                  data: ThemeData(
+                                      highlightColor: Config.accentColor),
+                                  child: DropdownButtonFormField(
+                                    decoration: InputDecoration(
+                                        labelText:
+                                            enableDropDownFormFieldLabelText
+                                                ? "Select Car"
+                                                : null,
+                                        border: const OutlineInputBorder(),
+                                        contentPadding: const EdgeInsets.only(
+                                            left: 10, right: 5)),
+                                    hint: const Text("Select Car"),
+                                    // you can add drop down color
+                                    dropdownColor: Colors.grey[100],
+                                    // set up your end icon here
+                                    icon: const Icon(
+                                      Icons.arrow_drop_down_sharp,
+                                      color: Config.accentColor,
                                     ),
-                                  ),
-                                )),
-                            Container(
-                              width: double.infinity,
-                              margin: const EdgeInsets.only(
-                                  left: 10, right: 10, top: 10, bottom: 10),
-                              padding: const EdgeInsets.only(left: 10, right: 10),
-                              child: Center(
-                                // set drop down item selector color
-                                // hold down on the drop down to experience the effect
-                                  child: Theme(
-                                      data: ThemeData(
-                                          highlightColor: Config.accentColor),
-                                      child: DropdownButtonFormField(
-                                        decoration: InputDecoration(
-                                            labelText: enableDropDownFormFieldLabelText ? "Select Car": null,
-                                            border: const OutlineInputBorder(),
-                                            contentPadding: const EdgeInsets.only(left: 10, right: 5)),
-                                        hint: const Text("Select Car"),
-                                        // you can add drop down color
-                                        dropdownColor: Colors.grey[100],
-                                        // set up your end icon here
-                                        icon: const Icon(
-                                          Icons.arrow_drop_down_sharp,
-                                          color: Config.accentColor,
-                                        ),
-                                        iconSize: 25,
-                                        isExpanded: true,
-                                        style: const TextStyle(
-                                            color: Colors.black, fontSize: 15),
-                                        value: dropDownFormFieldSelectedValue,
-                                        onChanged: (onChangedValue) {
-                                          setState(() {
-                                            dropDownFormFieldSelectedValue =
-                                                onChangedValue.toString();
-                                            enableDropDownFormFieldLabelText = true;
-                                          });
-                                        },
-                                        items: itemList
-                                            .map((selectedValue) =>
+                                    iconSize: 25,
+                                    isExpanded: true,
+                                    style: const TextStyle(
+                                        color: Colors.black, fontSize: 15),
+                                    value: dropDownFormFieldSelectedValue,
+                                    onChanged: (onChangedValue) {
+                                      setState(() {
+                                        dropDownFormFieldSelectedValue =
+                                            onChangedValue.toString();
+                                        enableDropDownFormFieldLabelText = true;
+                                      });
+                                    },
+                                    items: itemList
+                                        .map((selectedValue) =>
                                             DropdownMenuItem(
                                                 child: Text(selectedValue),
                                                 value: selectedValue))
-                                            .toList(),
-                                      ))),
-                            ),
-                            Container(
-                                width: double.infinity,
-                                margin: const EdgeInsets.only(
-                                    left: 10, right: 10, top: 10, bottom: 10),
-                                child: dropDownFormFieldSelectedValue != null
-                                    ? Center(
-                                    child:
-                                    Text("Selected Car Is: $dropDownFormFieldSelectedValue"))
-                                    : null)
-                          ],
-                        )))
+                                        .toList(),
+                                  ))),
+                        ),
+                        Container(
+                            width: double.infinity,
+                            margin: const EdgeInsets.only(
+                                left: 10, right: 10, top: 10, bottom: 10),
+                            child: dropDownFormFieldSelectedValue != null
+                                ? Center(
+                                    child: Text(
+                                        "Selected Car Is: $dropDownFormFieldSelectedValue"))
+                                : null)
+                      ],
+                    )))
               ],
             );
           })),
