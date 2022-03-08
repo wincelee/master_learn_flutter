@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:master_learn/screens/bottomsheet_scrollsheet.dart';
 import 'package:master_learn/screens/card_views.dart';
 import 'package:master_learn/screens/cupertino_screen.dart';
 import 'package:master_learn/screens/drop_down_spinners.dart';
@@ -55,6 +56,12 @@ class NavigationDrawer extends StatelessWidget {
               onTap: () => Navigator.of(context).pushReplacement(
                   MaterialPageRoute(
                       builder: (BuildContext context) => const DropDownSpinners(title: "Drop Down Spinners",)))),
+          createDrawerBodyItem(
+              icon: Icons.arrow_drop_down_circle_rounded,
+              text: 'BottomSheet/ScrollSheet',
+              onTap: () => Navigator.of(context).pushReplacement(
+                  MaterialPageRoute(
+                      builder: (BuildContext context) => const BottomSheetScrollSheet(title: "BottomSheet/ScrollSheet",)))),
           const Divider(),
           createDrawerBodyItem(
               icon: Icons.notifications_active, text: 'Notifications'),

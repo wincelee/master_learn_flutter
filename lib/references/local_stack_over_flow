@@ -184,6 +184,18 @@ Printing List
               Logger().i("id: ${item.id} title: ${item.title} subTitle: ${item.subTitle} imageUrl: ${item.imageUrl} ");
             }
 
+    >>> Example of using map instead of loop
+
+    for (DateTime date in datesList) {
+          formattedDates
+               add(DateFormat('dd-MM-yyyy').format(date));
+     }
+
+     formattedDates = datesList
+          .map((date) =>
+              DateFormat('dd-MM-yyyy').format(date))
+      .toList();
+
 ~~~ Using Method 3 (Json Encode)
 
     >>> add toJsonFunction in Class
@@ -200,6 +212,59 @@ Printing List
      >>> log/print using jsonEncode
 
      log("UserList: ${jsonEncode(usersList)}");
+
+-------------------------
+
+//grepper convert map values to string list flutter
+~~~ Convert Map values to string list flutter
+
+~~~ Example code below
+
+    final Map<dynamic, dynamic> json = {
+      "name": "alice",
+      "data": ["foo", "bar", "baz"],
+    };
+
+    // method 1, cast while mapping:
+    final data1 = (json["data"] as List)?.map((e) => e as String)?.toList();
+    print("method 1 prints: $data1");
+
+//end grepper
+
+-------------------------
+
+        Remove Duplicates From List
+
+import "dart:convert";
+void main(){
+  final myList = [
+    {
+      'name': 'Andy',
+      'age': 41
+    },
+    {
+      'name': 'Bill',
+      'age': 43
+    },
+    {
+      'name': 'Andy',
+      'age': 41
+    }
+  ];
+
+  // convert each item to a string by using JSON encoding
+  final jsonList = myList.map((item) => jsonEncode(item)).toList();
+
+  // using toSet - toList strategy
+  final uniqueJsonList = jsonList.toSet().toList();
+
+  // convert each item back to the original form using JSON decoding
+  final result = uniqueJsonList.map((item) => jsonDecode(item)).toList();
+
+  print(result);
+}
+
+
 
 ----------------------------------------------------------------------------------------------------
 
@@ -219,6 +284,19 @@ Flutter Dense TextField
 
 //end grepper
 -------------------------------------------------------------------------------------------------------
+
+//grepper run time type
+
+                        ||| Know RunTimeType of Object in Flutter |||
+                                  r-u-n-t-i-m-e-t-y-p-e
+
+
+ Logger().i("RunTimeType: ${value.runtimeType}");
+
+//end grepper
+
+-------------------------------------------------------------------------------------------------------
+
 
 Check operating system platform (o-p-e-r-a-t-i-n-g p-l-a-t-f-o-r-m)
 
@@ -399,20 +477,27 @@ showDialog(
                         s-t-e-p-p-e-r
 
 Stepper(
-        controlsBuilder: (context, {onStepContinue, onStepCancel}) {
-          return Row(
-            children: <Widget>[
-              TextButton(
-                onPressed: onStepContinue,
-                child: const Text('NEXT'),
-              ),
-              TextButton(
-                onPressed: onStepCancel,
-                child: const Text('CANCEL'),
-              ),
-            ],
-          );
-        },
+        controlsBuilder: (BuildContext context, ControlsDetails controls) {
+                      return Center(child: Container(
+                        margin: const EdgeInsets.only(top: 5),
+                          padding: const EdgeInsets.only(top: 5),
+                          child: Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: <Widget>[
+                          TextButton(
+                            onPressed: controls.onStepCancel,
+                            child: Text("Back".toUpperCase()),
+                          ),
+                          ElevatedButton(
+                            onPressed: controls.onStepContinue,
+                            child: Text("continue".toUpperCase()),
+                            style: ElevatedButton.styleFrom(
+                              shape: const StadiumBorder(),
+                            ),
+                          ),
+                        ],
+                      )));
+                    },
         ...
     )
 
@@ -941,5 +1026,144 @@ class _StepperBodyState extends State<StepperBody> {
             ),
           ]),
         ));
+  }
+}
+
+----------------------------------------------------------------------------------------------------
+
+                ||||| s-c-r-e-e-n-s-i-z-e-s |||||
+
+~~~ Getting Screen Sizes
+
+double deviceWidth = MediaQuery.of(context).size.width;
+double deviceHeight = MediaQuery.of(context).size.height;
+
+Container(
+width: deviceWidth<200?50:deviceWidth*0.5,
+height: deviceHeight<500?50:deviceHeight>800?200:deviceHeight*0.2,
+child: //child,
+)
+
+----------------------------------------------------------------------------------------------------
+
+                ||||| c-a-r-d-v-i-e-w-s |||||
+
+
+~~~ CardViews With Image at the very end of the cards
+
+import 'package:flutter/material.dart';
+
+void main() => runApp(MyApp());
+
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    final title = 'MyApp';
+
+return MaterialApp(
+  title: title,
+  home: Scaffold(
+    appBar: AppBar(
+      title: Text(title),
+    ),
+    body: ListView(
+      children: <Widget>[
+        Container(
+          margin:EdgeInsets.all(8.0),
+          child: Card(
+            shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(8.0))),
+            child: InkWell(
+              onTap: () => print("ciao"),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,  // add this
+                children: <Widget>[
+                  ClipRRect(
+                    borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(8.0),
+                      topRight: Radius.circular(8.0),
+                    ),
+                    child: Image.network(
+                        'https://placeimg.com/640/480/any',
+                       // width: 300,
+                        height: 150,
+                        fit:BoxFit.fill
+
+                    ),
+                  ),
+                  ListTile(
+                    title: Text('Pub 1'),
+                    subtitle: Text('Location 1'),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ),
+        Container(
+          margin:EdgeInsets.all(8.0),
+          child: Card(
+            shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(8.0))),
+            child: InkWell(
+              onTap: () => print("ciao"),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: <Widget>[
+                  ClipRRect(
+                    borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(8.0),
+                      topRight: Radius.circular(8.0),
+                    ),
+                    child: Image.network(
+                        'https://placeimg.com/640/480/any',
+                        // width: 300,
+                        height: 150,
+                        fit:BoxFit.fill
+
+                    ),
+                  ),
+                  ListTile(
+                    title: Text('Pub 1'),
+                    subtitle: Text('Location 1'),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ),
+        Container(
+          margin:EdgeInsets.all(8.0),
+          child: Card(
+            shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(8.0))),
+            child: InkWell(
+              onTap: () => print("ciao"),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: <Widget>[
+                  ClipRRect(
+                    borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(8.0),
+                      topRight: Radius.circular(8.0),
+                    ),
+                    child: Image.network(
+                        'https://placeimg.com/640/480/any',
+                        // width: 300,
+                        height: 150,
+                        fit:BoxFit.fill
+
+                    ),
+                  ),
+                  ListTile(
+                    title: Text('Pub 1'),
+                    subtitle: Text('Location 1'),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ),
+      ],
+    ),
+      ),
+    );
   }
 }

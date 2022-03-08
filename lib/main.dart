@@ -2,7 +2,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_windowmanager/flutter_windowmanager.dart';
 import 'package:master_learn/classes/config.dart';
+import 'package:master_learn/screens/bottomsheet_scrollsheet.dart';
 import 'package:master_learn/screens/card_views.dart';
 import 'package:master_learn/screens/cupertino_screen.dart';
 import 'package:master_learn/screens/drop_down_spinners.dart';
@@ -13,6 +15,7 @@ import 'package:master_learn/screens/snack_bars.dart';
 // Tutorial link [https://www.thirdrocktechkno.com/blog/how-to-implement-navigation-drawer-in-flutter/]
 
 Future main() async {
+
   LicenseRegistry.addLicense(() async* {
     final license = await rootBundle.loadString('fonts/OFL.txt');
     yield LicenseEntryWithLineBreaks(['fonts'], license);
@@ -25,11 +28,33 @@ Future main() async {
   //     ],
   //     enabled: !kReleaseMode, builder: (context) => const MyApp()));
 
+
   runApp(const MyApp());
 }
 
+Future addFlags() async{
+
+  if (kDebugMode) {
+    if (defaultTargetPlatform == TargetPlatform.android) {
+
+      await FlutterWindowManager.addFlags(
+          FlutterWindowManager.FLAG_TURN_SCREEN_ON);
+
+      await FlutterWindowManager.addFlags(
+          FlutterWindowManager.FLAG_DISMISS_KEYGUARD);
+
+      await FlutterWindowManager.addFlags(
+          FlutterWindowManager.FLAG_SHOW_WHEN_LOCKED);
+
+    }
+  }
+
+}
+
 class MyApp extends StatelessWidget {
-  final String startPage = "dropDowns";
+
+
+  final String startPage = "bottomSheet";
   final bool isMaterialApp = true;
 
   const MyApp({Key? key}) : super(key: key);
@@ -38,6 +63,8 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     //Future.delayed(Duration.zero, () => appSelector(context));
+
+    addFlags();
 
     if (isMaterialApp) {
       return MaterialApp(
@@ -56,6 +83,8 @@ class MyApp extends StatelessWidget {
               return const FetchListsGrids();
             }else if (Config().equalsIgnoreCase(startPage, "dropDowns")) {
               return const DropDownSpinners(title: "Drop Down Spinners");
+            }else if (Config().equalsIgnoreCase(startPage, "bottomSheet")) {
+              return const BottomSheetScrollSheet(title: "BottomSheet/ScrollSheet");
             }
             return const FetchListsGrids();
           }));
