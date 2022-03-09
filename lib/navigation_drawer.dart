@@ -57,7 +57,7 @@ class NavigationDrawer extends StatelessWidget {
                   MaterialPageRoute(
                       builder: (BuildContext context) => const DropDownSpinners(title: "Drop Down Spinners",)))),
           createDrawerBodyItem(
-              icon: Icons.arrow_drop_down_circle_rounded,
+              icon: Icons.border_bottom_outlined,
               text: 'BottomSheet/ScrollSheet',
               onTap: () => Navigator.of(context).pushReplacement(
                   MaterialPageRoute(

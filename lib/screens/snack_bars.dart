@@ -267,7 +267,7 @@ class _SnackBarsState extends State<SnackBars> {
                             "SnackBar with margin, behavior, padding, background color apart from action using custom made snackbar widget",
                             style: TextStyle(color: Colors.white, fontSize: 15),
                           ),
-                        ))
+                        )),
                   ],
                 ),
               )),
