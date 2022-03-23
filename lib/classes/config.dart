@@ -109,4 +109,31 @@ class Config {
         });
   }
 
+  static List<Map<String, String>> itemsList = [
+    {
+      "name":"Laptop Apple MacBook Air With M1 Chip",
+      "imageUrl":"https://ke.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/32/999425/1.jpg?8801"
+    },
+    {
+      "name":"Generic 7-inch Touch Control Laptop Q",
+      "imageUrl":"https://ke.jumia.is/unsafe/fit-in/500x500/filters:fill(white)/product/11/356195/1.jpg?5748"
+    },
+    {
+      "name":"Generic Notebook Computer",
+      "imageUrl":"https://ke.jumia.is/unsafe/fit-in/500x500/filters:fill(white)/product/41/836195/1.jpg?4367"
+    },
+    {
+      "name":"Generic Laptop Sleeve Case",
+      "imageUrl":"https://ke.jumia.is/unsafe/fit-in/500x500/filters:fill(white)/product/07/735195/1.jpg?8604"
+    },
+    {
+      "name":"Generic Ly Voltage Transformer",
+      "imageUrl":"https://ke.jumia.is/unsafe/fit-in/500x500/filters:fill(white)/product/58/288692/1.jpg?0791"
+    },
+    {
+      "name":"117 In 1 Magnetic Screwdriver Set",
+      "imageUrl":"https://ke.jumia.is/unsafe/fit-in/500x500/filters:fill(white)/product/70/834354/1.jpg?4502"
+    },
+  ];
+
 }

@@ -15,7 +15,6 @@ import 'package:master_learn/screens/snack_bars.dart';
 // Tutorial link [https://www.thirdrocktechkno.com/blog/how-to-implement-navigation-drawer-in-flutter/]
 
 Future main() async {
-
   LicenseRegistry.addLicense(() async* {
     final license = await rootBundle.loadString('fonts/OFL.txt');
     yield LicenseEntryWithLineBreaks(['fonts'], license);
@@ -28,15 +27,12 @@ Future main() async {
   //     ],
   //     enabled: !kReleaseMode, builder: (context) => const MyApp()));
 
-
   runApp(const MyApp());
 }
 
-Future addFlags() async{
-
+Future addFlags() async {
   if (kDebugMode) {
     if (defaultTargetPlatform == TargetPlatform.android) {
-
       await FlutterWindowManager.addFlags(
           FlutterWindowManager.FLAG_TURN_SCREEN_ON);
 
@@ -45,15 +41,11 @@ Future addFlags() async{
 
       await FlutterWindowManager.addFlags(
           FlutterWindowManager.FLAG_SHOW_WHEN_LOCKED);
-
     }
   }
-
 }
 
 class MyApp extends StatelessWidget {
-
-
   final String startPage = "bottomSheet";
   final bool isMaterialApp = true;
 
@@ -81,10 +73,11 @@ class MyApp extends StatelessWidget {
               return const SnackBars();
             } else if (Config().equalsIgnoreCase(startPage, "listsGrids")) {
               return const FetchListsGrids();
-            }else if (Config().equalsIgnoreCase(startPage, "dropDowns")) {
+            } else if (Config().equalsIgnoreCase(startPage, "dropDowns")) {
               return const DropDownSpinners(title: "Drop Down Spinners");
-            }else if (Config().equalsIgnoreCase(startPage, "bottomSheet")) {
-              return const BottomSheetScrollSheet(title: "BottomSheet/ScrollSheet");
+            } else if (Config().equalsIgnoreCase(startPage, "bottomSheet")) {
+              return const BottomSheetScrollSheet(
+                  title: "BottomSheet/ScrollSheet");
             }
             return const FetchListsGrids();
           }));

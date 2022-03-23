@@ -45,6 +45,7 @@ dependencies:
   device_preview: ^1.0.0
   autocomplete_textfield: ^1.7.3
   flutter_windowmanager: ^0.2.0
+  sliding_up_panel: ^2.0.0+1
 
 dev_dependencies:
   flutter_test:
