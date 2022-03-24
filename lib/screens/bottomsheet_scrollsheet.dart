@@ -5,7 +5,6 @@ import 'package:master_learn/bottom_sheet_screens/my_sliding_up_panel.dart';
 import 'package:master_learn/classes/async_futures.dart';
 import 'package:master_learn/classes/config.dart';
 import 'package:master_learn/navigation_drawer.dart';
-import 'package:master_learn/widgets/icon_progress_indicator.dart';
 import 'package:master_learn/widgets/my_widgets/my_custom_card_widget.dart';
 
 class BottomSheetScrollSheet extends StatefulWidget {

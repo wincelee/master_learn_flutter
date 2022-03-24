@@ -11,6 +11,7 @@ import 'package:master_learn/screens/drop_down_spinners.dart';
 import 'package:master_learn/screens/fetch_lists_grids.dart';
 import 'package:master_learn/screens/logins.dart';
 import 'package:master_learn/screens/snack_bars.dart';
+import 'package:master_learn/screens/tab_bars_screen.dart';
 
 // Tutorial link [https://www.thirdrocktechkno.com/blog/how-to-implement-navigation-drawer-in-flutter/]
 
@@ -46,7 +47,7 @@ Future addFlags() async {
 }
 
 class MyApp extends StatelessWidget {
-  final String startPage = "bottomSheet";
+  final String startPage = "tabBars";
   final bool isMaterialApp = true;
 
   const MyApp({Key? key}) : super(key: key);
@@ -78,6 +79,9 @@ class MyApp extends StatelessWidget {
             } else if (Config().equalsIgnoreCase(startPage, "bottomSheet")) {
               return const BottomSheetScrollSheet(
                   title: "BottomSheet/ScrollSheet");
+            } else if (Config().equalsIgnoreCase(startPage, "tabBars")) {
+              return const TabBarsScreen(
+                  title: "TabBars");
             }
             return const FetchListsGrids();
           }));
