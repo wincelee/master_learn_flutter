@@ -6,6 +6,7 @@ import 'package:master_learn/screens/drop_down_spinners.dart';
 import 'package:master_learn/screens/fetch_lists_grids.dart';
 import 'package:master_learn/screens/logins.dart';
 import 'package:master_learn/screens/snack_bars.dart';
+import 'package:master_learn/screens/tab_bars_screen.dart';
 import 'package:master_learn/widgets/create_drawer_body_item.dart';
 import 'package:master_learn/widgets/create_drawer_header.dart';
 
@@ -62,6 +63,13 @@ class NavigationDrawer extends StatelessWidget {
               onTap: () => Navigator.of(context).pushReplacement(
                   MaterialPageRoute(
                       builder: (BuildContext context) => const BottomSheetScrollSheet(title: "BottomSheet/ScrollSheet",)))),
+          createDrawerBodyItem(
+              icon: Icons.table_chart,
+              text: 'Tab Bars',
+              onTap: () => Navigator.of(context).pushReplacement(
+                  MaterialPageRoute(
+                      builder: (BuildContext context) => const TabBarsScreen(title: "Tab Bars",)))),
+
           const Divider(),
           createDrawerBodyItem(
               icon: Icons.notifications_active, text: 'Notifications'),
