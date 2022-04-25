@@ -50,6 +50,7 @@ class _MySlidingUpPanelState extends State<MySlidingUpPanel> {
     super.initState();
 
     populateItemsList();
+
   }
 
   @override

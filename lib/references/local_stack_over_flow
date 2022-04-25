@@ -1,3 +1,8 @@
+
+----------------------------------------------------------------------------------------------------
+
+                                    j-s-o-n
+
 JsonObjectWithJsonArrayThatHasName
 
 {
@@ -265,8 +270,142 @@ void main(){
 }
 
 
+----------------------------------------------------------------------------------------------------
+
+                                    ||| l-i-s-t-v-i-e-w-s |||
+
+
+~~~ Using custom scroll view
+
+
+  @override
+  Widget build(BuildContext context) => Scaffold(
+      body: CustomScrollView(slivers: [
+            //custom widget
+            SliverToBoxAdapter(child: YourContainer()),
+            //horizontal list
+            SliverToBoxAdapter(child: Container(
+                  height: 55,
+                  child: ListView.builder(
+                      scrollDirection: Axis.horizontal,
+                      itemCount: 10,
+                      itemBuilder: (context, index) {
+                        return YourItem();
+                      })))
+            ])),
+            //grid list
+            SliverGrid(
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 2, mainAxisSpacing: 0, crossAxisSpacing: 0),
+                delegate: SliverChildListDelegate(
+                    List.generate(10, (index) => YourAnotherItem())))
+          ]));
+
+
+~~~ Using ListView method 1
+
+body: ListView(
+  children: <Widget>[
+    GridView.count(
+      crossAxisCount: 3,
+      physics: NeverScrollableScrollPhysics(), // to disable GridView's scrolling
+      shrinkWrap: true, // You won't see infinite size error
+      children: <Widget>[
+        Container(
+          height: 24,
+          color: Colors.green,
+        ),
+        Container(
+          height: 24,
+          color: Colors.blue,
+        ),
+      ],
+    ),
+  ],
+),
+
+
+~~~ Using ListView method 2
+
+Scaffold(
+      backgroundColor: Colors.white,
+      appBar: new AppBar(
+        title: new Text('Search'),
+      ),
+      body: new ListView(
+        shrinkWrap: true,
+        physics: ScrollPhysics(),
+        children: <Widget>[
+          new SizedBox(height: 20.0),
+          new Container(
+            child: new ListView.builder(
+              shrinkWrap: true,
+              itemCount: 5,
+              physics: ScrollPhysics(),
+              itemBuilder: (context, index) {
+                return new Column(
+                  children: <Widget>[
+                    new Container(
+                      height: 50.0,
+                      color: Colors.green,
+                      child: new Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: <Widget>[
+                          new Icon(Icons.format_list_numbered,
+                              color: Colors.white),
+                          new Padding(
+                              padding: const EdgeInsets.only(right: 5.0)),
+                          new Text('List Item',
+                              style: new TextStyle(
+                                  fontSize: 20.0, color: Colors.white)),
+                        ],
+                      ),
+                    ),
+                    new Container(
+                      height: 150.0,
+                      child: new ListView.builder(
+                        shrinkWrap: true,
+                        scrollDirection: Axis.horizontal,
+                        itemCount: 10,
+                        itemBuilder: (context, index) {
+                          return new Card(
+                            elevation: 5.0,
+                            child: new Container(
+                              height: MediaQuery.of(context).size.width / 3,
+                              width: MediaQuery.of(context).size.width / 3,
+                              alignment: Alignment.center,
+                              child: new Text('Item $index'),
+                            ),
+                          );
+                        },
+                      ),
+                    ),
+                    new SizedBox(height: 20.0),
+                  ],
+                );
+              },
+            ),
+          ),
+        ],
+      ),
+    );
 
 ----------------------------------------------------------------------------------------------------
+
+                                    ||| T-e-x-t-F-o-r-m-F-i-e-l-d |||
+
+~~~ Changing TextFormField focusedBorderColor
+
+        TextFormField(
+                decoration: InputDecoration(
+                  labelText: "Label Text",
+                  fillColor: Colors.white,
+                  focusedBorder:OutlineInputBorder(
+                    borderSide: const BorderSide(color: Colors.white, width: 2.0),
+                    borderRadius: BorderRadius.circular(25.0),
+                  ),
+                ),
+              )
 
 //grepper dense text form field flutter
 
@@ -345,6 +484,30 @@ main() async {
   print('Response body: ${response.body}');
 
 }
+
+-------------------------------------------------------------------------------------------------------
+
+                        h-t-t-p-s
+
+~~~ Get Request with params and headers method 1
+
+~~~ Where body and headers are both maps
+
+       final response = await get(Uri.parse(url).replace(queryParameters: body),
+          headers: headers);
+
+~~~ Get Request with params and headers method 2
+
+final queryParameters = {
+      'param1': 'one',
+      'param2': 'two',
+    };
+
+    try{
+      final response = await get(Uri.http(url, params), headers: headers);
+    }catch(e){
+
+    }
 
 -------------------------------------------------------------------------------------------------------
 
@@ -1047,6 +1210,7 @@ child: //child,
 ----------------------------------------------------------------------------------------------------
 
                 ||||| c-a-r-d-v-i-e-w-s |||||
+                      ||||| c-a-r-d|||||
 
 
 ~~~ CardViews With Image at the very end of the cards
@@ -1167,3 +1331,43 @@ return MaterialApp(
     );
   }
 }
+
+
+~~~ Card with border at the right end side or the left end side
+
+  Card(
+            clipBehavior: Clip.antiAlias,
+            child: Container(
+              height: 100,
+              decoration: BoxDecoration(
+                  border: Border(
+                      right: BorderSide(color: Colors.green, width: 5))),
+            ),
+          )
+
+~~~ Card with border at the right end side or the left end side  method 2
+
+Container(
+  padding: const EdgeInsets.only(right: 8.0, left: 8.0),
+  height: 60,
+  child: Card(
+    elevation: 2,
+    shape: RoundedRectangleBorder(
+        side: BorderSide(color: appThemeColor.shade200, width: 0.5),
+        borderRadius: BorderRadius.circular(5)),
+    child: Row(
+      mainAxisAlignment: MainAxisAlignment.end,
+      children: <Widget>[
+        Container(
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.only(
+                topRight: Radius.circular(15),
+                bottomRight: Radius.circular(15)),
+            color: Colors.deepPurple,
+          ),
+          width: 5,
+        ),
+      ],
+    ),
+  ),
+)
