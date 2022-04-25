@@ -10,6 +10,7 @@ import 'package:master_learn/screens/cupertino_screen.dart';
 import 'package:master_learn/screens/drop_down_spinners.dart';
 import 'package:master_learn/screens/fetch_lists_grids.dart';
 import 'package:master_learn/screens/logins.dart';
+import 'package:master_learn/screens/options_menu.dart';
 import 'package:master_learn/screens/snack_bars.dart';
 import 'package:master_learn/screens/tab_bars_screen.dart';
 
@@ -47,7 +48,7 @@ Future addFlags() async {
 }
 
 class MyApp extends StatelessWidget {
-  final String startPage = "tabBars";
+  final String startPage = "optionsMenu";
   final bool isMaterialApp = true;
 
   const MyApp({Key? key}) : super(key: key);
@@ -62,6 +63,7 @@ class MyApp extends StatelessWidget {
     if (isMaterialApp) {
       return MaterialApp(
           title: 'Master Learn With Navigation',
+          debugShowCheckedModeBanner: false,
           theme: ThemeData(
             primarySwatch: Config.createMaterialColor(Colors.green),
           ),
@@ -82,6 +84,9 @@ class MyApp extends StatelessWidget {
             } else if (Config().equalsIgnoreCase(startPage, "tabBars")) {
               return const TabBarsScreen(
                   title: "TabBars");
+            }else if (Config().equalsIgnoreCase(startPage, "optionsMenu")) {
+              return const OptionsMenu(
+                  title: "OptionsMenu");
             }
             return const FetchListsGrids();
           }));

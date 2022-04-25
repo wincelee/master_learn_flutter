@@ -87,7 +87,7 @@ class _BottomSheetScrollSheetState extends State<BottomSheetScrollSheet> {
                         backgroundColor: Colors.white,
                         // Color behind bottom sheet
                         // barrierColor: Colors.transparent,
-                        // transitionAnimationController: ,
+                        //  transitionAnimationController: ,
                         builder: (context) {
                           // use StatefulBuilder to enable updating of state in bottom sheet
                           return StatefulBuilder(builder: (context, setState) {
