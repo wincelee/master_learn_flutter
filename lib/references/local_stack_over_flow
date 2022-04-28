@@ -238,6 +238,24 @@ Printing List
 
 -------------------------
 
+        Printing using jsonEncode
+
+~~~ Examples Below
+
+      User user = User('bezkoder', 21);
+      String jsonUser = jsonEncode(user);
+      print(jsonUser);
+
+      List<Tag> tags = [Tag('tagA', 3), Tag('tagB', 6), Tag('tagC', 8)];
+      String jsonTags = jsonEncode(tags);
+      print(jsonTags);
+
+      Tutorial tutorial = Tutorial('Dart Tut#2', 'Tut#2 Description', user, tags);
+      String jsonTutorial = jsonEncode(tutorial);
+      print(jsonTutorial);
+
+-------------------------
+
         Remove Duplicates From List
 
 import "dart:convert";
@@ -508,6 +526,52 @@ final queryParameters = {
     }catch(e){
 
     }
+
+
+-------------------------------------------------------------------------------------------------------
+
+                        m-a-p-s
+
+~~~ ListView with map key value no hardcoding
+
+    Column(children: [
+            Flexible(child: FutureBuilder(
+                future: AsyncFutures().initPlatformDetails(),
+                builder: (BuildContext context, AsyncSnapshot<Map<String, dynamic>> asyncSnapshot){
+
+                  if(asyncSnapshot.hasData) {
+
+                    return ListView(
+                      children: asyncSnapshot.data!.keys.map((String value) {
+                        return Row(
+                          children: <Widget>[
+                            Container(
+                              padding: const EdgeInsets.all(10),
+                              child: Text(
+                                value,
+                                style: const TextStyle(
+                                  fontWeight: FontWeight.bold
+                                ),
+                              ),
+                            ),
+                            Expanded(child: Container(
+                              padding: const EdgeInsets.fromLTRB(0.0, 10.0, 0.0, 10.0),
+                              child: Text(
+                                asyncSnapshot.data![value].toString(),
+                              ),
+                            ))
+                          ],
+                        );
+                      }).toList(),
+                    );
+                  }
+
+                  return const Text("Getting Platform Details...");
+                }))
+          ],)
+
+
+
 
 -------------------------------------------------------------------------------------------------------
 

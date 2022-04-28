@@ -11,6 +11,8 @@ class OptionsMenuWithIcons extends StatefulWidget {
 }
 
 class _OptionsMenuWithIconsState extends State<OptionsMenuWithIcons> {
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -18,14 +20,15 @@ class _OptionsMenuWithIconsState extends State<OptionsMenuWithIcons> {
         title: Text(widget.title),
         actions: [
           PopupMenuButton<MenuItem>(
-              onSelected: (item) {},
+              onSelected: (item) => onSelected(context, item),
               itemBuilder: (context) => [
                     ...[
-                      const MenuItem(text: "Save", icon: Icons.save_rounded),
-                      const MenuItem(text: "Share", icon: Icons.share_rounded)
+                      MenuItem.saveMenuItem,
+                      MenuItem.shareMenuItem
                     ]
                         .map<PopupMenuItem<MenuItem>>(
                             (menuItem) => PopupMenuItem(
+                              value: menuItem,
                                     child: Row(
                                         crossAxisAlignment: CrossAxisAlignment.center,
                                         mainAxisSize: MainAxisSize.min,
@@ -48,5 +51,33 @@ class _OptionsMenuWithIconsState extends State<OptionsMenuWithIcons> {
         child: Image.asset("images/ic_options_menu_with_icon.jpg"),
       ),
     );
+  }
+
+  void onSelected(BuildContext context, MenuItem menuItem){
+    switch(menuItem){
+      case MenuItem.saveMenuItem:
+
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+              elevation: 10,
+              content: Text('Save Clicked'),
+              margin: EdgeInsets.all(15),
+              behavior: SnackBarBehavior.floating,
+            duration: Duration(milliseconds: 500),),
+        );
+        break;
+
+      case MenuItem.shareMenuItem:
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+              elevation: 10,
+              content: Text('Share Clicked'),
+              margin: EdgeInsets.all(15),
+              behavior: SnackBarBehavior.floating,
+            duration: Duration(milliseconds: 500),
+          ),
+        );
+        break;
+    }
   }
 }
