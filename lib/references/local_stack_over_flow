@@ -408,6 +408,36 @@ Scaffold(
       ),
     );
 
+
+----------------------------------------------------------------------------------------------------
+
+                                    ||| Page Transitions |||
+                                           ||| Page |||
+                                          ||| P-a-g-e |||
+                                         ||| Transitions |||
+                                   ||| T-r-a-n-s-i-t-i-o-n-s |||
+
+~~~ Cupertino page transition
+
+     Navigator.push(context, CupertinoPageRoute(builder: (context) => const Home()));
+
+~~~ Custom made Fade Transition
+
+    Navigator.push(
+            context,
+            PageRouteBuilder(
+              pageBuilder: (c, a1, a2) => const Home(),
+              transitionsBuilder: (c, anim, a2, child) => FadeTransition(opacity: anim, child: child),
+              transitionDuration: const Duration(seconds: 1),
+            ),
+          );
+
+~~~ Using Custom built PageRouteBuilders with custom Animations found in references
+~~~ Example below
+
+    Navigator.pushReplacement(context, ScaleInTransition(page: const Home()));
+
+
 ----------------------------------------------------------------------------------------------------
 
                                     ||| T-e-x-t-F-o-r-m-F-i-e-l-d |||
@@ -570,7 +600,85 @@ final queryParameters = {
                 }))
           ],)
 
+~~~ Getting Map indexes
 
+        >>> Example (index["image"])
+
+
+        Row(
+                            children: departmentsList!
+                                .map<Widget>((index) => GestureDetector(
+                                      child: GridTile(
+                                        child: Card(
+                                          shape: RoundedRectangleBorder(
+                                            // card corner radius
+                                            borderRadius: BorderRadius.circular(10),
+                                          ),
+                                          elevation: 5,
+                                          color: Colors.white,
+                                          child: Container(
+                                            alignment: Alignment.center,
+                                            child: Column(
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.center,
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.center,
+                                              mainAxisSize: MainAxisSize.min,
+                                              children: [
+                                                Flexible(
+                                                  child: ClipRRect(
+                                                      borderRadius:
+                                                          BorderRadius.circular(5),
+                                                      child: FadeInImage.assetNetwork(
+                                                          fit: BoxFit.cover,
+                                                          placeholder:
+                                                              "gifs/converging_dots.gif",
+                                                          image: index["image"],
+                                                          width: 200,
+                                                          height: 100)),
+                                                ),
+                                                Container(
+                                                  padding: const EdgeInsets.all(5),
+                                                  child: Text(
+                                                    index["name"] ?? '',
+                                                    maxLines: 1,
+                                                    softWrap: true,
+                                                    textAlign: TextAlign.center,
+                                                    style: Config.normalTextStyle,
+                                                  ),
+                                                )
+                                              ],
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                    ))
+                                .toList(),
+                          )
+
+~~~ Getting Map Index if list is empty
+
+    list.map((element) {
+      // get index
+      var index = userBoard.indexOf(element);
+      return Container(
+
+      );
+    }).toList()
+
+~~~ Getting Map Index using asMap.entries
+
+     list.asMap().entries.map((e) {
+           var index = e.key;
+           var value = e.value;
+           // ...
+         }
+
+~~~ Getting Map Index using mapIndexed
+
+    list.mapIndexed(
+      (int index, element) => Container( ... ))
+         .toList();
 
 
 -------------------------------------------------------------------------------------------------------
