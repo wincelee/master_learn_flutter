@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:master_learn/classes/menu_item.dart';
+import 'package:master_learn/classes/my_menu_items.dart';
 
 class OptionsMenuWithIcons extends StatefulWidget {
   final String title;
@@ -19,16 +19,16 @@ class _OptionsMenuWithIconsState extends State<OptionsMenuWithIcons> {
       appBar: AppBar(
         title: Text(widget.title),
         actions: [
-          PopupMenuButton<MenuItem>(
+          PopupMenuButton<MyMenuItems>(
               onSelected: (item) => onSelected(context, item),
               itemBuilder: (context) => [
                     ...[
-                      MenuItem.saveMenuItem,
-                      MenuItem.shareMenuItem
+                      MyMenuItems.saveMenuItem,
+                      MyMenuItems.shareMenuItem
                     ]
-                        .map<PopupMenuItem<MenuItem>>(
-                            (menuItem) => PopupMenuItem(
-                              value: menuItem,
+                        .map<PopupMenuItem<MyMenuItems>>(
+                            (myMenuItems) => PopupMenuItem(
+                              value: myMenuItems,
                                     child: Row(
                                         crossAxisAlignment: CrossAxisAlignment.center,
                                         mainAxisSize: MainAxisSize.min,
@@ -37,11 +37,11 @@ class _OptionsMenuWithIconsState extends State<OptionsMenuWithIcons> {
                                   Flexible(child: Container(
                                     margin: const EdgeInsets.only(right: 10),
                                       child: Icon(
-                                    menuItem.icon,
+                                        myMenuItems.icon,
                                     color: Colors.black,
                                     size: 20,
                                   ))),
-                                  Flexible(child: Text(menuItem.text))
+                                  Flexible(child: Text(myMenuItems.text))
                                 ])))
                         .toList()
                   ])
@@ -53,9 +53,9 @@ class _OptionsMenuWithIconsState extends State<OptionsMenuWithIcons> {
     );
   }
 
-  void onSelected(BuildContext context, MenuItem menuItem){
-    switch(menuItem){
-      case MenuItem.saveMenuItem:
+  void onSelected(BuildContext context, MyMenuItems myMenuItems){
+    switch(myMenuItems){
+      case MyMenuItems.saveMenuItem:
 
         ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(
@@ -67,7 +67,7 @@ class _OptionsMenuWithIconsState extends State<OptionsMenuWithIcons> {
         );
         break;
 
-      case MenuItem.shareMenuItem:
+      case MyMenuItems.shareMenuItem:
         ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(
               elevation: 10,

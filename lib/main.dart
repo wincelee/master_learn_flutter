@@ -14,6 +14,8 @@ import 'package:master_learn/screens/options_menu.dart';
 import 'package:master_learn/screens/snack_bars.dart';
 import 'package:master_learn/screens/tab_bars_screen.dart';
 
+import 'screens/banners_screen.dart';
+
 // Tutorial link [https://www.thirdrocktechkno.com/blog/how-to-implement-navigation-drawer-in-flutter/]
 
 Future main() async {
@@ -48,7 +50,7 @@ Future addFlags() async {
 }
 
 class MyApp extends StatelessWidget {
-  final String startPage = "optionsMenu";
+  final String startPage = "bannersScreen";
   final bool isMaterialApp = true;
 
   const MyApp({Key? key}) : super(key: key);
@@ -87,6 +89,9 @@ class MyApp extends StatelessWidget {
             }else if (Config().equalsIgnoreCase(startPage, "optionsMenu")) {
               return const OptionsMenu(
                   title: "OptionsMenu");
+            }else if (Config().equalsIgnoreCase(startPage, "bannersScreen")) {
+              return const BannersScreen(
+                  title: "Banners Screen");
             }
             return const FetchListsGrids();
           }));

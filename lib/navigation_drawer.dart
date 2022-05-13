@@ -11,6 +11,9 @@ import 'package:master_learn/screens/tab_bars_screen.dart';
 import 'package:master_learn/widgets/create_drawer_body_item.dart';
 import 'package:master_learn/widgets/create_drawer_header.dart';
 
+import 'screens/banners_screen.dart';
+import 'widgets/image_icon_drawer_body_item.dart';
+
 class NavigationDrawer extends StatelessWidget {
   const NavigationDrawer({Key? key}) : super(key: key);
 
@@ -76,6 +79,12 @@ class NavigationDrawer extends StatelessWidget {
               onTap: () => Navigator.of(context).pushReplacement(
                   MaterialPageRoute(
                       builder: (BuildContext context) => const OptionsMenu(title: "Options Menu",)))),
+          imageIconDrawerBodyItem(
+              imageAssetPath: "icons/ic_banner.png",
+              text: 'Banners Screen',
+              onTap: () => Navigator.of(context).pushReplacement(
+                  MaterialPageRoute(
+                      builder: (BuildContext context) => const BannersScreen(title: "Banners Screen",)))),
           const Divider(),
           createDrawerBodyItem(
               icon: Icons.notifications_active, text: 'Notifications'),
