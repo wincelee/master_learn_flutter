@@ -79,53 +79,43 @@ class _BannersScreenState extends State<BannersScreen> {
                   ),
                 )),
             myCustomBanner(
-                child: Card(
-                clipBehavior: Clip.antiAlias,
-                shape: const RoundedRectangleBorder(
-                    // card corner radius
-                    borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(5),
-                        topRight: Radius.circular(5),
-                        bottomLeft: Radius.circular(10),
-                        bottomRight: Radius.circular(10))),
-                color: Colors.white,
-                elevation: 10,
-                child: Column(
-                  children: [
-                    SizedBox(
-                      child: Image.asset("images/ic_koenigsegg.jpg"),
-                    ),
-                    Container(
-                        padding: const EdgeInsets.only(
-                            top: 10, bottom: 10, right: 5, left: 5),
-                        child: const Text(
-                          "Default Banner From Flutter as Card child with Clip.antiAlias",
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                              fontSize: 15, fontWeight: FontWeight.w500),
-                        )),
-                    Container(
-                        padding: const EdgeInsets.only(
-                            top: 5, bottom: 5, right: 5, left: 5),
-                        child: const Text(
-                          "Banner has no padding or margin",
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                              fontSize: 15, fontWeight: FontWeight.w400),
-                        )),
-                    Container(
-                        padding: const EdgeInsets.only(
-                            top: 5, bottom: 5, right: 5, left: 5),
-                        child: const Text(
-                          "Banner location set to top start",
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                              fontSize: 15, fontWeight: FontWeight.w400),
-                        ))
-                  ],
-                ),
+              margin:
+                  const EdgeInsets.only(left: 10, right: 10, top: 5, bottom: 5),
+              child: Column(
+                children: [
+                  SizedBox(
+                    child: Image.asset("images/ic_koenigsegg.jpg"),
+                  ),
+                  Container(
+                      padding: const EdgeInsets.only(
+                          top: 10, bottom: 10, right: 5, left: 5),
+                      child: const Text(
+                        "Default Banner From Flutter as Card child with Clip.antiAlias",
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                            fontSize: 15, fontWeight: FontWeight.w500),
+                      )),
+                  Container(
+                      padding: const EdgeInsets.only(
+                          top: 5, bottom: 5, right: 5, left: 5),
+                      child: const Text(
+                        "Banner has no padding or margin",
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                            fontSize: 15, fontWeight: FontWeight.w400),
+                      )),
+                  Container(
+                      padding: const EdgeInsets.only(
+                          top: 5, bottom: 5, right: 5, left: 5),
+                      child: const Text(
+                        "Banner location set to top start",
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                            fontSize: 15, fontWeight: FontWeight.w400),
+                      ))
+                ],
               ),
-            )
+            ),
           ],
         ),
       ),
