@@ -9,6 +9,7 @@ import 'package:master_learn/screens/card_views.dart';
 import 'package:master_learn/screens/cupertino_screen.dart';
 import 'package:master_learn/screens/drop_down_spinners.dart';
 import 'package:master_learn/screens/fetch_lists_grids.dart';
+import 'package:master_learn/screens/firestore_list.dart';
 import 'package:master_learn/screens/logins.dart';
 import 'package:master_learn/screens/options_menu.dart';
 import 'package:master_learn/screens/snack_bars.dart';
@@ -50,7 +51,7 @@ Future addFlags() async {
 }
 
 class MyApp extends StatelessWidget {
-  final String startPage = "bannersScreen";
+  final String startPage = "optionsMenu";
   final bool isMaterialApp = true;
 
   const MyApp({Key? key}) : super(key: key);
@@ -92,6 +93,9 @@ class MyApp extends StatelessWidget {
             }else if (Config().equalsIgnoreCase(startPage, "bannersScreen")) {
               return const BannersScreen(
                   title: "Banners Screen");
+            }else if (Config().equalsIgnoreCase(startPage, "fireStoreList")) {
+              return const FirestoreList(
+                  appBarTitle: "FireStore List");
             }
             return const FetchListsGrids();
           }));
