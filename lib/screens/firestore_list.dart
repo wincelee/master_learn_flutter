@@ -11,6 +11,9 @@ class FirestoreList extends StatefulWidget {
 }
 
 class _FirestoreListState extends State<FirestoreList> {
+
+  List<Object> _myList = [];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
