@@ -9,7 +9,7 @@ import 'package:master_learn/screens/card_views.dart';
 import 'package:master_learn/screens/cupertino_screen.dart';
 import 'package:master_learn/screens/drop_down_spinners.dart';
 import 'package:master_learn/screens/fetch_lists_grids.dart';
-import 'package:master_learn/screens/firestore_list.dart';
+import 'package:master_learn/screens/firebase_operations.dart';
 import 'package:master_learn/screens/logins.dart';
 import 'package:master_learn/screens/options_menu.dart';
 import 'package:master_learn/screens/snack_bars.dart';
@@ -17,9 +17,23 @@ import 'package:master_learn/screens/tab_bars_screen.dart';
 
 import 'screens/banners_screen.dart';
 
+import 'package:firebase_core/firebase_core.dart';
+
+import 'firebase_options.dart';
+
+
 // Tutorial link [https://www.thirdrocktechkno.com/blog/how-to-implement-navigation-drawer-in-flutter/]
 
 Future main() async {
+
+  WidgetsFlutterBinding.ensureInitialized();
+
+  await Firebase.initializeApp(
+
+    options: DefaultFirebaseOptions.currentPlatform,
+
+  );
+
   LicenseRegistry.addLicense(() async* {
     final license = await rootBundle.loadString('fonts/OFL.txt');
     yield LicenseEntryWithLineBreaks(['fonts'], license);
@@ -51,7 +65,7 @@ Future addFlags() async {
 }
 
 class MyApp extends StatelessWidget {
-  final String startPage = "optionsMenu";
+  final String startPage = "firebaseOperations";
   final bool isMaterialApp = true;
 
   const MyApp({Key? key}) : super(key: key);
@@ -93,9 +107,9 @@ class MyApp extends StatelessWidget {
             }else if (Config().equalsIgnoreCase(startPage, "bannersScreen")) {
               return const BannersScreen(
                   title: "Banners Screen");
-            }else if (Config().equalsIgnoreCase(startPage, "fireStoreList")) {
-              return const FirestoreList(
-                  appBarTitle: "FireStore List");
+            }else if (Config().equalsIgnoreCase(startPage, "firebaseOperations")) {
+              return const FirebaseOperations(
+                  appBarTitle: "Firebase Operations");
             }
 
             return const FetchListsGrids();

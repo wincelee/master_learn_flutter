@@ -48,8 +48,8 @@ class _LoginOneState extends State<LoginOne> {
 
     try {
       Response response = await post(
-        Uri.parse("https://dev.dohyangu.ke/app/apis/customers_login.php"),
-        body: {"phoneNumber": phoneNo, "pin": pin},
+        Uri.parse(""),
+        body: {"phoneNo": phoneNo, "pin": pin},
       ).timeout(const Duration(seconds: Config.responseTimeOutInSeconds));
 
       Logger().i("LoginOneResponseCode: ${response.statusCode}");

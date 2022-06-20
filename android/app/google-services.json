@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "878621507239",
+    "project_id": "masterlearn-38eb8",
+    "storage_bucket": "masterlearn-38eb8.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:878621507239:android:6be3c56f81c3f384f0e582",
+        "android_client_info": {
+          "package_name": "manu.apps.master_learn.master_learn"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "878621507239-joflrp0ql7m5ldf9s0r3a4hbvu9gml51.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCn52Y3KeJd1I2EAGLbtINaVeq05V5xm5Y"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "878621507239-joflrp0ql7m5ldf9s0r3a4hbvu9gml51.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "878621507239-m6m8fbr1929h8b6qifpgc2p168vu3vo9.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "manu.apps.masterlearn.masterLearn"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

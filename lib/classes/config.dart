@@ -109,6 +109,13 @@ class Config {
         });
   }
 
+  void hideKeyboard() {
+    FocusManager
+        .instance
+        .primaryFocus
+        ?.unfocus();
+  }
+
   static List<Map<String, String>> itemsList = [
     {
       "name":"Laptop Apple MacBook Air With M1 Chip",
