@@ -1,7 +1,14 @@
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:logger/logger.dart';
+import 'package:master_learn/firebase_operations/firebase_dashboard.dart';
 import 'package:master_learn/firebase_operations/firebase_registration.dart';
 import 'package:master_learn/firebase_operations/services/authentication_service.dart';
 import 'package:master_learn/navigation_drawer.dart';
+
+import '../classes/EdgeAlert.dart';
+import '../classes/config.dart';
 
 class FirebaseOperations extends StatefulWidget {
   final appBarTitle;
@@ -18,8 +25,10 @@ class _FirebaseOperationsState extends State<FirebaseOperations> {
 
   final AuthenticationService _authenticationService = AuthenticationService();
 
-  final TextEditingController _emailController = TextEditingController(text: "");
-  final TextEditingController _passwordController = TextEditingController(text: "");
+  final TextEditingController _emailController =
+      TextEditingController(text: "");
+  final TextEditingController _passwordController =
+      TextEditingController(text: "");
 
   @override
   Widget build(BuildContext context) {
@@ -91,7 +100,11 @@ class _FirebaseOperationsState extends State<FirebaseOperations> {
                 child: const Text('Sign In'),
                 onPressed: () {
                   if (_key.currentState!.validate()) {
+
+                    Config().hideKeyboard();
+
                     signInUser();
+
                   }
                 },
               ),
@@ -102,7 +115,69 @@ class _FirebaseOperationsState extends State<FirebaseOperations> {
     );
   }
 
-  void signInUser() async{
-    //dynamic _authResult = await _authenticationService.loginUser()
+  void signInUser() async {
+
+    Config.loaderDialog(context);
+
+    dynamic _authResult =
+        await _authenticationService.signInWithEmailAndPassword(
+            _emailController.text.trim(), _passwordController.text.trim());
+
+    if (_authResult == null) {
+
+      Navigator.pop(context);
+
+      EdgeAlert.show(context,
+          title: 'Error',
+          description: 'We encountered an error while processing your request',
+          backgroundColor: Config.primaryColor,
+          duration: 2,
+          icon: Icons.error_outline,
+          gravity: EdgeAlert.bottom);
+
+    } else {
+
+
+
+      Navigator.pop(context);
+
+      if(_authResult.runtimeType == FirebaseAuthException){
+
+        if (kDebugMode) {
+          Logger().i("ErrorCode: ${_authResult.code}");
+        }
+
+        EdgeAlert.show(context,
+            title: 'Please try again',
+            description: _authResult.message,
+            backgroundColor: Config.primaryColor,
+            duration: 3,
+            icon: Icons.info_outline,
+            gravity: EdgeAlert.bottom);
+
+      }else{
+
+        Navigator.pop(context);
+
+        EdgeAlert.show(context,
+            title: 'Success',
+            description: "Sign in was successful",
+            backgroundColor: Config.accentColor,
+            duration: 3,
+            icon: Icons.info_outline,
+            gravity: EdgeAlert.bottom);
+
+        Logger().i("Result: ${_authResult.toString()}");
+
+        _emailController.clear();
+        _passwordController.clear();
+
+        Navigator.of(context).push(MaterialPageRoute(
+            builder: (BuildContext context) =>
+            const FirebaseDashBoard(appBarTitle: "Firebase Dashboard")));
+
+      }
+
+    }
   }
 }

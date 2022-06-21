@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_windowmanager/flutter_windowmanager.dart';
 import 'package:master_learn/classes/config.dart';
+import 'package:master_learn/firebase_operations/firebase_dashboard.dart';
 import 'package:master_learn/screens/bottomsheet_scrollsheet.dart';
 import 'package:master_learn/screens/card_views.dart';
 import 'package:master_learn/screens/cupertino_screen.dart';
@@ -65,7 +66,7 @@ Future addFlags() async {
 }
 
 class MyApp extends StatelessWidget {
-  final String startPage = "firebaseOperations";
+  final String startPage = "firebaseDashboard";
   final bool isMaterialApp = true;
 
   const MyApp({Key? key}) : super(key: key);
@@ -110,6 +111,9 @@ class MyApp extends StatelessWidget {
             }else if (Config().equalsIgnoreCase(startPage, "firebaseOperations")) {
               return const FirebaseOperations(
                   appBarTitle: "Firebase Operations");
+            }else if (Config().equalsIgnoreCase(startPage, "firebaseDashboard")) {
+              return const FirebaseDashBoard(
+                  appBarTitle: "Firebase Dashboard");
             }
 
             return const FetchListsGrids();

@@ -1,7 +1,9 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:logger/logger.dart';
 import 'package:master_learn/firebase_operations/services/authentication_service.dart';
+import 'package:master_learn/screens/firebase_operations.dart';
 
 import '../classes/EdgeAlert.dart';
 import '../classes/config.dart';
@@ -23,6 +25,14 @@ class _FirebaseRegistrationState extends State<FirebaseRegistration> {
   final TextEditingController _nameController = TextEditingController();
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
+
+  @override
+  void dispose() {
+    super.dispose();
+    _nameController.dispose();
+    _emailController.dispose();
+    _passwordController.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -108,7 +118,8 @@ class _FirebaseRegistrationState extends State<FirebaseRegistration> {
 
                         Config().hideKeyboard();
 
-                        createUser();
+                        initSignUp();
+
                       }
                     },
                   ))
@@ -119,11 +130,11 @@ class _FirebaseRegistrationState extends State<FirebaseRegistration> {
     );
   }
 
-  void createUser() async {
+  void initSignUp() async {
 
     Config.loaderDialog(context);
 
-    dynamic result = await _authenticationService.createNewUser(
+    dynamic result = await _authenticationService.signUpWithEmailAndPassword(
         _emailController.text.trim(), _passwordController.text.trim());
 
     if (result == null) {
@@ -143,15 +154,40 @@ class _FirebaseRegistrationState extends State<FirebaseRegistration> {
 
       if(result.runtimeType == FirebaseAuthException){
 
+        if (kDebugMode) {
+          Logger().i("ErrorCode: ${result.code}");
+        }
+
         EdgeAlert.show(context,
             title: 'Please try again',
-            description: result.toString(),
+            description: result.message,
             backgroundColor: Config.primaryColor,
-            duration: 2,
+            duration: 3,
             icon: Icons.info_outline,
             gravity: EdgeAlert.bottom);
+
       }else{
+
+        Navigator.pop(context);
+
+        EdgeAlert.show(context,
+            title: 'Success',
+            description: "Sign in was successful",
+            backgroundColor: Config.accentColor,
+            duration: 3,
+            icon: Icons.info_outline,
+            gravity: EdgeAlert.bottom);
+
         Logger().i("Result: ${result.toString()}");
+
+        _nameController.clear();
+        _emailController.clear();
+        _passwordController.clear();
+
+        Navigator.of(context).push(MaterialPageRoute(
+            builder: (BuildContext context) =>
+            const FirebaseOperations(appBarTitle: "Firebase Operations")));
+
       }
 
     }
