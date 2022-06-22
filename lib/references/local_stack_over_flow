@@ -1551,6 +1551,8 @@ Container(
                          ||||| b-u-i-l-d-e-r |||||
                         |||||| b-u-i-l-d-e-r-s|||||
 
+~~~ Place below code in child
+
 
 Builder(builder: (context) {
 
@@ -1562,3 +1564,101 @@ Builder(builder: (context) {
       }
     })
 
+
+----------------------------------------------------------------------------------------------------
+
+
+                         ||||| inkwell |||||
+                      |||||| i-n-k-w-e-l-l |||||
+
+~~~ Always Add on top to implement the inkwell
+
+~~~ Example inkwell
+
+Column(
+                  children: [
+                    Container(
+                      width: 227,
+                      height: 227,
+                      child: Ink.image(
+                        image: NetworkImage(
+                            'https://images.unsplash.com/photo-1587207433549-7d796bccc6a2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8YnV0dG9ufGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60'),
+                        fit: BoxFit.cover,
+                        child: InkWell(
+                          onTap: () {},
+                        ),
+                      ),
+                    ),
+                    Text('First Text'),
+                    // add your other widgets
+                  ],
+                )
+
+~~~ Example Inkwell on card
+
+Card(
+              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(24)),
+              child: InkWell(
+                borderRadius: BorderRadius.circular(24),
+                splashColor: Colors.brown.withOpacity(0.7), // Splash color
+                onTap: () {},
+                child: Ink(
+                  width: 100,
+                  height: 100,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(24),
+                    image: DecorationImage(
+                      fit: BoxFit.cover,
+                      image: AssetImage('icons/ic_huawei.png'), // Background image
+                    ),
+                  ),
+                ),
+              ),
+            )
+
+~~~ Example Inkwell on card 2
+
+Card(
+              color: Colors.blue, // Backgrond color
+              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(24)),
+              child: InkWell(
+                borderRadius: BorderRadius.circular(24),
+                splashColor: Colors.red.withOpacity(0.5), // Spl// ash color
+                onTap: () {},
+                child: Ink(width: 100, height: 100),
+              ),
+            )
+
+~~~ Example Inkwell Ripple Effect on a card with image over it
+
+
+Card(
+  child: Ink.image(
+     image: AssetImage('images/dog.jpeg'),
+     fit: BoxFit.contain,
+     height: 100,
+     child: InkWell(
+        splashColor: Colors.green.withOpacity(.2),
+        onTap: () {},
+     ),
+   ),
+ )
+
+~~~ Example Inkwell with card and ListTile
+
+Card(
+                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(24)),
+                  child: InkWell(
+                      borderRadius: BorderRadius.circular(24),
+                      splashColor: Config.accentColor.withOpacity(0.2),
+                      onTap: (){},
+                      child: ListTile(
+                          title: Text("Title"),
+                          subtitle: Text("Subtitle"),
+                          leading: CircleAvatar(
+                            child: Image(
+                              image: AssetImage('icons/ic_google_pixel.png'),
+                            ),
+                          ),
+                        ),
+                      ))

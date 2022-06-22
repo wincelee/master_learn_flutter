@@ -2,7 +2,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:logger/logger.dart';
-import 'package:master_learn/firebase_operations/services/authentication_service.dart';
+import 'package:master_learn/firebase_operations/firebase_dashboard.dart';
+import 'package:master_learn/firebase_operations/services/auth_service.dart';
 import 'package:master_learn/screens/firebase_operations.dart';
 
 import '../classes/EdgeAlert.dart';
@@ -20,7 +21,7 @@ class _FirebaseRegistrationState extends State<FirebaseRegistration> {
 
   final _key = GlobalKey<FormState>();
 
-  final AuthenticationService _authenticationService = AuthenticationService();
+  final AuthService _authService = AuthService();
 
   final TextEditingController _nameController = TextEditingController();
   final TextEditingController _emailController = TextEditingController();
@@ -134,8 +135,9 @@ class _FirebaseRegistrationState extends State<FirebaseRegistration> {
 
     Config.loaderDialog(context);
 
-    dynamic result = await _authenticationService.signUpWithEmailAndPassword(
-        _emailController.text.trim(), _passwordController.text.trim());
+    dynamic result = await _authService.signUpWithEmailAndPassword(
+        _nameController.text.trim(), _emailController.text.trim(),
+        _passwordController.text.trim());
 
     if (result == null) {
 
@@ -184,9 +186,9 @@ class _FirebaseRegistrationState extends State<FirebaseRegistration> {
         _emailController.clear();
         _passwordController.clear();
 
-        Navigator.of(context).push(MaterialPageRoute(
-            builder: (BuildContext context) =>
-            const FirebaseOperations(appBarTitle: "Firebase Operations")));
+        Navigator.of(context).pushReplacement(
+            MaterialPageRoute(
+                builder: (context) => const FirebaseDashBoard(appBarTitle: "Firebase Dashboard")));
 
       }
 

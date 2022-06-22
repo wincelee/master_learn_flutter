@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:logger/logger.dart';
 import 'package:master_learn/firebase_operations/firebase_dashboard.dart';
 import 'package:master_learn/firebase_operations/firebase_registration.dart';
-import 'package:master_learn/firebase_operations/services/authentication_service.dart';
+import 'package:master_learn/firebase_operations/services/auth_service.dart';
 import 'package:master_learn/navigation_drawer.dart';
 
 import '../classes/EdgeAlert.dart';
@@ -23,12 +23,12 @@ class FirebaseOperations extends StatefulWidget {
 class _FirebaseOperationsState extends State<FirebaseOperations> {
   final _key = GlobalKey<FormState>();
 
-  final AuthenticationService _authenticationService = AuthenticationService();
+  final AuthService _authService = AuthService();
 
   final TextEditingController _emailController =
-      TextEditingController(text: "");
+      TextEditingController(text: "manu@mail.com");
   final TextEditingController _passwordController =
-      TextEditingController(text: "");
+      TextEditingController(text: "optimus20199");
 
   @override
   Widget build(BuildContext context) {
@@ -91,20 +91,19 @@ class _FirebaseOperationsState extends State<FirebaseOperations> {
               TextButton(
                 child: const Text('Not registered? Sign up'),
                 onPressed: () {
-                  Navigator.of(context).push(MaterialPageRoute(
-                      builder: (BuildContext context) =>
-                          const FirebaseRegistration()));
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const FirebaseRegistration()));
                 },
               ),
               ElevatedButton(
                 child: const Text('Sign In'),
                 onPressed: () {
                   if (_key.currentState!.validate()) {
-
                     Config().hideKeyboard();
 
                     signInUser();
-
                   }
                 },
               ),
@@ -116,15 +115,12 @@ class _FirebaseOperationsState extends State<FirebaseOperations> {
   }
 
   void signInUser() async {
-
     Config.loaderDialog(context);
 
-    dynamic _authResult =
-        await _authenticationService.signInWithEmailAndPassword(
-            _emailController.text.trim(), _passwordController.text.trim());
+    dynamic _authResult = await _authService.signInWithEmailAndPassword(
+        _emailController.text.trim(), _passwordController.text.trim());
 
     if (_authResult == null) {
-
       Navigator.pop(context);
 
       EdgeAlert.show(context,
@@ -134,15 +130,10 @@ class _FirebaseOperationsState extends State<FirebaseOperations> {
           duration: 2,
           icon: Icons.error_outline,
           gravity: EdgeAlert.bottom);
-
     } else {
-
-
-
       Navigator.pop(context);
 
-      if(_authResult.runtimeType == FirebaseAuthException){
-
+      if (_authResult.runtimeType == FirebaseAuthException) {
         if (kDebugMode) {
           Logger().i("ErrorCode: ${_authResult.code}");
         }
@@ -154,8 +145,7 @@ class _FirebaseOperationsState extends State<FirebaseOperations> {
             duration: 3,
             icon: Icons.info_outline,
             gravity: EdgeAlert.bottom);
-
-      }else{
+      } else {
 
         Navigator.pop(context);
 
@@ -172,12 +162,12 @@ class _FirebaseOperationsState extends State<FirebaseOperations> {
         _emailController.clear();
         _passwordController.clear();
 
-        Navigator.of(context).push(MaterialPageRoute(
-            builder: (BuildContext context) =>
-            const FirebaseDashBoard(appBarTitle: "Firebase Dashboard")));
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) => const FirebaseDashBoard(appBarTitle: "Firebase Dashboard")));
 
       }
-
     }
   }
 }

@@ -66,7 +66,7 @@ Future addFlags() async {
 }
 
 class MyApp extends StatelessWidget {
-  final String startPage = "firebaseDashboard";
+  final String startPage = "firebaseOperations";
   final bool isMaterialApp = true;
 
   const MyApp({Key? key}) : super(key: key);
