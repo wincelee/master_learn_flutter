@@ -1,6 +1,9 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:logger/logger.dart';
 import 'package:master_learn/classes/EdgeAlert.dart';
 import 'package:master_learn/classes/config.dart';
+import 'package:master_learn/firebase_operations/database_manager/database_manager.dart';
 import 'package:master_learn/firebase_operations/services/auth_service.dart';
 import 'package:master_learn/navigation_drawer.dart';
 import 'package:master_learn/screens/firebase_operations.dart';
@@ -21,6 +24,41 @@ class _FirebaseDashBoardState extends State<FirebaseDashBoard> {
   final TextEditingController _nameController = TextEditingController();
   final TextEditingController _genderController = TextEditingController();
   final TextEditingController _scoreController = TextEditingController();
+
+  List _userProfilesList = [];
+
+  @override
+  void initState() {
+    super.initState();
+
+    fetchUsersDataList();
+  }
+
+  fetchUsersDataList() async {
+
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      Config.loaderDialog(context);
+    });
+
+    dynamic result = await DatabaseManager().fetchUsersData();
+
+    if (result.runtimeType == FirebaseAuthException) {
+      Navigator.pop(context);
+
+      EdgeAlert.show(context,
+          title: 'Please try again',
+          description: result.message,
+          backgroundColor: Config.primaryColor,
+          duration: 3,
+          icon: Icons.info_outline,
+          gravity: EdgeAlert.bottom);
+    } else {
+
+      _userProfilesList = result;
+
+      Navigator.pop(context);
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -75,30 +113,29 @@ class _FirebaseDashBoardState extends State<FirebaseDashBoard> {
         ],
       ),
       drawer: const NavigationDrawer(),
-      body: SingleChildScrollView(
-          child: Column(children: [
-        ListView.builder(
+      body: ListView.builder(
             shrinkWrap: true,
-            itemCount: 5,
+            itemCount: _userProfilesList.length,
             itemBuilder: (context, index) {
               return Card(
-                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(24)),
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(24)),
                   child: InkWell(
-                      borderRadius: BorderRadius.circular(24),
-                      splashColor: Config.accentColor.withOpacity(0.2),
-                      onTap: (){},
-                      child: const ListTile(
-                          title: Text("Title"),
-                          subtitle: Text("Subtitle"),
-                          leading: CircleAvatar(
-                            child: Image(
-                              image: AssetImage('icons/ic_google_pixel.png'),
-                            ),
-                          ),
+                    borderRadius: BorderRadius.circular(24),
+                    splashColor: Config.accentColor.withOpacity(0.2),
+                    onTap: () {},
+                    child: ListTile(
+                      title: Text("Name: ${_userProfilesList[index]['name']}"),
+                      subtitle: Text(
+                          "Gender ${_userProfilesList[index]['gender']} \nScore: ${_userProfilesList[index]['score']}"),
+                      leading: const CircleAvatar(
+                        child: Image(
+                          image: AssetImage('icons/ic_google_pixel.png'),
                         ),
-                      ));
+                      ),
+                    ),
+                  ));
             }),
-      ])),
     );
   }
 

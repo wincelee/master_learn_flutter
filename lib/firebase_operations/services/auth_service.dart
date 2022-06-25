@@ -13,7 +13,7 @@ class AuthService {
  
       User? _firebaseUser = _userCredential.user;
       
-      await DatabaseManager().createUserData(name, "", 0, _firebaseUser!.uid);
+      await DatabaseManager().createUserData(name, "Gender Here", 0, _firebaseUser!.uid);
 
       return _firebaseUser;
 

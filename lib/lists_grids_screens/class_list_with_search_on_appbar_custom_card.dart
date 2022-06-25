@@ -204,7 +204,7 @@ class _ClassListWithSearchOnAppBarCustomCardState
   }
 
   deleteSlidableAction(BuildContext context, String? itemId) {
-    /*WidgetsBinding.instance!.addPostFrameCallback((_) {
+    /*WidgetsBinding.instance.addPostFrameCallback((_) {
       setState(() {
         itemsList!.removeWhere((item) => item.id == itemId);
       });
@@ -212,7 +212,7 @@ class _ClassListWithSearchOnAppBarCustomCardState
   }
 
   dialogSlidableAction(BuildContext context, String callBackName) {
-    /*SchedulerBinding.instance!.addPostFrameCallback((_) {
+    /*SchedulerBinding.instance.addPostFrameCallback((_) {
       showCupertinoDialog<void>(
         context: context,
         builder: (BuildContext context) => CupertinoAlertDialog(

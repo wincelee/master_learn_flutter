@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:logger/logger.dart';
 
@@ -15,10 +17,28 @@ class DatabaseManager {
   }
 
   Future fetchUsersData() async{
+
+    List _usersDataList = [];
+
+
     try{
+
+      await _profileList.get().then((querySnapshot) {
+
+        //_usersDataList = querySnapshot.docs.map((e) {}).toList();
+
+        for (var element in querySnapshot.docs) {
+
+          _usersDataList.add(element);
+        }
+
+      });
+
+      return _usersDataList;
 
     }catch(e){
       Logger().i("FetchUsersData ${e.toString()}");
+      return e;
     }
   }
 }
