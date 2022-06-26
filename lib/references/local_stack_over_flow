@@ -1662,3 +1662,46 @@ Card(
                           ),
                         ),
                       ))
+
+----------------------------------------------------------------------------------------------------
+
+                                  ||| Shimmer |||
+                               ||| S-h-i-m-m-e-r |||
+
+
+Expanded(
+// First we check if the ViewModel is busy (isBusy :) definitely) and display the Shimmer
+  child: viewModel.isBusy
+    ? Shimmer.fromColors(
+      baseColor: Colors.grey[300]!,
+      highlightColor: Colors.grey[100]!,
+      child: ListView.builder(
+       itemCount: 6,
+       itemBuilder: (context, index) {
+        return Card(
+         elevation: 1.0,
+         shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(16),
+         ),
+         child: const SizedBox(height: 80),
+        );
+       },
+      ),
+     )
+    : ListView.builder(
+      itemCount: viewModel.charactersList!.length,
+      itemBuilder: (context, index) {
+       return Card(
+         elevation: 1.0,
+         // This is just a little play with colors changing the colors everytime the app is refreshed or restarted :)
+         color: Colors.primaries[Random()
+               .nextInt(Colors.primaries.length)]
+             .withOpacity(0.5),
+         shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(16),
+           ),
+         child: Container()
+       );
+      },
+     ),
+ )

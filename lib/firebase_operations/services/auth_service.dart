@@ -58,4 +58,23 @@ class AuthService {
       return e;
     }
   }
+
+  Future userDetails() async{
+
+    try{
+
+      User? _firebaseUser =  _firebaseAuth.currentUser;
+
+      return _firebaseUser;
+
+    }catch(e){
+
+      if (kDebugMode) {
+        Logger().i("FetchUseDetailsError: $e");
+      }
+
+      return e;
+    }
+
+  }
 }

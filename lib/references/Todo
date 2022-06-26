@@ -137,7 +137,7 @@ class _LoginState extends State<Login> {
                                 phoneNoFocusNode.requestFocus();
                                 phoneNoHasFocus = true;
 
-                                WidgetsBinding.instance!
+                                WidgetsBinding.instance
                                     .addPostFrameCallback((_) {
                                   setState(() {
                                     showPhoneNoErrorSuffixIcon = true;
