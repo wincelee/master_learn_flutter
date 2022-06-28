@@ -62,7 +62,6 @@ class _FetchAllItemsWithoutUidState extends State<FetchAllItemsWithoutUid> {
 
     var result = await FirebaseFirestore.instance.collection("itemsList").get();
 
-
     setState(() {
       _itemsList =
           List.from(result.docs.map((doc) => FirebaseItem.fromSnapshot(doc)));

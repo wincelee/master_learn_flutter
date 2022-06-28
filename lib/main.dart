@@ -10,6 +10,7 @@ import 'package:master_learn/screens/card_views.dart';
 import 'package:master_learn/screens/cupertino_screen.dart';
 import 'package:master_learn/screens/drop_down_spinners.dart';
 import 'package:master_learn/screens/fetch_lists_grids.dart';
+import 'package:master_learn/firebase_operations/sign_in_using_email_and_password.dart';
 import 'package:master_learn/screens/firebase_operations.dart';
 import 'package:master_learn/screens/logins.dart';
 import 'package:master_learn/screens/options_menu.dart';
@@ -111,9 +112,6 @@ class MyApp extends StatelessWidget {
             }else if (Config().equalsIgnoreCase(startPage, "firebaseOperations")) {
               return const FirebaseOperations(
                   appBarTitle: "Firebase Operations");
-            }else if (Config().equalsIgnoreCase(startPage, "firebaseDashboard")) {
-              return const FirebaseDashBoard(
-                  appBarTitle: "Firebase Dashboard");
             }
 
             return const FetchListsGrids();

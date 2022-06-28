@@ -12,6 +12,7 @@ import 'package:master_learn/widgets/create_drawer_body_item.dart';
 import 'package:master_learn/widgets/create_drawer_header.dart';
 
 import 'screens/banners_screen.dart';
+import 'screens/firebase_operations.dart';
 import 'widgets/image_icon_drawer_body_item.dart';
 
 class NavigationDrawer extends StatelessWidget {
@@ -85,6 +86,12 @@ class NavigationDrawer extends StatelessWidget {
               onTap: () => Navigator.of(context).pushReplacement(
                   MaterialPageRoute(
                       builder: (BuildContext context) => const BannersScreen(title: "Banners Screen",)))),
+          imageIconDrawerBodyItem(
+              imageAssetPath: "icons/ic_firebase.png",
+              text: 'Firebase Operations',
+              onTap: () => Navigator.of(context).pushReplacement(
+                  MaterialPageRoute(
+                      builder: (BuildContext context) => const FirebaseOperations(appBarTitle: "Firebase Operations",)))),
           const Divider(),
           createDrawerBodyItem(
               icon: Icons.notifications_active, text: 'Notifications'),

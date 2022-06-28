@@ -4,19 +4,22 @@ import 'package:flutter/material.dart';
 import 'package:logger/logger.dart';
 import 'package:master_learn/firebase_operations/firebase_dashboard.dart';
 import 'package:master_learn/firebase_operations/services/auth_service.dart';
-import 'package:master_learn/screens/firebase_operations.dart';
+import 'package:master_learn/widgets/marquee_widget.dart';
 
 import '../classes/EdgeAlert.dart';
 import '../classes/config.dart';
 
-class FirebaseRegistration extends StatefulWidget {
-  const FirebaseRegistration({Key? key}) : super(key: key);
+class SignUpUsingEmailAndPassword extends StatefulWidget {
+
+  final String appBarTitle;
+
+  const SignUpUsingEmailAndPassword({Key? key, required this.appBarTitle}) : super(key: key);
 
   @override
-  State<FirebaseRegistration> createState() => _FirebaseRegistrationState();
+  State<SignUpUsingEmailAndPassword> createState() => _SignUpUsingEmailAndPasswordState();
 }
 
-class _FirebaseRegistrationState extends State<FirebaseRegistration> {
+class _SignUpUsingEmailAndPasswordState extends State<SignUpUsingEmailAndPassword> {
   /* Enable email/password sign in firebase console*/
 
   final _key = GlobalKey<FormState>();
@@ -38,7 +41,14 @@ class _FirebaseRegistrationState extends State<FirebaseRegistration> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        title: SizedBox(
+          child: MarqueeWidget(
+            direction: Axis.horizontal,
+            child: Text(widget.appBarTitle),
+          ),
+        ),
+      ),
       body: SingleChildScrollView(
         child: Form(
           key: _key,

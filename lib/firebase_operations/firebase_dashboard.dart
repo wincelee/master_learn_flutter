@@ -7,12 +7,13 @@ import 'package:master_learn/firebase_operations/database_manager/database_manag
 import 'package:master_learn/firebase_operations/fetch_all_items_without_uid.dart';
 import 'package:master_learn/firebase_operations/services/auth_service.dart';
 import 'package:master_learn/navigation_drawer.dart';
-import 'package:master_learn/screens/firebase_operations.dart';
+import 'package:master_learn/firebase_operations/sign_in_using_email_and_password.dart';
+import 'package:master_learn/widgets/marquee_widget.dart';
 import 'package:master_learn/widgets/reusable_row.dart';
 import 'package:shimmer/shimmer.dart';
 
 class FirebaseDashBoard extends StatefulWidget {
-  final appBarTitle;
+  final String appBarTitle;
 
   const FirebaseDashBoard({Key? key, required this.appBarTitle})
       : super(key: key);
@@ -80,7 +81,12 @@ class _FirebaseDashBoardState extends State<FirebaseDashBoard> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text(widget.appBarTitle),
+          title:  SizedBox(
+            child: MarqueeWidget(
+              direction: Axis.horizontal,
+              child: Text(widget.appBarTitle),
+            ),
+          ),
           actions: [
             Container(
                 padding: const EdgeInsets.only(left: 1, right: 1),
@@ -104,7 +110,7 @@ class _FirebaseDashBoardState extends State<FirebaseDashBoard> {
                   onPressed: () async {
                     await _authService.signOut().then((result) {
                       Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) => const FirebaseOperations(
+                          builder: (context) => const SignInUsingEmailAndPassword(
                               appBarTitle: "Firebase Operations")));
 
                       EdgeAlert.show(context,
