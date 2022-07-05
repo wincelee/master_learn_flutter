@@ -77,39 +77,55 @@ class _FetchAllItemsWithoutUsingClassWithoutUidState
                       .collection("products")
                       .snapshots(),
                   builder: (context, snapshots) {
+                    if (!snapshots.hasData) {
+                      return const SizedBox();
+                    } else {
+                      if (snapshots.data!.docs
+                          .where((QueryDocumentSnapshot<Object?> element) =>
+                              element['name']
+                                  .toString()
+                                  .toLowerCase()
+                                  .contains(productName.toLowerCase()))
+                          .isEmpty) {
+                        return const Center(
+                            child: Text(
+                                "We haven't found any product with the search query"));
+                      }
+
+                      return GridView(
+                        gridDelegate:
+                            const SliverGridDelegateWithFixedCrossAxisCount(
+                                crossAxisCount: 2),
+                        children: [
+                          ...snapshots.data!.docs
+                              .where((QueryDocumentSnapshot<Object?> element) =>
+                                  element['name']
+                                      .toString()
+                                      .toLowerCase()
+                                      .contains(productName.toLowerCase()))
+                              .map((QueryDocumentSnapshot<Object?> data) {
+                            var id = data.reference.id;
+
+                            Logger().i("FetchedIdInSearch: $id");
+
+                            return GridTile(
+                                child: ProductGridCell(
+                              name: data['name'],
+                              price: data['price'].toDouble(),
+                              picture: data['picture'],
+                            ));
+                          })
+                        ],
+                      );
+                    }
+
+/*
                     return (snapshots.connectionState ==
                             ConnectionState.waiting)
                         ? const Center(
-                            child: CircularProgressIndicator(),
+                            child: SizedBox(),
                           )
-                        : GridView(
-                            gridDelegate:
-                                const SliverGridDelegateWithFixedCrossAxisCount(
-                                    crossAxisCount: 2),
-                            children: [
-                              ...snapshots.data!.docs
-                                  .where((QueryDocumentSnapshot<Object?>
-                                          element) =>
-                                      element['name']
-                                          .toString()
-                                          .toLowerCase()
-                                          .contains(productName.toLowerCase()))
-                                  .map((QueryDocumentSnapshot<Object?> data) {
-
-
-                                var id = data.reference.id;
-
-                                Logger().i("FetchedIdInSearch: $id");
-
-                                return GridTile(
-                                    child: ProductGridCell(
-                                  name: data['name'],
-                                  price: data['price'].toDouble(),
-                                  picture: data['picture'],
-                                ));
-                              })
-                            ],
-                          );
+                        : */
                   },
                 ))
         ],
