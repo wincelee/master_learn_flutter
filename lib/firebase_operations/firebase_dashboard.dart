@@ -4,7 +4,8 @@ import 'package:logger/logger.dart';
 import 'package:master_learn/classes/EdgeAlert.dart';
 import 'package:master_learn/classes/config.dart';
 import 'package:master_learn/firebase_operations/database_manager/database_manager.dart';
-import 'package:master_learn/firebase_operations/fetch_all_items_without_uid.dart';
+import 'package:master_learn/firebase_operations/fetch_all_items_using_class_without_uid.dart';
+import 'package:master_learn/firebase_operations/fetch_all_items_without_using_class_without_uid.dart';
 import 'package:master_learn/firebase_operations/services/auth_service.dart';
 import 'package:master_learn/navigation_drawer.dart';
 import 'package:master_learn/firebase_operations/sign_in_using_email_and_password.dart';
@@ -203,12 +204,29 @@ class _FirebaseDashBoardState extends State<FirebaseDashBoard> {
                           context,
                           MaterialPageRoute(
                               builder: (context) =>
-                                  const FetchAllItemsWithoutUid(
+                                  const FetchAllItemsUsingClassWithoutUid(
                                       appBarTitle: "FetchAllItemsWithoutUid")));
                     },
-                    child: const Text("FetchAllItemsWithoutUid"),
+                    child: const Text("FetchAllItemsUsingClassWithoutUid"),
                   ),
                 )),
+            Align(
+              alignment: Alignment.center,
+              child: Container(
+                padding: const EdgeInsets.all(5),
+                child: ElevatedButton(
+                  onPressed: (){
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) =>
+                            const FetchAllItemsWithoutUsingClassWithoutUid(
+                                appBarTitle: "FetchAllItemsWithoutUsingClassWithoutUid")));
+                  },
+                  child: const Text("FetchAllItemsWithoutUsingClassWithoutUid"),
+                ),
+              ),
+            )
             /*Expanded(child: Builder(builder: (BuildContext context) {
               return ListView.builder(
                   shrinkWrap: true,
