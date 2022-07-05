@@ -97,9 +97,9 @@ class _FetchAllItemsWithoutUsingClassWithoutUidState
                                   .map((QueryDocumentSnapshot<Object?> data) {
 
 
+                                var id = data.reference.id;
 
-
-                                Logger().i("FetchedId: $data");
+                                Logger().i("FetchedIdInSearch: $id");
 
                                 return GridTile(
                                     child: ProductGridCell(
