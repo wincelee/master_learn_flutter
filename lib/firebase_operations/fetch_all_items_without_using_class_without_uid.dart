@@ -2,7 +2,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:logger/logger.dart';
 import 'package:master_learn/grid_view_cells/product_grid_cell.dart';
-import 'package:master_learn/widgets/marquee_widget.dart';
 
 class FetchAllItemsWithoutUsingClassWithoutUid extends StatefulWidget {
   final String appBarTitle;
@@ -118,14 +117,6 @@ class _FetchAllItemsWithoutUsingClassWithoutUidState
                         ],
                       );
                     }
-
-/*
-                    return (snapshots.connectionState ==
-                            ConnectionState.waiting)
-                        ? const Center(
-                            child: SizedBox(),
-                          )
-                        : */
                   },
                 ))
         ],

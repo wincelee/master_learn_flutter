@@ -20,7 +20,6 @@ class DatabaseManager {
 
     List _usersDataList = [];
 
-
     try{
 
       await _profileList.get().then((querySnapshot) {
