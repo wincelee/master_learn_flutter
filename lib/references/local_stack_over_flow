@@ -1665,6 +1665,30 @@ Card(
                         ),
                       ))
 
+~~~~ Example Inkwell on optionsMenus
+
+        appBar: AppBar(
+                title: const Text("Cart"),
+                actions: [
+                  Container(
+                    padding: EdgeInsets.all(5),
+                    margin: EdgeInsets.all(5),
+                    child: InkWell(
+                      customBorder: new CircleBorder(),
+                      onTap: () {
+
+                      },
+                      splashColor: Colors.white,
+                      child: new Icon(
+                        Icons.account_circle_rounded,
+                        size: 30,
+                      ),
+                    ),
+                  )
+
+                ]
+              )
+
 ----------------------------------------------------------------------------------------------------
 
                                   ||| Shimmer |||
