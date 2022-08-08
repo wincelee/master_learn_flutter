@@ -1670,6 +1670,7 @@ Card(
         appBar: AppBar(
                 title: const Text("Cart"),
                 actions: [
+                // using container below
                   Container(
                     padding: EdgeInsets.all(5),
                     margin: EdgeInsets.all(5),
@@ -1684,7 +1685,18 @@ Card(
                         size: 30,
                       ),
                     ),
-                  )
+                  ),
+                  // Using icon button below
+                  // you can use other properties of IconButton like color of spash: splashColor: Colors.white
+                  // you can also use tooltip property:  tooltip: 'Répète le mot',
+                  IconButton(
+                                icon: Icon(
+                                  Icons.account_circle_rounded,
+                                ),
+                                iconSize: 25,
+                                splashRadius: 25,
+                                onPressed: () {},
+                              ),
 
                 ]
               )
@@ -1901,3 +1913,18 @@ class BS extends StatefulWidget {
       }
     }
 
+ ----------------------------------------------------------------------------------------------------
+ ****************************************************************************************************
+ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ ####################################################################################################
+
+                                   ||| svg |||
+                                  |||| s-v-g |||
+
+  ~~~ Flutter svg package (https://pub.dev/packages/flutter_svg)
+  ~~~ You can use the package like below
+
+      icon: SvgPicture.asset(
+              'svg_asset_path',
+               color: Colors.white,
+            ),
