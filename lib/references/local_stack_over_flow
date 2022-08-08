@@ -1573,7 +1573,7 @@ Builder(builder: (context) {
                          ||||| inkwell |||||
                       |||||| i-n-k-w-e-l-l |||||
 
-~~~ Always Add on top to implement the inkwell
+~~~ Always Add onTap to implement the inkwell
 
 ~~~ Example inkwell
 
