@@ -10,16 +10,18 @@ import '../classes/EdgeAlert.dart';
 import '../classes/config.dart';
 
 class SignUpUsingEmailAndPassword extends StatefulWidget {
-
   final String appBarTitle;
 
-  const SignUpUsingEmailAndPassword({Key? key, required this.appBarTitle}) : super(key: key);
+  const SignUpUsingEmailAndPassword({Key? key, required this.appBarTitle})
+      : super(key: key);
 
   @override
-  State<SignUpUsingEmailAndPassword> createState() => _SignUpUsingEmailAndPasswordState();
+  State<SignUpUsingEmailAndPassword> createState() =>
+      _SignUpUsingEmailAndPasswordState();
 }
 
-class _SignUpUsingEmailAndPasswordState extends State<SignUpUsingEmailAndPassword> {
+class _SignUpUsingEmailAndPasswordState
+    extends State<SignUpUsingEmailAndPassword> {
   /* Enable email/password sign in firebase console*/
 
   final _key = GlobalKey<FormState>();
@@ -126,11 +128,9 @@ class _SignUpUsingEmailAndPasswordState extends State<SignUpUsingEmailAndPasswor
                     child: const Text('Sign Up'),
                     onPressed: () {
                       if (_key.currentState!.validate()) {
-
                         Config().hideKeyboard();
 
                         initSignUp();
-
                       }
                     },
                   ))
@@ -142,15 +142,14 @@ class _SignUpUsingEmailAndPasswordState extends State<SignUpUsingEmailAndPasswor
   }
 
   void initSignUp() async {
-
     Config.loaderDialog(context);
 
     dynamic result = await _authService.signUpWithEmailAndPassword(
-        _nameController.text.trim(), _emailController.text.trim(),
+        _nameController.text.trim(),
+        _emailController.text.trim(),
         _passwordController.text.trim());
 
     if (result == null) {
-
       Navigator.pop(context);
 
       EdgeAlert.show(context,
@@ -161,11 +160,9 @@ class _SignUpUsingEmailAndPasswordState extends State<SignUpUsingEmailAndPasswor
           icon: Icons.error_outline,
           gravity: EdgeAlert.bottom);
     } else {
-
       Navigator.pop(context);
 
-      if(result.runtimeType == FirebaseAuthException){
-
+      if (result.runtimeType == FirebaseAuthException) {
         if (kDebugMode) {
           Logger().i("ErrorCode: ${result.code}");
         }
@@ -177,9 +174,7 @@ class _SignUpUsingEmailAndPasswordState extends State<SignUpUsingEmailAndPasswor
             duration: 3,
             icon: Icons.info_outline,
             gravity: EdgeAlert.bottom);
-
-      }else{
-
+      } else {
         Navigator.pop(context);
 
         EdgeAlert.show(context,
@@ -196,12 +191,10 @@ class _SignUpUsingEmailAndPasswordState extends State<SignUpUsingEmailAndPasswor
         _emailController.clear();
         _passwordController.clear();
 
-        Navigator.of(context).pushReplacement(
-            MaterialPageRoute(
-                builder: (context) => const FirebaseDashBoard(appBarTitle: "Firebase Dashboard")));
-
+        Navigator.of(context).pushReplacement(MaterialPageRoute(
+            builder: (context) =>
+                const FirebaseDashBoard(appBarTitle: "Firebase Dashboard")));
       }
-
     }
   }
 }

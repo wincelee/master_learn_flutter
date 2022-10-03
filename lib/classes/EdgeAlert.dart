@@ -153,13 +153,12 @@ class _EdgeOverlayState extends State<EdgeOverlay>
       child: SlideTransition(
         position: _positionAnimation,
         child: Container(
-            decoration:  BoxDecoration(
-                color: widget.backgroundColor,
-                borderRadius: const BorderRadius.only(
-                  topLeft: Radius.circular(20.0),
-                  topRight: Radius.circular(20.0),
-                )
-            ),
+          decoration: BoxDecoration(
+              color: widget.backgroundColor,
+              borderRadius: const BorderRadius.only(
+                topLeft: Radius.circular(20.0),
+                topRight: Radius.circular(20.0),
+              )),
           width: MediaQuery.of(context).size.width,
           padding: EdgeInsets.fromLTRB(
               20,

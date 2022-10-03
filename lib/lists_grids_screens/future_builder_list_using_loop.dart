@@ -177,8 +177,8 @@ class _FutureBuilderListUsingLoopState
                                   context,
                                   MaterialPageRoute(
                                       builder: (context) => UserDetails(
-                                            index: asyncSnapshot.data[index]
-                                                    .index ??
+                                            index: asyncSnapshot
+                                                    .data[index].index ??
                                                 '',
                                             email: asyncSnapshot
                                                     .data[index].email ??
@@ -224,8 +224,8 @@ class _FutureBuilderListUsingLoopState
                                     context,
                                     MaterialPageRoute(
                                         builder: (context) => UserDetails(
-                                              index: asyncSnapshot.data[index]
-                                                      .index ??
+                                              index: asyncSnapshot
+                                                      .data[index].index ??
                                                   '',
                                               email: asyncSnapshot
                                                       .data[index].email ??
@@ -270,8 +270,8 @@ class _FutureBuilderListUsingLoopState
                                     context,
                                     MaterialPageRoute(
                                         builder: (context) => UserDetails(
-                                              index: asyncSnapshot.data[index]
-                                                  .index ??
+                                              index: asyncSnapshot
+                                                      .data[index].index ??
                                                   '',
                                               email: asyncSnapshot
                                                       .data[index].email ??
@@ -307,8 +307,8 @@ class _FutureBuilderListUsingLoopState
                                   context,
                                   MaterialPageRoute(
                                       builder: (context) => UserDetails(
-                                            index: asyncSnapshot.data[index]
-                                                    .index ??
+                                            index: asyncSnapshot
+                                                    .data[index].index ??
                                                 '',
                                             email: asyncSnapshot
                                                     .data[index].email ??

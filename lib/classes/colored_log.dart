@@ -1,7 +1,6 @@
 import 'dart:developer';
 
-class ColoredLog{
-
+class ColoredLog {
   // Blue text
   void logInfo(String msg) {
     log('\x1B[34m$msg\x1B[0m');
@@ -21,5 +20,4 @@ class ColoredLog{
   void logError(String msg) {
     log('\x1B[31m$msg\x1B[0m');
   }
-
 }

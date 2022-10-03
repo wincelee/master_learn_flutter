@@ -20,9 +20,7 @@ class _ProductGridCellState extends State<ProductGridCell> {
   @override
   Widget build(BuildContext context) {
     return Card(
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(10)
-      ),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
       color: Colors.white,
       child: Container(
         alignment: Alignment.center,
@@ -34,14 +32,14 @@ class _ProductGridCellState extends State<ProductGridCell> {
           children: [
             Flexible(
                 child: ClipRRect(
-                  borderRadius: BorderRadius.circular(5),
-                  child: FadeInImage.assetNetwork(
-                          fit: BoxFit.cover,
-                          placeholder: "images/converging_dots.gif",
-                          image: widget.picture,
-                          width: 100,
-                          height: 100),
-                )),
+              borderRadius: BorderRadius.circular(5),
+              child: FadeInImage.assetNetwork(
+                  fit: BoxFit.cover,
+                  placeholder: "images/converging_dots.gif",
+                  image: widget.picture,
+                  width: 100,
+                  height: 100),
+            )),
             Container(
               padding: const EdgeInsets.all(10),
               child: Text(widget.name,

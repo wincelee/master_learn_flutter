@@ -93,21 +93,18 @@ class AsyncFutures {
     try {
       // pub spec yaml http:
       // import 'package:http/http.dart' as http;
-      final response = await http.get(
-          Uri.parse(
-              url),
-          headers: {
-            "Content-Type": "application/json",
-            "Authorization": "Bearer tltsp6dmnbif01jy9xfo9ssn4620u89xhuwcm5t3",
-          }) /*.timeout(const Duration(seconds: Config.responseTimeOutInSeconds))*/;
+      final response = await http.get(Uri.parse(url), headers: {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer tltsp6dmnbif01jy9xfo9ssn4620u89xhuwcm5t3",
+      }) /*.timeout(const Duration(seconds: Config.responseTimeOutInSeconds))*/;
 
       final List<Item> itemsList;
 
       if (response.statusCode == 200) {
         itemsList = json
             .decode(response.body)
-        // In event of failure return line below
-        //.cast<Map<String, dynamic>>()
+            // In event of failure return line below
+            //.cast<Map<String, dynamic>>()
             .map<Item>((json) => Item.fromJson(json))
             .toList();
       } else if (response.statusCode == 401) {
@@ -202,7 +199,6 @@ class AsyncFutures {
       rethrow;
     }
   }
-
 
   static Future<List<HashMap<String, dynamic>>> fetchListOfMaps(
       String url) async {

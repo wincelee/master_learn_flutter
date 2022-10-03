@@ -11,8 +11,6 @@ import 'package:master_learn/lists_grids_screens/grid_view_builder_using_users_l
 import '../navigation_drawer.dart';
 
 class FetchListsGrids extends StatefulWidget {
-
-
   const FetchListsGrids({Key? key}) : super(key: key);
 
   @override
@@ -114,7 +112,8 @@ class _FetchList extends State<FetchListsGrids> {
                       style: TextStyle(color: Colors.black, fontSize: 15),
                     )),
               ),
-            ),Padding(
+            ),
+            Padding(
               padding: const EdgeInsets.all(5),
               child: Center(
                 child: TextButton(
@@ -127,7 +126,8 @@ class _FetchList extends State<FetchListsGrids> {
                       style: TextStyle(color: Colors.black, fontSize: 15),
                     )),
               ),
-            ),Padding(
+            ),
+            Padding(
               padding: const EdgeInsets.all(5),
               child: Center(
                 child: TextButton(
@@ -135,11 +135,13 @@ class _FetchList extends State<FetchListsGrids> {
                         MaterialPageRoute(
                             builder: (BuildContext context) =>
                                 const ClassListWithSearchOnAppBarCustomCard())),
-                    child: const Align(alignment:Alignment.center,child: Text(
-                      "[] Class List With Search On AppBar CustomCard [Slidable]",
-                      textAlign: TextAlign.center,
-                      style: TextStyle(color: Colors.black, fontSize: 15),
-                    ))),
+                    child: const Align(
+                        alignment: Alignment.center,
+                        child: Text(
+                          "[] Class List With Search On AppBar CustomCard [Slidable]",
+                          textAlign: TextAlign.center,
+                          style: TextStyle(color: Colors.black, fontSize: 15),
+                        ))),
               ),
             ),
             Padding(

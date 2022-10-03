@@ -50,7 +50,6 @@ class _MySlidingUpPanelState extends State<MySlidingUpPanel> {
     super.initState();
 
     populateItemsList();
-
   }
 
   @override
@@ -67,90 +66,91 @@ class _MySlidingUpPanelState extends State<MySlidingUpPanel> {
         borderRadius: const BorderRadius.only(
             topLeft: Radius.circular(20.0), topRight: Radius.circular(20.0)),
         panel: Container(
-                margin: const EdgeInsets.all(1),
-                child: SingleChildScrollView(child: Column(
-                  children: <Widget>[
-                    const ListTile(
-                      leading: Icon(Icons.lightbulb),
-                      title: Text("This is bulb"),
-                      subtitle: Text("This is bulb subtitle"),
-                    ),
-                    Container(
-                        width: double.infinity,
-                        margin:
-                        const EdgeInsets.only(bottom: 5, top: 5, left: 5, right: 5),
-                        padding:
-                        const EdgeInsets.only(bottom: 5, top: 5, left: 5, right: 5),
-                        child: TextFormField(
-                          cursorHeight: 20,
-                          // You cant have an initial value and a controller at the same time
-                          // there can only be one
-                          // initialValue: "+254",
-                          decoration: const InputDecoration(
-                              labelText: "Enter Keyword Test Keyboard",
-                              border: OutlineInputBorder(),
-                              contentPadding: EdgeInsets.only(left: 10, right: 5)),
-                          keyboardType: TextInputType.multiline,
-                          maxLines: null,
-                        )),
-                    Container(
-                      width: double.infinity,
-                      margin:
-                      const EdgeInsets.only(bottom: 5, top: 5, left: 5, right: 5),
-                      padding:
-                      const EdgeInsets.only(bottom: 5, top: 5, left: 5, right: 5),
-                      child: Center(
-                        // set drop down item selector color
-                        // hold down on the drop down to experience the effect
-                          child: Theme(
-                              data: ThemeData(highlightColor: Config.accentColor),
-                              child: DropdownButtonFormField(
-                                decoration: InputDecoration(
-                                    labelText: enableDropDownFormFieldLabelText
-                                        ? "Select Car"
-                                        : null,
-                                    border: const OutlineInputBorder(),
-                                    contentPadding:
+            margin: const EdgeInsets.all(1),
+            child: SingleChildScrollView(
+                child: Column(
+              children: <Widget>[
+                const ListTile(
+                  leading: Icon(Icons.lightbulb),
+                  title: Text("This is bulb"),
+                  subtitle: Text("This is bulb subtitle"),
+                ),
+                Container(
+                    width: double.infinity,
+                    margin: const EdgeInsets.only(
+                        bottom: 5, top: 5, left: 5, right: 5),
+                    padding: const EdgeInsets.only(
+                        bottom: 5, top: 5, left: 5, right: 5),
+                    child: TextFormField(
+                      cursorHeight: 20,
+                      // You cant have an initial value and a controller at the same time
+                      // there can only be one
+                      // initialValue: "+254",
+                      decoration: const InputDecoration(
+                          labelText: "Enter Keyword Test Keyboard",
+                          border: OutlineInputBorder(),
+                          contentPadding: EdgeInsets.only(left: 10, right: 5)),
+                      keyboardType: TextInputType.multiline,
+                      maxLines: null,
+                    )),
+                Container(
+                  width: double.infinity,
+                  margin: const EdgeInsets.only(
+                      bottom: 5, top: 5, left: 5, right: 5),
+                  padding: const EdgeInsets.only(
+                      bottom: 5, top: 5, left: 5, right: 5),
+                  child: Center(
+                      // set drop down item selector color
+                      // hold down on the drop down to experience the effect
+                      child: Theme(
+                          data: ThemeData(highlightColor: Config.accentColor),
+                          child: DropdownButtonFormField(
+                            decoration: InputDecoration(
+                                labelText: enableDropDownFormFieldLabelText
+                                    ? "Select Car"
+                                    : null,
+                                border: const OutlineInputBorder(),
+                                contentPadding:
                                     const EdgeInsets.only(left: 10, right: 5)),
-                                hint: const Text("Select Car"),
-                                // you can add drop down color
-                                dropdownColor: Colors.grey[100],
-                                // set up your end icon here
-                                icon: const Icon(
-                                  Icons.arrow_drop_down_sharp,
-                                  color: Config.accentColor,
-                                ),
-                                iconSize: 25,
-                                isExpanded: true,
-                                style:
-                                const TextStyle(color: Colors.black, fontSize: 15),
-                                value: dropDownFormFieldSelectedValue,
-                                onChanged: (onChangedValue) {
-                                  setState(() {
-                                    dropDownFormFieldSelectedValue =
-                                        onChangedValue.toString();
-                                    enableDropDownFormFieldLabelText = true;
-                                  });
-                                },
-                                items: itemList
-                                    .map((selectedValue) => DropdownMenuItem(
+                            hint: const Text("Select Car"),
+                            // you can add drop down color
+                            dropdownColor: Colors.grey[100],
+                            // set up your end icon here
+                            icon: const Icon(
+                              Icons.arrow_drop_down_sharp,
+                              color: Config.accentColor,
+                            ),
+                            iconSize: 25,
+                            isExpanded: true,
+                            style: const TextStyle(
+                                color: Colors.black, fontSize: 15),
+                            value: dropDownFormFieldSelectedValue,
+                            onChanged: (onChangedValue) {
+                              setState(() {
+                                dropDownFormFieldSelectedValue =
+                                    onChangedValue.toString();
+                                enableDropDownFormFieldLabelText = true;
+                              });
+                            },
+                            items: itemList
+                                .map((selectedValue) => DropdownMenuItem(
                                     child: Text(selectedValue),
                                     value: selectedValue))
-                                    .toList(),
-                              ))),
-                    ),
-                    Container(
-                        width: double.infinity,
-                        margin: const EdgeInsets.only(
-                            left: 10, right: 10, top: 10, bottom: 10),
-                        child: dropDownFormFieldSelectedValue != null
-                            ? Center(
+                                .toList(),
+                          ))),
+                ),
+                Container(
+                    width: double.infinity,
+                    margin: const EdgeInsets.only(
+                        left: 10, right: 10, top: 10, bottom: 10),
+                    child: dropDownFormFieldSelectedValue != null
+                        ? Center(
                             child: Text(
                                 "Selected Car Is: $dropDownFormFieldSelectedValue"))
-                            : null),
-                  ],
-                ))),
-            /*Column(
+                        : null),
+              ],
+            ))),
+        /*Column(
               children: [Expanded(child:
                 Builder(
                   builder: (BuildContext context) {
@@ -184,7 +184,7 @@ class _MySlidingUpPanelState extends State<MySlidingUpPanel> {
                   },
                 )),]
             )*/
-         /*SingleChildScrollView(child: SizedBox(
+        /*SingleChildScrollView(child: SizedBox(
           child: Builder(
             builder: (BuildContext context){
               if (itemsMapList == null) {
@@ -220,9 +220,8 @@ class _MySlidingUpPanelState extends State<MySlidingUpPanel> {
           height: double.infinity,
           child: FittedBox(
             child: Image.asset(
-              //"images/neon_laser_lights.gif",
-              "images/nav_header_background.jpg"
-            ),
+                //"images/neon_laser_lights.gif",
+                "images/nav_header_background.jpg"),
             fit: BoxFit.cover,
           ),
         ),

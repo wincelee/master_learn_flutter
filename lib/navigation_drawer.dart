@@ -55,43 +55,58 @@ class NavigationDrawer extends StatelessWidget {
               text: 'Cupertino',
               onTap: () => Navigator.of(context).pushReplacement(
                   MaterialPageRoute(
-                      builder: (BuildContext context) => const CupertinoScreen()))),
+                      builder: (BuildContext context) =>
+                          const CupertinoScreen()))),
           createDrawerBodyItem(
               icon: Icons.arrow_drop_down_circle_rounded,
               text: 'Drop Down Spinners',
-              onTap: () => Navigator.of(context).pushReplacement(
-                  MaterialPageRoute(
-                      builder: (BuildContext context) => const DropDownSpinners(title: "Drop Down Spinners",)))),
+              onTap: () =>
+                  Navigator.of(context).pushReplacement(MaterialPageRoute(
+                      builder: (BuildContext context) => const DropDownSpinners(
+                            title: "Drop Down Spinners",
+                          )))),
           createDrawerBodyItem(
               icon: Icons.border_bottom_outlined,
               text: 'BottomSheet/ScrollSheet',
               onTap: () => Navigator.of(context).pushReplacement(
                   MaterialPageRoute(
-                      builder: (BuildContext context) => const BottomSheetScrollSheet(title: "BottomSheet/ScrollSheet",)))),
+                      builder: (BuildContext context) =>
+                          const BottomSheetScrollSheet(
+                            title: "BottomSheet/ScrollSheet",
+                          )))),
           createDrawerBodyItem(
               icon: Icons.table_chart,
               text: 'Tab Bars',
-              onTap: () => Navigator.of(context).pushReplacement(
-                  MaterialPageRoute(
-                      builder: (BuildContext context) => const TabBarsScreen(title: "Tab Bars",)))),
+              onTap: () =>
+                  Navigator.of(context).pushReplacement(MaterialPageRoute(
+                      builder: (BuildContext context) => const TabBarsScreen(
+                            title: "Tab Bars",
+                          )))),
           createDrawerBodyItem(
               icon: Icons.more_vert_rounded,
               text: 'Options Menu',
-              onTap: () => Navigator.of(context).pushReplacement(
-                  MaterialPageRoute(
-                      builder: (BuildContext context) => const OptionsMenu(title: "Options Menu",)))),
+              onTap: () =>
+                  Navigator.of(context).pushReplacement(MaterialPageRoute(
+                      builder: (BuildContext context) => const OptionsMenu(
+                            title: "Options Menu",
+                          )))),
           imageIconDrawerBodyItem(
               imageAssetPath: "icons/ic_banner.png",
               text: 'Banners Screen',
-              onTap: () => Navigator.of(context).pushReplacement(
-                  MaterialPageRoute(
-                      builder: (BuildContext context) => const BannersScreen(title: "Banners Screen",)))),
+              onTap: () =>
+                  Navigator.of(context).pushReplacement(MaterialPageRoute(
+                      builder: (BuildContext context) => const BannersScreen(
+                            title: "Banners Screen",
+                          )))),
           imageIconDrawerBodyItem(
               imageAssetPath: "icons/ic_firebase.png",
               text: 'Firebase Operations',
               onTap: () => Navigator.of(context).pushReplacement(
                   MaterialPageRoute(
-                      builder: (BuildContext context) => const FirebaseOperations(appBarTitle: "Firebase Operations",)))),
+                      builder: (BuildContext context) =>
+                          const FirebaseOperations(
+                            appBarTitle: "Firebase Operations",
+                          )))),
           const Divider(),
           createDrawerBodyItem(
               icon: Icons.notifications_active, text: 'Notifications'),

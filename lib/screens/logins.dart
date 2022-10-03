@@ -44,7 +44,7 @@ class _LoginsState extends State<Logins> {
                     onPressed: () => Navigator.of(context).push(
                         MaterialPageRoute(
                             builder: (BuildContext context) =>
-                            const LoginTwo(title: "Login Two"))),
+                                const LoginTwo(title: "Login Two"))),
                     child: const Text(
                       "Login Two",
                       style: TextStyle(color: Colors.white, fontSize: 15),

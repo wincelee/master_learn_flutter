@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 class UserGridCell extends StatefulWidget {
-
   final int index;
   final String name, picture;
 

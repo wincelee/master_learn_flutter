@@ -22,7 +22,6 @@ class _LoginOneState extends State<LoginOne> {
   TextEditingController pinController = TextEditingController();
 
   void login(String phoneNo, String pin) async {
-
     // showLoaderDialog(BuildContext context){
     //   AlertDialog alert = AlertDialog(
     //     content: iconProgressIndicator(),
@@ -41,10 +40,13 @@ class _LoginOneState extends State<LoginOne> {
       content: blueLoader(),
     );
 
-    showDialog(barrierDismissible: false, context: context, builder: (BuildContext context) {
-      // prevent back button press
-      return alert;
-    });
+    showDialog(
+        barrierDismissible: false,
+        context: context,
+        builder: (BuildContext context) {
+          // prevent back button press
+          return alert;
+        });
 
     try {
       Response response = await post(
@@ -90,12 +92,10 @@ class _LoginOneState extends State<LoginOne> {
                         message: responseMap["message"] ?? '',
                       )));
         } else if (Config().equalsIgnoreCase(responseMap["success"], "2")) {
-
           //Navigator.pop(context);
         }
       }
     } catch (e) {
-
       //Navigator.pop(context);
 
       Logger().wtf("LoginOneException: $e");
@@ -152,8 +152,8 @@ class _LoginOneState extends State<LoginOne> {
                 cursorColor: Config.accentColor,
                 focusNode: tfFocusNode,
                 decoration: InputDecoration(
-                  //grepper dense text form field flutter
-                  isDense: true,
+                    //grepper dense text form field flutter
+                    isDense: true,
                     //end grepper
                     // Underline color before inside click of TextFormField
                     enabledBorder: const UnderlineInputBorder(

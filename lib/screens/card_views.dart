@@ -489,7 +489,7 @@ class _CardViewsState extends State<CardViews> {
                 padding: const EdgeInsets.all(10),
                 child: Card(
                     shape: RoundedRectangleBorder(
-                      // card corner radius
+                        // card corner radius
                         borderRadius: BorderRadius.circular(10)),
                     color: Colors.white,
                     elevation: 10,
@@ -504,26 +504,24 @@ class _CardViewsState extends State<CardViews> {
                                     Align(
                                       alignment: Alignment.centerLeft,
                                       child: Container(
-                                          padding: const EdgeInsets.all(1),
-                                          margin: const EdgeInsets.only(
-                                              left: 5, top: 1, bottom: 1),
-                                          child: const Text(
-                                            "Huawei P30 Pro",
-                                            style: TextStyle(
-                                                fontFamily: "andada_pro",
-                                                fontSize: 15,
-                                                fontWeight: FontWeight.bold,
-                                                color: Colors.black54),
-                                          ),
-
+                                        padding: const EdgeInsets.all(1),
+                                        margin: const EdgeInsets.only(
+                                            left: 5, top: 1, bottom: 1),
+                                        child: const Text(
+                                          "Huawei P30 Pro",
+                                          style: TextStyle(
+                                              fontFamily: "andada_pro",
+                                              fontSize: 15,
+                                              fontWeight: FontWeight.bold,
+                                              color: Colors.black54),
+                                        ),
                                       ),
                                     )
                                   ])),
                           const Divider(),
                           Padding(
                               padding: const EdgeInsets.all(5.0),
-                              child: reusableRowWithChip(
-                                  "icons/ic_price.png",
+                              child: reusableRowWithChip("icons/ic_price.png",
                                   "Price", "45000", Colors.teal)),
                           Padding(
                               padding: const EdgeInsets.all(5.0),
@@ -534,19 +532,20 @@ class _CardViewsState extends State<CardViews> {
                               padding: const EdgeInsets.all(5.0),
                               child: ElevatedButton.icon(
                                 icon: const ImageIcon(
-                                  AssetImage("icons/ic_cart_box.png",),
+                                  AssetImage(
+                                    "icons/ic_cart_box.png",
+                                  ),
                                 ),
                                 label: const Text("Add to Cart"),
                                 onPressed: () {
-                                  ScaffoldMessenger.of(context)
-                                      .showSnackBar(Config.buildSnackBar(
-                                      "Added to cart",
-                                      5,
-                                      const EdgeInsets.all(20),
-                                      const EdgeInsets.all(15),
-                                      Colors.black,
-                                      const Duration(
-                                          milliseconds: 1000)));
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                      Config.buildSnackBar(
+                                          "Added to cart",
+                                          5,
+                                          const EdgeInsets.all(20),
+                                          const EdgeInsets.all(15),
+                                          Colors.black,
+                                          const Duration(milliseconds: 1000)));
                                 },
                                 style: ElevatedButton.styleFrom(
                                   shape: RoundedRectangleBorder(
@@ -554,7 +553,6 @@ class _CardViewsState extends State<CardViews> {
                                   ),
                                 ),
                               ))
-
                         ]))))
           ],
         )));

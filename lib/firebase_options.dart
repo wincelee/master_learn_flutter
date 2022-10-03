@@ -70,7 +70,8 @@ class DefaultFirebaseOptions {
     messagingSenderId: '878621507239',
     projectId: 'masterlearn-38eb8',
     storageBucket: 'masterlearn-38eb8.appspot.com',
-    iosClientId: '878621507239-m6m8fbr1929h8b6qifpgc2p168vu3vo9.apps.googleusercontent.com',
+    iosClientId:
+        '878621507239-m6m8fbr1929h8b6qifpgc2p168vu3vo9.apps.googleusercontent.com',
     iosBundleId: 'manu.apps.masterlearn.masterLearn',
   );
 }

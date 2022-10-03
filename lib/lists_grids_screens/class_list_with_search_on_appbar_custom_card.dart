@@ -34,7 +34,6 @@ class _ClassListWithSearchOnAppBarCustomCardState
     super.initState();
 
     populateItemsList();
-
   }
 
   onSearch(String searchValue) {
@@ -74,7 +73,8 @@ class _ClassListWithSearchOnAppBarCustomCardState
             IconButton(
                 onPressed: () {
                   showSearch(
-                      context: context, delegate: CustomSearchDelegate(itemsList: itemsList));
+                      context: context,
+                      delegate: CustomSearchDelegate(itemsList: itemsList));
                 },
                 icon: const Icon(Icons.search))
           ],
@@ -111,7 +111,7 @@ class _ClassListWithSearchOnAppBarCustomCardState
                   return iconProgressIndicator();
                 } else {
                   return RefreshIndicator(
-                    // background color
+                      // background color
                       backgroundColor: Colors.white,
                       // refresh circular progress indicator color
                       color: Colors.green,
@@ -265,7 +265,10 @@ class CustomSearchDelegate extends SearchDelegate {
         onPressed: () {
           close(context, null);
         },
-        icon: AnimatedIcon(icon: AnimatedIcons.menu_arrow, progress: transitionAnimation,));
+        icon: AnimatedIcon(
+          icon: AnimatedIcons.menu_arrow,
+          progress: transitionAnimation,
+        ));
   }
 
   @override
@@ -288,13 +291,11 @@ class CustomSearchDelegate extends SearchDelegate {
 
     return ListView.builder(
         itemCount: searchList!.length,
-        itemBuilder: (context, index) =>
-            myCustomCardWidget(
-                searchList[index].id ?? "",
-                searchList[index].title ?? "",
-                searchList[index].subTitle ?? '',
-                searchList[index].imageUrl ?? Config.nullNetworkImage)
-    );
+        itemBuilder: (context, index) => myCustomCardWidget(
+            searchList[index].id ?? "",
+            searchList[index].title ?? "",
+            searchList[index].subTitle ?? '',
+            searchList[index].imageUrl ?? Config.nullNetworkImage));
   }
 
   @override
@@ -317,12 +318,10 @@ class CustomSearchDelegate extends SearchDelegate {
 
     return ListView.builder(
         itemCount: searchList!.length,
-        itemBuilder: (context, index) =>
-            myCustomCardWidget(
-                searchList[index].id ?? "",
-                searchList[index].title ?? "",
-                searchList[index].subTitle ?? '',
-                searchList[index].imageUrl ?? Config.nullNetworkImage)
-    );
+        itemBuilder: (context, index) => myCustomCardWidget(
+            searchList[index].id ?? "",
+            searchList[index].title ?? "",
+            searchList[index].subTitle ?? '',
+            searchList[index].imageUrl ?? Config.nullNetworkImage));
   }
 }

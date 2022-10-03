@@ -66,15 +66,13 @@ class _GridViewBuilderUsingUsersListState
                         break;
 
                       case ConnectionState.done:
-
-                        if(asyncSnapshot.data.length == 0) {
-
+                        if (asyncSnapshot.data.length == 0) {
                           //Logger().i("${AsyncFutures.statusCode()}");
 
                           //return unauthorized("We encountered an error while authorizing your request");
-                          return noData("We haven't found any users right now please create a user or retry");
-                        }
-                        else if (asyncSnapshot.hasError) {
+                          return noData(
+                              "We haven't found any users right now please create a user or retry");
+                        } else if (asyncSnapshot.hasError) {
                           if (kDebugMode) {
                             Logger().wtf(
                                 "SimpleGridViewAsyncSnapshotHasError ${asyncSnapshot.error}");

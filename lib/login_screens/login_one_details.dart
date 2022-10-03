@@ -53,8 +53,7 @@ class _LoginOneDetailsState extends State<LoginOneDetails> {
           children: [
             Padding(
               padding: const EdgeInsets.all(10),
-              child: Row(
-                  children: [
+              child: Row(children: [
                 Align(
                   alignment: Alignment.centerLeft,
                   child: SizedBox(
@@ -65,8 +64,9 @@ class _LoginOneDetailsState extends State<LoginOneDetails> {
                 ),
                 const Expanded(
                   child: Align(
-                    child: Text("Login Success",
-                        /*overflow: TextOverflow.ellipsis,*/),
+                    child: Text(
+                      "Login Success", /*overflow: TextOverflow.ellipsis,*/
+                    ),
                   ),
                 ),
                 const Spacer(),
@@ -80,31 +80,32 @@ class _LoginOneDetailsState extends State<LoginOneDetails> {
             ),
             Padding(
               padding: const EdgeInsets.all(10),
-              child: Row(
-                  children: [
-                    Align(
-                      alignment: Alignment.centerLeft,
-                      child: Container(
-                        margin:  const EdgeInsets.only(left: 1, top: 1, bottom: 1, right: 1),
-                        height: 30,
-                        width: 30,
-                        child: Image.asset('images/no_data.png'),
-                      ),
+              child: Row(children: [
+                Align(
+                  alignment: Alignment.centerLeft,
+                  child: Container(
+                    margin: const EdgeInsets.only(
+                        left: 1, top: 1, bottom: 1, right: 1),
+                    height: 30,
+                    width: 30,
+                    child: Image.asset('images/no_data.png'),
+                  ),
+                ),
+                const Expanded(
+                  child: Align(
+                    child: Text(
+                      "Login Success", /*overflow: TextOverflow.ellipsis,*/
                     ),
-                    const Expanded(
-                      child: Align(
-                        child: Text("Login Success",
-                          /*overflow: TextOverflow.ellipsis,*/),
-                      ),
-                    ),
-                    const Spacer(),
-                    Expanded(
-                      child: Align(
-                        alignment: Alignment.centerRight,
-                        child: Text(widget.success),
-                      ),
-                    )
-                  ]),
+                  ),
+                ),
+                const Spacer(),
+                Expanded(
+                  child: Align(
+                    alignment: Alignment.centerRight,
+                    child: Text(widget.success),
+                  ),
+                )
+              ]),
             ),
             Padding(
               padding: const EdgeInsets.all(20),

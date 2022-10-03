@@ -82,7 +82,7 @@ class _FirebaseDashBoardState extends State<FirebaseDashBoard> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title:  SizedBox(
+          title: SizedBox(
             child: MarqueeWidget(
               direction: Axis.horizontal,
               child: Text(widget.appBarTitle),
@@ -111,8 +111,9 @@ class _FirebaseDashBoardState extends State<FirebaseDashBoard> {
                   onPressed: () async {
                     await _authService.signOut().then((result) {
                       Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) => const SignInUsingEmailAndPassword(
-                              appBarTitle: "Firebase Operations")));
+                          builder: (context) =>
+                              const SignInUsingEmailAndPassword(
+                                  appBarTitle: "Firebase Operations")));
 
                       EdgeAlert.show(context,
                           title: 'Success',
@@ -215,13 +216,14 @@ class _FirebaseDashBoardState extends State<FirebaseDashBoard> {
               child: Container(
                 padding: const EdgeInsets.all(5),
                 child: ElevatedButton(
-                  onPressed: (){
+                  onPressed: () {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
                             builder: (context) =>
-                            const FetchAllItemsWithoutUsingClassWithoutUid(
-                                appBarTitle: "FetchAllItemsWithoutUsingClassWithoutUid")));
+                                const FetchAllItemsWithoutUsingClassWithoutUid(
+                                    appBarTitle:
+                                        "FetchAllItemsWithoutUsingClassWithoutUid")));
                   },
                   child: const Text("FetchAllItemsWithoutUsingClassWithoutUid"),
                 ),

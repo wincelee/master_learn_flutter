@@ -551,7 +551,8 @@ class _DropDownSpinnersState extends State<DropDownSpinners> {
                                       "Enable/DisabledOutlineInputBorderBorderRadius",
                                       textAlign: TextAlign.center,
                                     )),
-                                    Flexible(child: Switch(
+                                    Flexible(
+                                        child: Switch(
                                       value:
                                           enableCustomizableDropDownFormFieldOutlineInputBorderBorderRadius,
                                       onChanged: (bool value) {
@@ -565,20 +566,20 @@ class _DropDownSpinnersState extends State<DropDownSpinners> {
                                 ))),
                         Container(
                             width: double.infinity,
-                            padding:
-                            const EdgeInsets.only(left: 10, right: 10),
+                            padding: const EdgeInsets.only(left: 10, right: 10),
                             child: Row(
                               mainAxisSize: MainAxisSize.max,
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 const Flexible(
                                     child: Text(
-                                      "Enable/Disable Fill Color",
-                                      textAlign: TextAlign.center,
-                                    )),
-                                Flexible(child: Switch(
+                                  "Enable/Disable Fill Color",
+                                  textAlign: TextAlign.center,
+                                )),
+                                Flexible(
+                                    child: Switch(
                                   value:
-                                  enableCustomizableDropDownFormFieldFill,
+                                      enableCustomizableDropDownFormFieldFill,
                                   onChanged: (bool value) {
                                     setState(() {
                                       enableCustomizableDropDownFormFieldFill =
@@ -601,8 +602,12 @@ class _DropDownSpinnersState extends State<DropDownSpinners> {
                                       highlightColor: Config.accentColor),
                                   child: DropdownButtonFormField(
                                     decoration: InputDecoration(
-                                        filled: enableCustomizableDropDownFormFieldFill,
-                                        fillColor: enableCustomizableDropDownFormFieldFill ? Colors.grey[50]: null,
+                                        filled:
+                                            enableCustomizableDropDownFormFieldFill,
+                                        fillColor:
+                                            enableCustomizableDropDownFormFieldFill
+                                                ? Colors.grey[50]
+                                                : null,
                                         labelText:
                                             enableDropDownFormFieldLabelText
                                                 ? "Select Car"
@@ -610,7 +615,9 @@ class _DropDownSpinnersState extends State<DropDownSpinners> {
                                         border:
                                             enableCustomizableDropDownFormFieldOutlineInputBorder
                                                 ? OutlineInputBorder(
-                                                    borderRadius: BorderRadius.circular(15))
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            15))
                                                 : null,
                                         contentPadding: const EdgeInsets.only(
                                             left: 10, right: 5)),

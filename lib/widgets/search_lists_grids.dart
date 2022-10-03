@@ -1,18 +1,20 @@
 import 'package:flutter/material.dart';
 
 class SearchListsGrids extends StatefulWidget {
-
   final String text, hintText;
   final ValueChanged<String> onChanged;
-  const SearchListsGrids({Key? key, required this.text,
-  required this.onChanged, required this.hintText}) : super(key: key);
+  const SearchListsGrids(
+      {Key? key,
+      required this.text,
+      required this.onChanged,
+      required this.hintText})
+      : super(key: key);
 
   @override
   _SearchListsGridsState createState() => _SearchListsGridsState();
 }
 
 class _SearchListsGridsState extends State<SearchListsGrids> {
-
   final controller = TextEditingController();
 
   @override
@@ -36,13 +38,13 @@ class _SearchListsGridsState extends State<SearchListsGrids> {
           icon: Icon(Icons.search, color: style.color),
           suffixIcon: widget.text.isNotEmpty
               ? GestureDetector(
-            child: Icon(Icons.close, color: style.color),
-            onTap: () {
-              controller.clear();
-              widget.onChanged('');
-              FocusScope.of(context).requestFocus(FocusNode());
-            },
-          )
+                  child: Icon(Icons.close, color: style.color),
+                  onTap: () {
+                    controller.clear();
+                    widget.onChanged('');
+                    FocusScope.of(context).requestFocus(FocusNode());
+                  },
+                )
               : null,
           hintText: widget.hintText,
           hintStyle: style,
@@ -54,4 +56,3 @@ class _SearchListsGridsState extends State<SearchListsGrids> {
     );
   }
 }
-

@@ -2,7 +2,7 @@ import 'dart:ui' as ui;
 
 import 'package:flutter/material.dart';
 
-class RenderUiImage extends StatelessWidget{
+class RenderUiImage extends StatelessWidget {
   final ui.Image image;
 
   const RenderUiImage({

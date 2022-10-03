@@ -3,9 +3,8 @@ import 'package:master_learn/classes/config.dart';
 import 'package:master_learn/widgets/set_up_user_image.dart';
 
 class UserDetails extends StatefulWidget {
-
   final int index;
-  final String  email, about, name, picture, imageFetchType;
+  final String email, about, name, picture, imageFetchType;
 
   const UserDetails(
       {Key? key,

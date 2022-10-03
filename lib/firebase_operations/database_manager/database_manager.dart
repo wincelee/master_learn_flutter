@@ -13,29 +13,25 @@ class DatabaseManager {
 
   Future<void> createUserData(
       String name, String gender, int score, String uid) async {
-    return await _profileList.doc(uid).set({'name': name, 'gender' : gender, 'score': score});
+    return await _profileList
+        .doc(uid)
+        .set({'name': name, 'gender': gender, 'score': score});
   }
 
-  Future fetchUsersData() async{
-
+  Future fetchUsersData() async {
     List _usersDataList = [];
 
-    try{
-
+    try {
       await _profileList.get().then((querySnapshot) {
-
         //_usersDataList = querySnapshot.docs.map((e) {}).toList();
 
         for (var element in querySnapshot.docs) {
-
           _usersDataList.add(element);
         }
-
       });
 
       return _usersDataList;
-
-    }catch(e){
+    } catch (e) {
       Logger().i("FetchUsersData ${e.toString()}");
       return e;
     }

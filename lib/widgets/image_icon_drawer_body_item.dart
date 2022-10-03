@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 
 Widget imageIconDrawerBodyItem(
     {String? imageAssetPath, String? text, GestureTapCallback? onTap}) {
-
   return ListTile(
     title: Row(
       crossAxisAlignment: CrossAxisAlignment.center,

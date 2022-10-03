@@ -12,10 +12,12 @@ class GridViewBuilderUsingHashMap extends StatefulWidget {
   const GridViewBuilderUsingHashMap({Key? key}) : super(key: key);
 
   @override
-  _GridViewBuilderUsingHashMapState createState() => _GridViewBuilderUsingHashMapState();
+  _GridViewBuilderUsingHashMapState createState() =>
+      _GridViewBuilderUsingHashMapState();
 }
 
-class _GridViewBuilderUsingHashMapState extends State<GridViewBuilderUsingHashMap> {
+class _GridViewBuilderUsingHashMapState
+    extends State<GridViewBuilderUsingHashMap> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -79,31 +81,26 @@ class _GridViewBuilderUsingHashMapState extends State<GridViewBuilderUsingHashMa
                                 Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                        builder: (context) =>
-                                            GridCellDetails(
-                                              index: asyncSnapshot
-                                                  .data[index]
-                                                  ["index"] ??
+                                        builder: (context) => GridCellDetails(
+                                              index: asyncSnapshot.data[index]
+                                                      ["index"] ??
                                                   '',
-                                              email: asyncSnapshot
-                                                  .data[index]
-                                                  ["email"] ??
+                                              email: asyncSnapshot.data[index]
+                                                      ["email"] ??
                                                   '',
-                                              about: asyncSnapshot
-                                                  .data[index]
-                                                  ["about"] ??
+                                              about: asyncSnapshot.data[index]
+                                                      ["about"] ??
                                                   '',
-                                              name: asyncSnapshot
-                                                  .data[index]["name"] ??
+                                              name: asyncSnapshot.data[index]
+                                                      ["name"] ??
                                                   '',
-                                              picture: asyncSnapshot
-                                                  .data[index]
-                                                  ["picture"] ??
+                                              picture: asyncSnapshot.data[index]
+                                                      ["picture"] ??
                                                   Config.nullNetworkImage,
-                                              imageFetchType: asyncSnapshot
-                                                  .data[index]
-                                                  ["imageFetchType"] ??
-                                                  '',
+                                              imageFetchType:
+                                                  asyncSnapshot.data[index]
+                                                          ["imageFetchType"] ??
+                                                      '',
                                             )));
                               },
                             );

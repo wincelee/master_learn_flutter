@@ -267,8 +267,7 @@ class _FutureBuilderListUsingHashMapState
                           return ListTile(
                             contentPadding: const EdgeInsets.all(10),
                             leading: Hero(
-                              tag: asyncSnapshot.data[index]
-                              ["picture"] ??
+                              tag: asyncSnapshot.data[index]["picture"] ??
                                   Config.nullIndexHero,
                               child: AspectRatio(
                                 aspectRatio: 1 / 1,
@@ -277,7 +276,7 @@ class _FutureBuilderListUsingHashMapState
                                       fit: BoxFit.cover,
                                       placeholder: "images/converging_dots.gif",
                                       image: asyncSnapshot.data[index]
-                                      ["picture"] ??
+                                              ["picture"] ??
                                           Config.nullNetworkImage),
                                 ),
                               ),

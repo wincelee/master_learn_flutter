@@ -82,7 +82,7 @@ class _SignUpUsingPhoneNoState extends State<SignUpUsingPhoneNo> {
           EdgeAlert.show(context,
               title: 'Oops!',
               description:
-              "It seems like this has taken way too long, please try again",
+                  "It seems like this has taken way too long, please try again",
               backgroundColor: Config.primaryColor,
               duration: 3,
               icon: Icons.info_outline,
@@ -95,22 +95,17 @@ class _SignUpUsingPhoneNoState extends State<SignUpUsingPhoneNo> {
 
     await FirebaseAuth.instance
         .signInWithCredential(PhoneAuthProvider.credential(
-        verificationId: _verificationId!, smsCode: _otp!))
+            verificationId: _verificationId!, smsCode: _otp!))
         .whenComplete(() => {
-
-          Navigator.pop(context),
-
-        Navigator.of(context).pushReplacement(
-      MaterialPageRoute(
-        builder: (context) =>
-        const FirebaseDashBoard(
-            appBarTitle:
-            "Firebase Dashboard from sign up using phone no"),
-      ),
-    )
-
-
-  });
+              Navigator.pop(context),
+              Navigator.of(context).pushReplacement(
+                MaterialPageRoute(
+                  builder: (context) => const FirebaseDashBoard(
+                      appBarTitle:
+                          "Firebase Dashboard from sign up using phone no"),
+                ),
+              )
+            });
   }
 
   @override
@@ -198,7 +193,7 @@ class _SignUpUsingPhoneNoState extends State<SignUpUsingPhoneNo> {
                       margin: const EdgeInsets.only(
                           top: 10, bottom: 10, left: 5, right: 5),
                       child:
-                      Text("Enter opt sent to ${_phoneNoController.text}"),
+                          Text("Enter opt sent to ${_phoneNoController.text}"),
                     )),
                 Visibility(
                   visible: _setOtpDisplayVisibility,
@@ -232,9 +227,7 @@ class _SignUpUsingPhoneNoState extends State<SignUpUsingPhoneNo> {
                                   "Phone number is required to proceed");
                             } else {
                               if (_countryDial == '+254') {
-                                if (_phoneNoController.text
-                                    .trim()
-                                    .length < 9) {
+                                if (_phoneNoController.text.trim().length < 9) {
                                   showSnackBarText(
                                       "Phone number length is invalid");
                                 } else {

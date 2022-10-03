@@ -38,7 +38,8 @@ class _MapListWithSearchCustomCardState
         Expanded(
           child: FutureBuilder(
             future: AsyncFutures.fetchLists(
-                "https://api.json-generator.com/templates/ueOoUwh5r44G/data", ""),
+                "https://api.json-generator.com/templates/ueOoUwh5r44G/data",
+                ""),
             builder: (BuildContext context, AsyncSnapshot asyncSnapshot) {
               if (asyncSnapshot.data == null) {
                 return iconProgressIndicator();
@@ -51,7 +52,8 @@ class _MapListWithSearchCustomCardState
                     onRefresh: () async {
                       setState(() {
                         AsyncFutures.fetchLists(
-                            "https://api.json-generator.com/templates/ueOoUwh5r44G/data", "");
+                            "https://api.json-generator.com/templates/ueOoUwh5r44G/data",
+                            "");
                       });
                     },
                     child: ListView.builder(

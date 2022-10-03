@@ -260,16 +260,17 @@ class _BottomSheetScrollSheetState extends State<BottomSheetScrollSheet> {
                         onPressed: () => Navigator.of(context).push(
                             MaterialPageRoute(
                                 builder: (BuildContext context) =>
-                                const MySlidingUpPanel(appBarTitle: "My Sliding Up Panel"))),
+                                    const MySlidingUpPanel(
+                                        appBarTitle: "My Sliding Up Panel"))),
                         child: const Text("My Sliding Up Panel"),
                       ))),
             ],
           ),
         ),
         DraggableScrollableSheet(
-          // Height where the draggable bottom sheet will show screen launch
-          // 0.1 is 10% of the height
-          initialChildSize: 0.1,
+            // Height where the draggable bottom sheet will show screen launch
+            // 0.1 is 10% of the height
+            initialChildSize: 0.1,
             // Minimum height where the draggable scrollable sheet will reach on dragging down
             // 0.1 is 10% of the height
             minChildSize: 0.1,
@@ -283,8 +284,10 @@ class _BottomSheetScrollSheetState extends State<BottomSheetScrollSheet> {
                   child: Builder(
                     builder: (BuildContext context) {
                       if (itemsMapList == null) {
-                        return const Center(child: CircularProgressIndicator(
-                          valueColor: AlwaysStoppedAnimation<Color>(Colors.orange),
+                        return const Center(
+                            child: CircularProgressIndicator(
+                          valueColor:
+                              AlwaysStoppedAnimation<Color>(Colors.orange),
                           strokeWidth: 2.0,
                         ));
                       } else {
@@ -294,16 +297,16 @@ class _BottomSheetScrollSheetState extends State<BottomSheetScrollSheet> {
                           onRefresh: () async =>
                               setState(() => populateItemsList()),
                           child: ListView.builder(
-                            controller: scrollController,
-                            itemCount: itemsMapList!.length,
+                              controller: scrollController,
+                              itemCount: itemsMapList!.length,
                               itemBuilder: (BuildContext context, int index) {
-                            return myCustomCardWidget(
-                                itemsMapList![index]["id"] ?? "",
-                                itemsMapList![index]["title"] ?? "",
-                                itemsMapList![index]["subTitle"] ?? '',
-                                itemsMapList![index]["imageUrl"] ??
-                                    Config.nullNetworkImage);
-                          }),
+                                return myCustomCardWidget(
+                                    itemsMapList![index]["id"] ?? "",
+                                    itemsMapList![index]["title"] ?? "",
+                                    itemsMapList![index]["subTitle"] ?? '',
+                                    itemsMapList![index]["imageUrl"] ??
+                                        Config.nullNetworkImage);
+                              }),
                         );
                       }
                     },

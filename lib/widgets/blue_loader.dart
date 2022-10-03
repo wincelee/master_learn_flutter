@@ -20,7 +20,8 @@ Widget blueLoader() {
   //   ),
   // );
 
-  return const Center(child: SizedBox(
+  return const Center(
+      child: SizedBox(
     child: CircularProgressIndicator(
       valueColor: AlwaysStoppedAnimation<Color>(Colors.blue),
       strokeWidth: 3.0,

@@ -7,7 +7,7 @@ Widget createDrawerHeader() {
       decoration: const BoxDecoration(
           image: DecorationImage(
               fit: BoxFit.fill,
-              image:  AssetImage('images/nav_header_background.jpg'))),
+              image: AssetImage('images/nav_header_background.jpg'))),
       child: Stack(children: const <Widget>[
         Positioned(
             bottom: 12.0,

@@ -23,17 +23,13 @@ import 'package:firebase_core/firebase_core.dart';
 
 import 'firebase_options.dart';
 
-
 // Tutorial link [https://www.thirdrocktechkno.com/blog/how-to-implement-navigation-drawer-in-flutter/]
 
 Future main() async {
-
   WidgetsFlutterBinding.ensureInitialized();
 
   await Firebase.initializeApp(
-
     options: DefaultFirebaseOptions.currentPlatform,
-
   );
 
   LicenseRegistry.addLicense(() async* {
@@ -101,21 +97,18 @@ class MyApp extends StatelessWidget {
               return const BottomSheetScrollSheet(
                   title: "BottomSheet/ScrollSheet");
             } else if (Config().equalsIgnoreCase(startPage, "tabBars")) {
-              return const TabBarsScreen(
-                  title: "TabBars");
-            }else if (Config().equalsIgnoreCase(startPage, "optionsMenu")) {
-              return const OptionsMenu(
-                  title: "OptionsMenu");
-            }else if (Config().equalsIgnoreCase(startPage, "bannersScreen")) {
-              return const BannersScreen(
-                  title: "Banners Screen");
-            }else if (Config().equalsIgnoreCase(startPage, "firebaseOperations")) {
+              return const TabBarsScreen(title: "TabBars");
+            } else if (Config().equalsIgnoreCase(startPage, "optionsMenu")) {
+              return const OptionsMenu(title: "OptionsMenu");
+            } else if (Config().equalsIgnoreCase(startPage, "bannersScreen")) {
+              return const BannersScreen(title: "Banners Screen");
+            } else if (Config()
+                .equalsIgnoreCase(startPage, "firebaseOperations")) {
               return const FirebaseOperations(
                   appBarTitle: "Firebase Operations");
             }
 
             return const FetchListsGrids();
-
           }));
     }
 

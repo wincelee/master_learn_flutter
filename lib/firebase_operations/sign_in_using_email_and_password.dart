@@ -17,10 +17,12 @@ class SignInUsingEmailAndPassword extends StatefulWidget {
       : super(key: key);
 
   @override
-  State<SignInUsingEmailAndPassword> createState() => _SignInUsingEmailAndPasswordState();
+  State<SignInUsingEmailAndPassword> createState() =>
+      _SignInUsingEmailAndPasswordState();
 }
 
-class _SignInUsingEmailAndPasswordState extends State<SignInUsingEmailAndPassword> {
+class _SignInUsingEmailAndPasswordState
+    extends State<SignInUsingEmailAndPassword> {
   final _key = GlobalKey<FormState>();
 
   final AuthService _authService = AuthService();
@@ -94,7 +96,10 @@ class _SignInUsingEmailAndPasswordState extends State<SignInUsingEmailAndPasswor
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => const SignUpUsingEmailAndPassword(appBarTitle: "Sign up using email and password")));
+                          builder: (context) =>
+                              const SignUpUsingEmailAndPassword(
+                                  appBarTitle:
+                                      "Sign up using email and password")));
                 },
               ),
               ElevatedButton(
@@ -146,7 +151,6 @@ class _SignInUsingEmailAndPasswordState extends State<SignInUsingEmailAndPasswor
             icon: Icons.info_outline,
             gravity: EdgeAlert.bottom);
       } else {
-
         Navigator.pop(context);
 
         EdgeAlert.show(context,
@@ -165,8 +169,8 @@ class _SignInUsingEmailAndPasswordState extends State<SignInUsingEmailAndPasswor
         Navigator.push(
             context,
             MaterialPageRoute(
-                builder: (context) => const FirebaseDashBoard(appBarTitle: "Firebase Dashboard")));
-
+                builder: (context) => const FirebaseDashBoard(
+                    appBarTitle: "Firebase Dashboard")));
       }
     }
   }

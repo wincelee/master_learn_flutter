@@ -1928,3 +1928,119 @@ class BS extends StatefulWidget {
               'svg_asset_path',
                color: Colors.white,
             ),
+
+ ----------------------------------------------------------------------------------------------------
+ ****************************************************************************************************
+ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ ####################################################################################################
+
+                                    ||| Shared Preferences |||
+                                      || SharedPreferences ||
+                                        |||| S-h-a-r-e-d |||
+                                  |||| P-r-e-f-e-r-e-n-c-e-s |||
+                              |||| s-h-a-r-e-d-P-r-e-f-e-r-e-n-c-e-s |||
+
+~~~ Declare your preference
+
+    final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
+
+~~~ Then declare values to be populated
+
+    String? _valueOne;
+    String? _valueTwo;
+
+~~~ Getting values of the preferences in initState() method
+
+    @ MethodOne
+     _prefs.then((SharedPreferences prefs) {
+
+          setState((){
+            _valueOne = prefs.getString("valueOne") ?? "";
+            _valueTwo = prefs.getString("valueTwo") ?? "";
+          });
+
+      });
+
+
+ ----------------------------------------------------------------------------------------------------
+ ****************************************************************************************************
+ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ ####################################################################################################
+
+                                    ||| Future |||
+                                  ||| F-u-t-u-r-e |||
+
+~~~ Ways of getting future values
+
+        @ Using async-await
+
+        int _value = 0; // Instance variable.
+
+        void func() async {
+          int value = await _yourFuture(); // Await on your future.
+          setState(() {
+            _value = value;
+          });
+        }
+
+        ----------------------------------------
+
+        @ Using then
+
+        int _value = 0; // Instance variable.
+
+        void func() {
+          _getPref().then((value) {
+            setState(() {
+              _value = value; // Future is completed with a value.
+            });
+          });
+        }
+
+        ----------------------------------------
+
+        @ Using async method and a void method to get the value
+
+        Future<User> _fetchUserInfo(String id) async {
+            User fetchedUser;
+            var snapshot = await Firestore.instance
+                .collection('user')
+                .document(id)
+                .get();
+            return User(snapshot);
+        }
+
+        void foo() async {
+          final user = await _fetchUserInfo(id);
+        }
+
+
+        ----------------------------------------
+
+        @ Using AsyncSnapshot with list or value to be set above build
+
+        Future<bool> checkLoginValue() async {
+          SharedPreferences loginCheck = await SharedPreferences.getInstance();
+          return loginCheck.getBool("login");
+        }
+
+        @override
+        Widget build(BuildContext context) {
+          return MaterialApp(
+            title: 'Test App',
+            debugShowCheckedModeBanner: false,
+            theme: ThemeData(
+              primarySwatch: Colors.blue,
+            ),
+            home: FutureBuilder<bool>(
+              future: checkLoginValue,
+              builder: (BuildContext context, AsyncSnapshot<bool> snapshot) {
+                if (snapshot.data == false) {
+                  return LandingPage();
+                } else {
+                  return HomePage();
+                }
+              },
+            ),
+          );
+        }
