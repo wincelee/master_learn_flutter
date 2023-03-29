@@ -37,18 +37,18 @@ dependencies:
   logger: ^1.1.0
   json_serializable: ^6.1.4
   avatar_view: ^1.0.1
-  google_fonts: ^2.1.0
+  google_fonts: ^4.0.3
   intl: ^0.17.0
-  image: ^3.1.1
-  flutter_slidable: ^1.2.0
+  image: ^4.0.15
+  flutter_slidable: ^2.0.0
   device_preview_screenshot: ^1.0.0
   device_preview: ^1.0.0
-  autocomplete_textfield: ^1.7.3
+  autocomplete_textfield: ^2.0.1
   flutter_windowmanager: ^0.2.0
   sliding_up_panel: ^2.0.0+1
-  firebase_core: ^1.18.0
-  firebase_auth: ^3.3.20
-  cloud_firestore: ^3.1.18
+  firebase_core: ^2.8.0
+  firebase_auth: ^4.3.0
+  cloud_firestore: ^4.4.5
   shimmer: ^2.0.0
   shimmer_animation: ^2.1.0
   intl_phone_field: ^3.1.0

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:master_learn/navigation_drawer.dart';
+import 'package:master_learn/my_navigation_drawer.dart';
 import 'package:master_learn/tab_bars_screens/tab_bars_outside_app_bar.dart';
 import 'package:master_learn/tab_bars_screens/tab_using_default_tab_controller.dart';
 
@@ -23,7 +23,7 @@ class _TabBarsScreenState extends State<TabBarsScreen> {
           backgroundColor: const Color(0xff4c4c00),
           title: Text(widget.title),
         ),
-        drawer: const NavigationDrawer(),
+        drawer: const MyNavigationDrawer(),
         body: SingleChildScrollView(
           child: Column(
             children: [

@@ -7,8 +7,8 @@ import 'package:master_learn/firebase_operations/database_manager/database_manag
 import 'package:master_learn/firebase_operations/fetch_all_items_using_class_without_uid.dart';
 import 'package:master_learn/firebase_operations/fetch_all_items_without_using_class_without_uid.dart';
 import 'package:master_learn/firebase_operations/services/auth_service.dart';
-import 'package:master_learn/navigation_drawer.dart';
 import 'package:master_learn/firebase_operations/sign_in_using_email_and_password.dart';
+import 'package:master_learn/my_navigation_drawer.dart';
 import 'package:master_learn/widgets/marquee_widget.dart';
 import 'package:master_learn/widgets/reusable_row.dart';
 import 'package:shimmer/shimmer.dart';
@@ -136,7 +136,7 @@ class _FirebaseDashBoardState extends State<FirebaseDashBoard> {
                 ))
           ],
         ),
-        drawer: const NavigationDrawer(),
+        drawer: const MyNavigationDrawer(),
         body: Column(
           children: [
             Container(

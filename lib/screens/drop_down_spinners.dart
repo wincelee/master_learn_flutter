@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:master_learn/classes/async_futures.dart';
 import 'package:master_learn/classes/config.dart';
 import 'package:master_learn/classes/user.dart';
-import 'package:master_learn/navigation_drawer.dart';
+import 'package:master_learn/my_navigation_drawer.dart';
 import 'package:master_learn/widgets/icon_progress_indicator.dart';
 
 class DropDownSpinners extends StatefulWidget {
@@ -91,7 +91,7 @@ class _DropDownSpinnersState extends State<DropDownSpinners> {
           backgroundColor: const Color(0xff4c4c00),
           title: Text(widget.title),
         ),
-        drawer: const NavigationDrawer(),
+        drawer: const MyNavigationDrawer(),
         body: Center(
           child: SingleChildScrollView(
               child: Builder(builder: (BuildContext context) {

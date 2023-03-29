@@ -5,7 +5,7 @@ import 'package:logger/logger.dart';
 import 'package:master_learn/firebase_operations/firebase_dashboard.dart';
 import 'package:master_learn/firebase_operations/sign_up_using_email_and_password.dart';
 import 'package:master_learn/firebase_operations/services/auth_service.dart';
-import 'package:master_learn/navigation_drawer.dart';
+import 'package:master_learn/my_navigation_drawer.dart';
 
 import '../classes/EdgeAlert.dart';
 import '../classes/config.dart';
@@ -36,7 +36,7 @@ class _SignInUsingEmailAndPasswordState
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text(widget.appBarTitle)),
-      drawer: const NavigationDrawer(),
+      drawer: const MyNavigationDrawer(),
       body: SingleChildScrollView(
         child: Form(
           key: _key,

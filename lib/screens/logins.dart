@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:master_learn/login_screens/login_one.dart';
 import 'package:master_learn/login_screens/login_two.dart';
 
-import '../navigation_drawer.dart';
+import '../my_navigation_drawer.dart';
 
 class Logins extends StatefulWidget {
   const Logins({Key? key}) : super(key: key);
@@ -19,7 +19,7 @@ class _LoginsState extends State<Logins> {
         backgroundColor: const Color(0xff4c4c00),
         title: const Text("Logins"),
       ),
-      drawer: const NavigationDrawer(),
+      drawer: const MyNavigationDrawer(),
       body: SingleChildScrollView(
         child: Column(
           children: <Widget>[

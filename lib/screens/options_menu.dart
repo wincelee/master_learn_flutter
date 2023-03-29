@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:master_learn/navigation_drawer.dart';
+import 'package:master_learn/my_navigation_drawer.dart';
 import 'package:master_learn/options_menu_screens/options_menu_with_icons.dart';
 import 'package:master_learn/options_menu_screens/simple_options_menu.dart';
 
@@ -19,7 +19,7 @@ class _OptionsMenuState extends State<OptionsMenu> {
       appBar: AppBar(
         title: Text(widget.title),
       ),
-      drawer: const NavigationDrawer(),
+      drawer: const MyNavigationDrawer(),
       body: SingleChildScrollView(
         child: Column(
           children: [

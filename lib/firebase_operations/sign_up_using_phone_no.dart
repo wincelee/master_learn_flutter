@@ -6,7 +6,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
 import 'package:logger/logger.dart';
 import 'package:master_learn/firebase_operations/firebase_dashboard.dart';
-import 'package:master_learn/navigation_drawer.dart';
+import 'package:master_learn/my_navigation_drawer.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 
 import '../classes/EdgeAlert.dart';
@@ -114,7 +114,7 @@ class _SignUpUsingPhoneNoState extends State<SignUpUsingPhoneNo> {
         appBar: AppBar(
           title: Text(widget.appBarTitle),
         ),
-        drawer: const NavigationDrawer(),
+        drawer: const MyNavigationDrawer(),
         body: SingleChildScrollView(
           child: Container(
             padding: const EdgeInsets.all(10),

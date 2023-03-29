@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:master_learn/classes/config.dart';
-import 'package:master_learn/navigation_drawer.dart';
+import 'package:master_learn/my_navigation_drawer.dart';
 
 class SnackBars extends StatefulWidget {
   const SnackBars({Key? key}) : super(key: key);
@@ -18,7 +18,7 @@ class _SnackBarsState extends State<SnackBars> {
           backgroundColor: const Color(0xff4c4c00),
           title: const Text("SnackBars"),
         ),
-        drawer: const NavigationDrawer(),
+        drawer: const MyNavigationDrawer(),
         body: SingleChildScrollView(
           child: Center(
               child: Padding(

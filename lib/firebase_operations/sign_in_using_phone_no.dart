@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:master_learn/navigation_drawer.dart';
+import 'package:master_learn/my_navigation_drawer.dart';
 
 class SignInUsingPhoneNo extends StatefulWidget {
   final String appBarTitle;
@@ -18,7 +18,7 @@ class _SignInUsingPhoneNoState extends State<SignInUsingPhoneNo> {
       appBar: AppBar(
         title: Text(widget.appBarTitle),
       ),
-      drawer: const NavigationDrawer(),
+      drawer: const MyNavigationDrawer(),
     );
   }
 }

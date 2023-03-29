@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:master_learn/classes/config.dart';
-import 'package:master_learn/navigation_drawer.dart';
+import 'package:master_learn/my_navigation_drawer.dart';
 import 'package:master_learn/widgets/reusable_row.dart';
 import 'package:master_learn/widgets/reusable_row_with_chip.dart';
 
@@ -19,7 +19,7 @@ class _CardViewsState extends State<CardViews> {
           backgroundColor: const Color(0xff4c4c00),
           title: const Text("CardViews"),
         ),
-        drawer: const NavigationDrawer(),
+        drawer: const MyNavigationDrawer(),
         body: SingleChildScrollView(
             child: Column(
           children: [

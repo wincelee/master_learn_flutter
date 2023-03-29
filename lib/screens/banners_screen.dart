@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:master_learn/classes/config.dart';
-import 'package:master_learn/navigation_drawer.dart';
+import 'package:master_learn/my_navigation_drawer.dart';
 import 'package:master_learn/widgets/my_custom_banner.dart';
 
 class BannersScreen extends StatefulWidget {
@@ -19,7 +19,7 @@ class _BannersScreenState extends State<BannersScreen> {
       appBar: AppBar(
         title: Text(widget.title),
       ),
-      drawer: const NavigationDrawer(),
+      drawer: const MyNavigationDrawer(),
       body: SingleChildScrollView(
         child: Column(
           children: [
