@@ -114,11 +114,14 @@ class Config {
   }
 
   // Method to only parse some arguments and leave the other arguments
-  Future<void> parseSomeArgumentsAndLeaveOtherArguments(String name, String task,
-  {/*This field of duration cannot be null that why we are parsing a default*/
-    Duration timeTaken = Duration.zero, /*For a field that can be null just put nullable*/
-  Map<String, dynamic>? data}){
+  Future parseSomeArgumentsAndLeaveOtherArguments(String name, String task,
+      {/*This field of duration cannot be null that why we are parsing a default*/
+      Duration timeTaken = Duration.zero,
+      /*For a field that can be null just put nullable*/
+      Map<String, dynamic>? data}) async {
+    Map<String, dynamic> resMap = {};
 
+    return resMap;
   }
 
   static List<Map<String, String>> itemsList = [
