@@ -1,27 +1,23 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_windowmanager/flutter_windowmanager.dart';
 import 'package:master_learn/classes/config.dart';
-import 'package:master_learn/firebase_operations/firebase_dashboard.dart';
 import 'package:master_learn/screens/bottomsheet_scrollsheet.dart';
 import 'package:master_learn/screens/card_views.dart';
 import 'package:master_learn/screens/cupertino_screen.dart';
 import 'package:master_learn/screens/drop_down_spinners.dart';
 import 'package:master_learn/screens/fetch_lists_grids.dart';
-import 'package:master_learn/firebase_operations/sign_in_using_email_and_password.dart';
 import 'package:master_learn/screens/firebase_operations.dart';
 import 'package:master_learn/screens/logins.dart';
 import 'package:master_learn/screens/options_menu.dart';
 import 'package:master_learn/screens/snack_bars.dart';
 import 'package:master_learn/screens/tab_bars_screen.dart';
 
-import 'screens/banners_screen.dart';
-
-import 'package:firebase_core/firebase_core.dart';
-
 import 'firebase_options.dart';
+import 'screens/banners_screen.dart';
 
 // Tutorial link [https://www.thirdrocktechkno.com/blog/how-to-implement-navigation-drawer-in-flutter/]
 

@@ -113,6 +113,14 @@ class Config {
     FocusManager.instance.primaryFocus?.unfocus();
   }
 
+  // Method to only parse some arguments and leave the other arguments
+  Future<void> parseSomeArgumentsAndLeaveOtherArguments(String name, String task,
+  {/*This field of duration cannot be null that why we are parsing a default*/
+    Duration timeTaken = Duration.zero, /*For a field that can be null just put nullable*/
+  Map<String, dynamic>? data}){
+
+  }
+
   static List<Map<String, String>> itemsList = [
     {
       "name": "Laptop Apple MacBook Air With M1 Chip",
