@@ -38,7 +38,7 @@ dependencies:
   json_serializable: ^6.1.4
   avatar_view: ^1.0.1
   google_fonts: ^4.0.3
-  intl: ^0.17.0
+  intl: ^0.18.1
   image: ^4.0.15
   flutter_slidable: ^2.0.0
   device_preview_screenshot: ^1.0.0
